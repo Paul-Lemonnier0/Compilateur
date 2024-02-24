@@ -22,6 +22,11 @@ file(GLOB EXPRESSION_HEADERS
     expressions/variable.hh
     expressions/figure.hh
     expressions/noeud.hh
+    expressions/boucles.hh
+    expressions/condition.hh
+    expressions/arbre.hh
+    expressions/attribut.hh
+    expressions/fonction.hh
     )
 
 add_library(expressions 
@@ -32,6 +37,11 @@ add_library(expressions
     expressions/variable.cc
     expressions/figure.cc
     expressions/noeud.cc
+    expressions/boucles.cc
+    expressions/condition.cc
+    expressions/arbre.cc
+    expressions/attribut.cc
+    expressions/fonction.cc
     ${EXPRESSION_HEADERS}
     )
 

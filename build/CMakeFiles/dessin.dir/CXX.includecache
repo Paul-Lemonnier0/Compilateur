@@ -6,6 +6,32 @@
 
 #IncludeRegexTransform: 
 
+../expressions/arbre.hh
+noeud.hh
+../expressions/noeud.hh
+figure.hh
+../expressions/figure.hh
+boucles.hh
+../expressions/boucles.hh
+condition.hh
+../expressions/condition.hh
+fonction.hh
+../expressions/fonction.hh
+
+../expressions/attribut.hh
+noeud.hh
+../expressions/noeud.hh
+
+../expressions/boucles.hh
+condition.hh
+../expressions/condition.hh
+noeud.hh
+../expressions/noeud.hh
+
+../expressions/condition.hh
+noeud.hh
+../expressions/noeud.hh
+
 ../expressions/constante.hh
 expression.hh
 ../expressions/expression.hh
@@ -14,6 +40,10 @@ expression.hh
 string
 -
 map
+-
+vector
+-
+iostream
 -
 
 ../expressions/expression.hh
@@ -41,6 +71,18 @@ memory
 -
 fstream
 -
+expression.hh
+../expressions/expression.hh
+noeud.hh
+../expressions/noeud.hh
+attribut.hh
+../expressions/attribut.hh
+map
+-
+
+../expressions/fonction.hh
+noeud.hh
+../expressions/noeud.hh
 
 ../expressions/noeud.hh
 string
@@ -51,8 +93,18 @@ memory
 -
 map
 -
-figure.hh
-../expressions/figure.hh
+contexte.hh
+../expressions/contexte.hh
+expressionBinaire.hh
+../expressions/expressionBinaire.hh
+expressionUnaire.hh
+../expressions/expressionUnaire.hh
+constante.hh
+../expressions/constante.hh
+variable.hh
+../expressions/variable.hh
+iostream
+-
 
 ../expressions/variable.hh
 string
@@ -67,8 +119,8 @@ contexte.hh
 ../parser/contexte.hh
 figure.hh
 ../parser/figure.hh
-noeud.hh
-../parser/noeud.hh
+arbre.hh
+../parser/arbre.hh
 memory
 -
 fstream
@@ -82,15 +134,15 @@ parser.hpp
 location.hh
 ../parser/location.hh
 
-/home/etud/Bureau/projet_theorie/dessin/build/location.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/location.hh
 iostream
 -
 string
 -
 
-/home/etud/Bureau/projet_theorie/dessin/build/parser.cpp
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp
 parser.hpp
-/home/etud/Bureau/projet_theorie/dessin/build/parser.hpp
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.hpp
 iostream
 -
 string
@@ -100,27 +152,33 @@ map
 memory
 -
 scanner.hh
-/home/etud/Bureau/projet_theorie/dessin/build/scanner.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/scanner.hh
 driver.hh
-/home/etud/Bureau/projet_theorie/dessin/build/driver.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/driver.hh
 libintl.h
 -
 
-/home/etud/Bureau/projet_theorie/dessin/build/parser.hpp
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.hpp
 contexte.hh
-/home/etud/Bureau/projet_theorie/dessin/build/contexte.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/contexte.hh
 expressionBinaire.hh
-/home/etud/Bureau/projet_theorie/dessin/build/expressionBinaire.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/expressionBinaire.hh
 expressionUnaire.hh
-/home/etud/Bureau/projet_theorie/dessin/build/expressionUnaire.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/expressionUnaire.hh
 constante.hh
-/home/etud/Bureau/projet_theorie/dessin/build/constante.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/constante.hh
 variable.hh
-/home/etud/Bureau/projet_theorie/dessin/build/variable.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/variable.hh
 figure.hh
-/home/etud/Bureau/projet_theorie/dessin/build/figure.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/figure.hh
+boucles.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/boucles.hh
+condition.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/condition.hh
+arbre.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/arbre.hh
 noeud.hh
-/home/etud/Bureau/projet_theorie/dessin/build/noeud.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/noeud.hh
 cassert
 -
 cstdlib
@@ -134,13 +192,13 @@ string
 vector
 -
 location.hh
-/home/etud/Bureau/projet_theorie/dessin/build/location.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/location.hh
 typeinfo
 -
 cassert
 -
 
-/home/etud/Bureau/projet_theorie/dessin/build/scanner.cpp
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/scanner.cpp
 inttypes.h
 -
 iostream
@@ -156,7 +214,7 @@ cstring
 FlexLexer.h
 -
 scanner.hh
-/home/etud/Bureau/projet_theorie/dessin/build/scanner.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/scanner.hh
 string
 -
 cstdlib
@@ -164,33 +222,27 @@ cstdlib
 unistd.h
 -
 
-/home/etud/Bureau/projet_theorie/dessin/parser/driver.cc
-driver.hh
-/home/etud/Bureau/projet_theorie/dessin/parser/driver.hh
-iostream
--
-
-/home/etud/Bureau/projet_theorie/dessin/parser/driver.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/parser/driver.hh
 string
 -
 contexte.hh
-/home/etud/Bureau/projet_theorie/dessin/parser/contexte.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/parser/contexte.hh
 figure.hh
-/home/etud/Bureau/projet_theorie/dessin/parser/figure.hh
-noeud.hh
-/home/etud/Bureau/projet_theorie/dessin/parser/noeud.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/parser/figure.hh
+arbre.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/parser/arbre.hh
 memory
 -
 fstream
 -
 
-/home/etud/Bureau/projet_theorie/dessin/parser/main.cc
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/parser/main.cc
 parser.hpp
-/home/etud/Bureau/projet_theorie/dessin/parser/parser.hpp
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/parser/parser.hpp
 scanner.hh
-/home/etud/Bureau/projet_theorie/dessin/parser/scanner.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/parser/scanner.hh
 driver.hh
-/home/etud/Bureau/projet_theorie/dessin/parser/driver.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/parser/driver.hh
 iostream
 -
 fstream
@@ -198,13 +250,13 @@ fstream
 cstring
 -
 
-/home/etud/Bureau/projet_theorie/dessin/parser/scanner.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/parser/scanner.hh
 FlexLexer.h
 -
 parser.hpp
-/home/etud/Bureau/projet_theorie/dessin/parser/parser.hpp
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/parser/parser.hpp
 location.hh
-/home/etud/Bureau/projet_theorie/dessin/parser/location.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/parser/location.hh
 
 location.hh
 iostream
@@ -225,6 +277,12 @@ variable.hh
 variable.hh
 figure.hh
 figure.hh
+boucles.hh
+boucles.hh
+condition.hh
+condition.hh
+arbre.hh
+arbre.hh
 noeud.hh
 noeud.hh
 cassert

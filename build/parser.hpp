@@ -1,8 +1,8 @@
-// A Bison parser, made by GNU Bison 3.7.5.
+// A Bison parser, made by GNU Bison 3.5.1.
 
 // Skeleton interface for Bison LALR(1) parsers in C++
 
-// Copyright (C) 2002-2015, 2018-2021 Free Software Foundation, Inc.
+// Copyright (C) 2002-2015, 2018-2020 Free Software Foundation, Inc.
 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -32,18 +32,17 @@
 
 
 /**
- ** \file /home/etud/Bureau/projet_theorie/dessin/build/parser.hpp
+ ** \file /mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.hpp
  ** Define the yy::parser class.
  */
 
 // C++ LALR(1) parser skeleton written by Akim Demaille.
 
-// DO NOT RELY ON FEATURES THAT ARE NOT DOCUMENTED in the manual,
-// especially those whose name start with YY_ or yy_.  They are
-// private implementation details that can be changed or removed.
+// Undocumented macros, especially those whose name start with YY_,
+// are private implementation details.  Do not rely on them.
 
-#ifndef YY_YY_HOME_ETUD_BUREAU_PROJET_THEORIE_DESSIN_BUILD_PARSER_HPP_INCLUDED
-# define YY_YY_HOME_ETUD_BUREAU_PROJET_THEORIE_DESSIN_BUILD_PARSER_HPP_INCLUDED
+#ifndef YY_YY_MNT_C_USERS_PAULL_ONEDRIVE_BUREAU_COMPILATEUR_DESSIN_BUILD_PARSER_HPP_INCLUDED
+# define YY_YY_MNT_C_USERS_PAULL_ONEDRIVE_BUREAU_COMPILATEUR_DESSIN_BUILD_PARSER_HPP_INCLUDED
 // "%code requires" blocks.
 #line 11 "parser/parser.yy"
 
@@ -53,12 +52,15 @@
     #include "constante.hh"
     #include "variable.hh"
     #include "figure.hh"
+    #include "boucles.hh"
+    #include "condition.hh"
+    #include "arbre.hh"
     #include "noeud.hh"
 
     class Scanner;
     class Driver;
 
-#line 62 "/home/etud/Bureau/projet_theorie/dessin/build/parser.hpp"
+#line 64 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.hpp"
 
 # include <cassert>
 # include <cstdlib> // std::abort
@@ -129,9 +131,9 @@
 
 /* Suppress unused-variable warnings by "using" E.  */
 #if ! defined lint || defined __GNUC__
-# define YY_USE(E) ((void) (E))
+# define YYUSE(E) ((void) (E))
 #else
-# define YY_USE(E) /* empty */
+# define YYUSE(E) /* empty */
 #endif
 
 #if defined __GNUC__ && ! defined __ICC && 407 <= __GNUC__ * 100 + __GNUC_MINOR__
@@ -192,7 +194,7 @@
 #endif
 
 namespace yy {
-#line 196 "/home/etud/Bureau/projet_theorie/dessin/build/parser.hpp"
+#line 198 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.hpp"
 
 
 
@@ -227,13 +229,6 @@ namespace yy {
       YY_ASSERT (sizeof (T) <= size);
       new (yyas_<T> ()) T (YY_MOVE (t));
     }
-
-#if 201103L <= YY_CPLUSPLUS
-    /// Non copyable.
-    semantic_type (const self_type&) = delete;
-    /// Non copyable.
-    self_type& operator= (const self_type&) = delete;
-#endif
 
     /// Destruction, allowed only if empty.
     ~semantic_type () YY_NOEXCEPT
@@ -378,12 +373,9 @@ namespace yy {
     }
 
   private:
-#if YY_CPLUSPLUS < 201103L
-    /// Non copyable.
-    semantic_type (const self_type&);
-    /// Non copyable.
+    /// Prohibit blind copies.
     self_type& operator= (const self_type&);
-#endif
+    semantic_type (const self_type&);
 
     /// Accessor to raw memory as \a T.
     template <typename T>
@@ -406,62 +398,101 @@ namespace yy {
     /// An auxiliary type to compute the largest semantic type.
     union union_type
     {
-      // accesCouleurFigure
-      char dummy1[sizeof (AccesCouleurFigure *)];
-
-      // accesFigure
-      char dummy2[sizeof (AccesFigureNode *)];
-
       // programme
       // subProgramme
-      char dummy3[sizeof (ArbreSyntaxique)];
+      char dummy1[sizeof (ArbreSyntaxique)];
 
-      // declarationCanva
-      char dummy4[sizeof (CanevaNode *)];
+      // couleurValue
+      char dummy2[sizeof (CouleurPtr)];
 
-      // carre
-      char dummy5[sizeof (CarreNode *)];
+      // operation
+      char dummy3[sizeof (ExpressionPtr)];
 
-      // condition
-      char dummy6[sizeof (ConditionNode *)];
+      // setTaille
+      char dummy4[sizeof (TailleType)];
 
-      // stringCondition
-      char dummy7[sizeof (CouleurConditionNode *)];
-
-      // declarationVariable
-      char dummy8[sizeof (DeclarationVariable *)];
-
-      // declarationFigure
-      char dummy9[sizeof (FigureNode *)];
-
-      // if
-      char dummy10[sizeof (IfNode *)];
-
-      // modificationFigure
-      char dummy11[sizeof (ModificationNode *)];
-
-      // instruction
-      // expression
-      char dummy12[sizeof (Noeud *)];
-
-      // BOOL
-      char dummy13[sizeof (bool)];
+      // boolValue
+      char dummy5[sizeof (bool)];
 
       // FLOAT
-      char dummy14[sizeof (float)];
+      char dummy6[sizeof (float)];
 
       // NUMBER
-      // operation
-      char dummy15[sizeof (int)];
+      char dummy7[sizeof (int)];
 
-      // attributsInline
-      // attributsCSS
-      // attributs
-      char dummy16[sizeof (std::map<std::string, std::string>)];
+      // numberComparator
+      char dummy8[sizeof (operators)];
+
+      // accesFigure
+      char dummy9[sizeof (std::shared_ptr<AccesFigureNode>)];
+
+      // affectation
+      char dummy10[sizeof (std::shared_ptr<AffectationSimpleVariableNode>)];
+
+      // appelFonction
+      char dummy11[sizeof (std::shared_ptr<AppelFonctionNode>)];
 
       // attributAffectation
       // setAttribut
-      char dummy17[sizeof (std::pair<std::string, std::string>)];
+      char dummy12[sizeof (std::shared_ptr<AttributNode>)];
+
+      // declarationCanva
+      char dummy13[sizeof (std::shared_ptr<CanevaNode>)];
+
+      // carre
+      char dummy14[sizeof (std::shared_ptr<CarreNode>)];
+
+      // cercle
+      char dummy15[sizeof (std::shared_ptr<CercleNode>)];
+
+      // chemin
+      char dummy16[sizeof (std::shared_ptr<CheminNode>)];
+
+      // condition
+      char dummy17[sizeof (std::shared_ptr<ConditionNode>)];
+
+      // declarationVariable
+      char dummy18[sizeof (std::shared_ptr<DeclarationVariable>)];
+
+      // declarationVariableSimple
+      char dummy19[sizeof (std::shared_ptr<DeclarationVariableSimple>)];
+
+      // ellipse
+      char dummy20[sizeof (std::shared_ptr<EllipseNode>)];
+
+      // declarationFigure
+      char dummy21[sizeof (std::shared_ptr<FigureNode>)];
+
+      // fonction
+      char dummy22[sizeof (std::shared_ptr<FonctionNode>)];
+
+      // boucleFor
+      char dummy23[sizeof (std::shared_ptr<ForLoopNode>)];
+
+      // if
+      char dummy24[sizeof (std::shared_ptr<IfNode>)];
+
+      // ligne
+      char dummy25[sizeof (std::shared_ptr<LigneNode>)];
+
+      // modificationFigure
+      char dummy26[sizeof (std::shared_ptr<ModificationFigureNode>)];
+
+      // instruction
+      // expression
+      char dummy27[sizeof (std::shared_ptr<Noeud>)];
+
+      // rectangle
+      char dummy28[sizeof (std::shared_ptr<RectangleNode>)];
+
+      // texte
+      char dummy29[sizeof (std::shared_ptr<TexteNode>)];
+
+      // triangle
+      char dummy30[sizeof (std::shared_ptr<TriangleNode>)];
+
+      // boucleWhile
+      char dummy31[sizeof (std::shared_ptr<WhileNode>)];
 
       // INT_TYPE
       // BOOL_TYPE
@@ -474,15 +505,35 @@ namespace yy {
       // REMPLISSAGE
       // OPACITE
       // EPAISSEUR
-      // pourcentage
-      // chaine
-      char dummy18[sizeof (std::string)];
+      // TAILLE
+      // HAUTEUR
+      // LARGEUR
+      // variable
+      char dummy32[sizeof (std::string)];
+
+      // argumentsValues
+      char dummy33[sizeof (std::vector<ExpressionPtr>)];
+
+      // vectPos
+      char dummy34[sizeof (std::vector<Position>)];
+
+      // attributsInline
+      // attributsCSS
+      // attributs
+      char dummy35[sizeof (std::vector<std::shared_ptr<AttributNode>>)];
+
+      // conditions
+      char dummy36[sizeof (std::vector<std::shared_ptr<ConditionNode>>)];
 
       // instructions
-      char dummy19[sizeof (std::vector<Noeud *>)];
+      // else
+      char dummy37[sizeof (std::vector<std::shared_ptr<Noeud>>)];
+
+      // arguments
+      char dummy38[sizeof (std::vector<std::string>)];
 
       // stringComparator
-      char dummy20[sizeof (string_operators)];
+      char dummy39[sizeof (string_operators)];
     };
 
     /// The size of the largest semantic type.
@@ -525,177 +576,79 @@ namespace yy {
       location_type location;
     };
 
-    /// Token kinds.
+    /// Tokens.
     struct token
     {
-      enum token_kind_type
+      enum yytokentype
       {
-        YYEMPTY = -2,
-    YYEOF = 0,                     // "end of file"
-    YYerror = 256,                 // error
-    YYUNDEF = 257,                 // "invalid token"
-    NL = 258,                      // NL
-    END = 259,                     // END
-    NUMBER = 260,                  // NUMBER
-    FLOAT = 261,                   // FLOAT
-    BOOL = 262,                    // BOOL
-    INT_TYPE = 263,                // INT_TYPE
-    BOOL_TYPE = 264,               // BOOL_TYPE
-    FLOAT_TYPE = 265,              // FLOAT_TYPE
-    VARIABLE = 266,                // VARIABLE
-    STRING = 267,                  // STRING
-    ATTRIBUT = 268,                // ATTRIBUT
-    INLINE_AFFECTATION = 269,      // INLINE_AFFECTATION
-    HEXA_VALUE = 270,              // HEXA_VALUE
-    COULEUR = 271,                 // COULEUR
-    ROTATION = 272,                // ROTATION
-    REMPLISSAGE = 273,             // REMPLISSAGE
-    OPACITE = 274,                 // OPACITE
-    EPAISSEUR = 275,               // EPAISSEUR
-    SI = 276,                      // SI
-    ALORS = 277,                   // ALORS
-    SINON = 278,                   // SINON
-    REPETE = 279,                  // REPETE
-    FOIS = 280,                    // FOIS
-    EQUAL = 281,                   // EQUAL
-    NOTEQUAL = 282,                // NOTEQUAL
-    LESS = 283,                    // LESS
-    LESSEQUAL = 284,               // LESSEQUAL
-    GREATER = 285,                 // GREATER
-    GREATEREQUAL = 286,            // GREATEREQUAL
-    STRINGEQUAL = 287,             // STRINGEQUAL
-    STRINGNOTEQUAL = 288,          // STRINGNOTEQUAL
-    TAILLE = 289,                  // TAILLE
-    RECTANGLE = 290,               // RECTANGLE
-    CARRE = 291,                   // CARRE
-    TRIANGLE = 292,                // TRIANGLE
-    CERCLE = 293,                  // CERCLE
-    ELLIPSE = 294,                 // ELLIPSE
-    LIGNE = 295,                   // LIGNE
-    CHEMIN = 296,                  // CHEMIN
-    TEXTE = 297,                   // TEXTE
-    STOP = 298,                    // STOP
-    SVG = 299,                     // SVG
-    NEG = 300                      // NEG
-      };
-      /// Backward compatibility alias (Bison 3.6).
-      typedef token_kind_type yytokentype;
-    };
-
-    /// Token kind, as returned by yylex.
-    typedef token::yytokentype token_kind_type;
-
-    /// Backward compatibility alias (Bison 3.6).
-    typedef token_kind_type token_type;
-
-    /// Symbol kinds.
-    struct symbol_kind
-    {
-      enum symbol_kind_type
-      {
-        YYNTOKENS = 62, ///< Number of tokens.
-        S_YYEMPTY = -2,
-        S_YYEOF = 0,                             // "end of file"
-        S_YYerror = 1,                           // error
-        S_YYUNDEF = 2,                           // "invalid token"
-        S_NL = 3,                                // NL
-        S_END = 4,                               // END
-        S_NUMBER = 5,                            // NUMBER
-        S_FLOAT = 6,                             // FLOAT
-        S_BOOL = 7,                              // BOOL
-        S_INT_TYPE = 8,                          // INT_TYPE
-        S_BOOL_TYPE = 9,                         // BOOL_TYPE
-        S_FLOAT_TYPE = 10,                       // FLOAT_TYPE
-        S_VARIABLE = 11,                         // VARIABLE
-        S_STRING = 12,                           // STRING
-        S_ATTRIBUT = 13,                         // ATTRIBUT
-        S_INLINE_AFFECTATION = 14,               // INLINE_AFFECTATION
-        S_HEXA_VALUE = 15,                       // HEXA_VALUE
-        S_COULEUR = 16,                          // COULEUR
-        S_ROTATION = 17,                         // ROTATION
-        S_REMPLISSAGE = 18,                      // REMPLISSAGE
-        S_OPACITE = 19,                          // OPACITE
-        S_EPAISSEUR = 20,                        // EPAISSEUR
-        S_SI = 21,                               // SI
-        S_ALORS = 22,                            // ALORS
-        S_SINON = 23,                            // SINON
-        S_REPETE = 24,                           // REPETE
-        S_FOIS = 25,                             // FOIS
-        S_EQUAL = 26,                            // EQUAL
-        S_NOTEQUAL = 27,                         // NOTEQUAL
-        S_LESS = 28,                             // LESS
-        S_LESSEQUAL = 29,                        // LESSEQUAL
-        S_GREATER = 30,                          // GREATER
-        S_GREATEREQUAL = 31,                     // GREATEREQUAL
-        S_STRINGEQUAL = 32,                      // STRINGEQUAL
-        S_STRINGNOTEQUAL = 33,                   // STRINGNOTEQUAL
-        S_TAILLE = 34,                           // TAILLE
-        S_RECTANGLE = 35,                        // RECTANGLE
-        S_CARRE = 36,                            // CARRE
-        S_TRIANGLE = 37,                         // TRIANGLE
-        S_CERCLE = 38,                           // CERCLE
-        S_ELLIPSE = 39,                          // ELLIPSE
-        S_LIGNE = 40,                            // LIGNE
-        S_CHEMIN = 41,                           // CHEMIN
-        S_TEXTE = 42,                            // TEXTE
-        S_STOP = 43,                             // STOP
-        S_SVG = 44,                              // SVG
-        S_45_ = 45,                              // '-'
-        S_46_ = 46,                              // '+'
-        S_47_ = 47,                              // '*'
-        S_48_ = 48,                              // '/'
-        S_NEG = 49,                              // NEG
-        S_50_ = 50,                              // '&'
-        S_51_ = 51,                              // ';'
-        S_52_ = 52,                              // '{'
-        S_53_ = 53,                              // '}'
-        S_54_ = 54,                              // ':'
-        S_55_ = 55,                              // '['
-        S_56_ = 56,                              // ']'
-        S_57_ = 57,                              // '='
-        S_58_ = 58,                              // '.'
-        S_59_ = 59,                              // '%'
-        S_60_ = 60,                              // '('
-        S_61_ = 61,                              // ')'
-        S_YYACCEPT = 62,                         // $accept
-        S_programme = 63,                        // programme
-        S_subProgramme = 64,                     // subProgramme
-        S_instructions = 65,                     // instructions
-        S_instruction = 66,                      // instruction
-        S_attributsInline = 67,                  // attributsInline
-        S_attributsCSS = 68,                     // attributsCSS
-        S_attributs = 69,                        // attributs
-        S_attributAffectation = 70,              // attributAffectation
-        S_expression = 71,                       // expression
-        S_declarationCanva = 72,                 // declarationCanva
-        S_declarationFigure = 73,                // declarationFigure
-        S_carre = 74,                            // carre
-        S_accesFigure = 75,                      // accesFigure
-        S_setAttribut = 76,                      // setAttribut
-        S_modificationFigure = 77,               // modificationFigure
-        S_declarationVariable = 78,              // declarationVariable
-        S_stringComparator = 79,                 // stringComparator
-        S_condition = 80,                        // condition
-        S_pourcentage = 81,                      // pourcentage
-        S_chaine = 82,                           // chaine
-        S_accesCouleurFigure = 83,               // accesCouleurFigure
-        S_stringCondition = 84,                  // stringCondition
-        S_if = 85,                               // if
-        S_affectation = 86,                      // affectation
-        S_operation = 87                         // operation
+        NL = 258,
+        END = 259,
+        NUMBER = 260,
+        FLOAT = 261,
+        TRUE = 262,
+        FALSE = 263,
+        INT_TYPE = 264,
+        BOOL_TYPE = 265,
+        FLOAT_TYPE = 266,
+        VARIABLE = 267,
+        STRING = 268,
+        ATTRIBUT = 269,
+        INLINE_AFFECTATION = 270,
+        HEXA_VALUE = 271,
+        COULEUR = 272,
+        ROTATION = 273,
+        REMPLISSAGE = 274,
+        OPACITE = 275,
+        EPAISSEUR = 276,
+        SI = 277,
+        ALORS = 278,
+        SINON = 279,
+        FUNCTION = 280,
+        REPETE = 281,
+        FOIS = 282,
+        WHILE = 283,
+        EQUAL = 284,
+        NOTEQUAL = 285,
+        LESS = 286,
+        LESSEQUAL = 287,
+        GREATER = 288,
+        GREATEREQUAL = 289,
+        STRINGEQUAL = 290,
+        STRINGNOTEQUAL = 291,
+        TAILLE = 292,
+        HAUTEUR = 293,
+        LARGEUR = 294,
+        RECTANGLE = 295,
+        CARRE = 296,
+        TRIANGLE = 297,
+        CERCLE = 298,
+        ELLIPSE = 299,
+        LIGNE = 300,
+        CHEMIN = 301,
+        TEXTE = 302,
+        STOP = 303,
+        DEGRE = 304,
+        AND = 305,
+        NEG = 306
       };
     };
 
-    /// (Internal) symbol kind.
-    typedef symbol_kind::symbol_kind_type symbol_kind_type;
+    /// (External) token type, as returned by yylex.
+    typedef token::yytokentype token_type;
 
-    /// The number of tokens.
-    static const symbol_kind_type YYNTOKENS = symbol_kind::YYNTOKENS;
+    /// Symbol type: an internal symbol number.
+    typedef int symbol_number_type;
+
+    /// The symbol type number to denote an empty symbol.
+    enum { empty_symbol = -2 };
+
+    /// Internal symbol number for tokens (subsumed by symbol_number_type).
+    typedef signed char token_number_type;
 
     /// A complete symbol.
     ///
-    /// Expects its Base type to provide access to the symbol kind
-    /// via kind ().
+    /// Expects its Base type to provide access to the symbol type
+    /// via type_get ().
     ///
     /// Provide access to semantic value and location.
     template <typename Base>
@@ -712,122 +665,13 @@ namespace yy {
 
 #if 201103L <= YY_CPLUSPLUS
       /// Move constructor.
-      basic_symbol (basic_symbol&& that)
-        : Base (std::move (that))
-        , value ()
-        , location (std::move (that.location))
-      {
-        switch (this->kind ())
-    {
-      case symbol_kind::S_accesCouleurFigure: // accesCouleurFigure
-        value.move< AccesCouleurFigure * > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_accesFigure: // accesFigure
-        value.move< AccesFigureNode * > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_programme: // programme
-      case symbol_kind::S_subProgramme: // subProgramme
-        value.move< ArbreSyntaxique > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_declarationCanva: // declarationCanva
-        value.move< CanevaNode * > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_carre: // carre
-        value.move< CarreNode * > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_condition: // condition
-        value.move< ConditionNode * > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_stringCondition: // stringCondition
-        value.move< CouleurConditionNode * > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_declarationVariable: // declarationVariable
-        value.move< DeclarationVariable * > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_declarationFigure: // declarationFigure
-        value.move< FigureNode * > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_if: // if
-        value.move< IfNode * > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_modificationFigure: // modificationFigure
-        value.move< ModificationNode * > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_instruction: // instruction
-      case symbol_kind::S_expression: // expression
-        value.move< Noeud * > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_BOOL: // BOOL
-        value.move< bool > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_FLOAT: // FLOAT
-        value.move< float > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_NUMBER: // NUMBER
-      case symbol_kind::S_operation: // operation
-        value.move< int > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_attributsInline: // attributsInline
-      case symbol_kind::S_attributsCSS: // attributsCSS
-      case symbol_kind::S_attributs: // attributs
-        value.move< std::map<std::string, std::string> > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_attributAffectation: // attributAffectation
-      case symbol_kind::S_setAttribut: // setAttribut
-        value.move< std::pair<std::string, std::string> > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_INT_TYPE: // INT_TYPE
-      case symbol_kind::S_BOOL_TYPE: // BOOL_TYPE
-      case symbol_kind::S_FLOAT_TYPE: // FLOAT_TYPE
-      case symbol_kind::S_VARIABLE: // VARIABLE
-      case symbol_kind::S_STRING: // STRING
-      case symbol_kind::S_HEXA_VALUE: // HEXA_VALUE
-      case symbol_kind::S_COULEUR: // COULEUR
-      case symbol_kind::S_ROTATION: // ROTATION
-      case symbol_kind::S_REMPLISSAGE: // REMPLISSAGE
-      case symbol_kind::S_OPACITE: // OPACITE
-      case symbol_kind::S_EPAISSEUR: // EPAISSEUR
-      case symbol_kind::S_pourcentage: // pourcentage
-      case symbol_kind::S_chaine: // chaine
-        value.move< std::string > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_instructions: // instructions
-        value.move< std::vector<Noeud *> > (std::move (that.value));
-        break;
-
-      case symbol_kind::S_stringComparator: // stringComparator
-        value.move< string_operators > (std::move (that.value));
-        break;
-
-      default:
-        break;
-    }
-
-      }
+      basic_symbol (basic_symbol&& that);
 #endif
 
       /// Copy constructor.
       basic_symbol (const basic_symbol& that);
 
-      /// Constructors for typed symbols.
+      /// Constructor for valueless symbols, and symbols from each type.
 #if 201103L <= YY_CPLUSPLUS
       basic_symbol (typename Base::kind_type t, location_type&& l)
         : Base (t)
@@ -839,35 +683,6 @@ namespace yy {
         , location (l)
       {}
 #endif
-
-#if 201103L <= YY_CPLUSPLUS
-      basic_symbol (typename Base::kind_type t, AccesCouleurFigure *&& v, location_type&& l)
-        : Base (t)
-        , value (std::move (v))
-        , location (std::move (l))
-      {}
-#else
-      basic_symbol (typename Base::kind_type t, const AccesCouleurFigure *& v, const location_type& l)
-        : Base (t)
-        , value (v)
-        , location (l)
-      {}
-#endif
-
-#if 201103L <= YY_CPLUSPLUS
-      basic_symbol (typename Base::kind_type t, AccesFigureNode *&& v, location_type&& l)
-        : Base (t)
-        , value (std::move (v))
-        , location (std::move (l))
-      {}
-#else
-      basic_symbol (typename Base::kind_type t, const AccesFigureNode *& v, const location_type& l)
-        : Base (t)
-        , value (v)
-        , location (l)
-      {}
-#endif
-
 #if 201103L <= YY_CPLUSPLUS
       basic_symbol (typename Base::kind_type t, ArbreSyntaxique&& v, location_type&& l)
         : Base (t)
@@ -881,133 +696,45 @@ namespace yy {
         , location (l)
       {}
 #endif
-
 #if 201103L <= YY_CPLUSPLUS
-      basic_symbol (typename Base::kind_type t, CanevaNode *&& v, location_type&& l)
+      basic_symbol (typename Base::kind_type t, CouleurPtr&& v, location_type&& l)
         : Base (t)
         , value (std::move (v))
         , location (std::move (l))
       {}
 #else
-      basic_symbol (typename Base::kind_type t, const CanevaNode *& v, const location_type& l)
+      basic_symbol (typename Base::kind_type t, const CouleurPtr& v, const location_type& l)
         : Base (t)
         , value (v)
         , location (l)
       {}
 #endif
-
 #if 201103L <= YY_CPLUSPLUS
-      basic_symbol (typename Base::kind_type t, CarreNode *&& v, location_type&& l)
+      basic_symbol (typename Base::kind_type t, ExpressionPtr&& v, location_type&& l)
         : Base (t)
         , value (std::move (v))
         , location (std::move (l))
       {}
 #else
-      basic_symbol (typename Base::kind_type t, const CarreNode *& v, const location_type& l)
+      basic_symbol (typename Base::kind_type t, const ExpressionPtr& v, const location_type& l)
         : Base (t)
         , value (v)
         , location (l)
       {}
 #endif
-
 #if 201103L <= YY_CPLUSPLUS
-      basic_symbol (typename Base::kind_type t, ConditionNode *&& v, location_type&& l)
+      basic_symbol (typename Base::kind_type t, TailleType&& v, location_type&& l)
         : Base (t)
         , value (std::move (v))
         , location (std::move (l))
       {}
 #else
-      basic_symbol (typename Base::kind_type t, const ConditionNode *& v, const location_type& l)
+      basic_symbol (typename Base::kind_type t, const TailleType& v, const location_type& l)
         : Base (t)
         , value (v)
         , location (l)
       {}
 #endif
-
-#if 201103L <= YY_CPLUSPLUS
-      basic_symbol (typename Base::kind_type t, CouleurConditionNode *&& v, location_type&& l)
-        : Base (t)
-        , value (std::move (v))
-        , location (std::move (l))
-      {}
-#else
-      basic_symbol (typename Base::kind_type t, const CouleurConditionNode *& v, const location_type& l)
-        : Base (t)
-        , value (v)
-        , location (l)
-      {}
-#endif
-
-#if 201103L <= YY_CPLUSPLUS
-      basic_symbol (typename Base::kind_type t, DeclarationVariable *&& v, location_type&& l)
-        : Base (t)
-        , value (std::move (v))
-        , location (std::move (l))
-      {}
-#else
-      basic_symbol (typename Base::kind_type t, const DeclarationVariable *& v, const location_type& l)
-        : Base (t)
-        , value (v)
-        , location (l)
-      {}
-#endif
-
-#if 201103L <= YY_CPLUSPLUS
-      basic_symbol (typename Base::kind_type t, FigureNode *&& v, location_type&& l)
-        : Base (t)
-        , value (std::move (v))
-        , location (std::move (l))
-      {}
-#else
-      basic_symbol (typename Base::kind_type t, const FigureNode *& v, const location_type& l)
-        : Base (t)
-        , value (v)
-        , location (l)
-      {}
-#endif
-
-#if 201103L <= YY_CPLUSPLUS
-      basic_symbol (typename Base::kind_type t, IfNode *&& v, location_type&& l)
-        : Base (t)
-        , value (std::move (v))
-        , location (std::move (l))
-      {}
-#else
-      basic_symbol (typename Base::kind_type t, const IfNode *& v, const location_type& l)
-        : Base (t)
-        , value (v)
-        , location (l)
-      {}
-#endif
-
-#if 201103L <= YY_CPLUSPLUS
-      basic_symbol (typename Base::kind_type t, ModificationNode *&& v, location_type&& l)
-        : Base (t)
-        , value (std::move (v))
-        , location (std::move (l))
-      {}
-#else
-      basic_symbol (typename Base::kind_type t, const ModificationNode *& v, const location_type& l)
-        : Base (t)
-        , value (v)
-        , location (l)
-      {}
-#endif
-
-#if 201103L <= YY_CPLUSPLUS
-      basic_symbol (typename Base::kind_type t, Noeud *&& v, location_type&& l)
-        : Base (t)
-        , value (std::move (v))
-        , location (std::move (l))
-      {}
-#else
-      basic_symbol (typename Base::kind_type t, const Noeud *& v, const location_type& l)
-        : Base (t)
-        , value (v)
-        , location (l)
-      {}
-#endif
-
 #if 201103L <= YY_CPLUSPLUS
       basic_symbol (typename Base::kind_type t, bool&& v, location_type&& l)
         : Base (t)
@@ -1021,7 +748,6 @@ namespace yy {
         , location (l)
       {}
 #endif
-
 #if 201103L <= YY_CPLUSPLUS
       basic_symbol (typename Base::kind_type t, float&& v, location_type&& l)
         : Base (t)
@@ -1035,7 +761,6 @@ namespace yy {
         , location (l)
       {}
 #endif
-
 #if 201103L <= YY_CPLUSPLUS
       basic_symbol (typename Base::kind_type t, int&& v, location_type&& l)
         : Base (t)
@@ -1049,35 +774,318 @@ namespace yy {
         , location (l)
       {}
 #endif
-
 #if 201103L <= YY_CPLUSPLUS
-      basic_symbol (typename Base::kind_type t, std::map<std::string, std::string>&& v, location_type&& l)
+      basic_symbol (typename Base::kind_type t, operators&& v, location_type&& l)
         : Base (t)
         , value (std::move (v))
         , location (std::move (l))
       {}
 #else
-      basic_symbol (typename Base::kind_type t, const std::map<std::string, std::string>& v, const location_type& l)
+      basic_symbol (typename Base::kind_type t, const operators& v, const location_type& l)
         : Base (t)
         , value (v)
         , location (l)
       {}
 #endif
-
 #if 201103L <= YY_CPLUSPLUS
-      basic_symbol (typename Base::kind_type t, std::pair<std::string, std::string>&& v, location_type&& l)
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<AccesFigureNode>&& v, location_type&& l)
         : Base (t)
         , value (std::move (v))
         , location (std::move (l))
       {}
 #else
-      basic_symbol (typename Base::kind_type t, const std::pair<std::string, std::string>& v, const location_type& l)
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<AccesFigureNode>& v, const location_type& l)
         : Base (t)
         , value (v)
         , location (l)
       {}
 #endif
-
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<AffectationSimpleVariableNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<AffectationSimpleVariableNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<AppelFonctionNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<AppelFonctionNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<AttributNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<AttributNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<CanevaNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<CanevaNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<CarreNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<CarreNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<CercleNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<CercleNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<CheminNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<CheminNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<ConditionNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<ConditionNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<DeclarationVariable>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<DeclarationVariable>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<DeclarationVariableSimple>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<DeclarationVariableSimple>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<EllipseNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<EllipseNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<FigureNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<FigureNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<FonctionNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<FonctionNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<ForLoopNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<ForLoopNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<IfNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<IfNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<LigneNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<LigneNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<ModificationFigureNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<ModificationFigureNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<Noeud>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<Noeud>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<RectangleNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<RectangleNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<TexteNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<TexteNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<TriangleNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<TriangleNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::shared_ptr<WhileNode>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::shared_ptr<WhileNode>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
 #if 201103L <= YY_CPLUSPLUS
       basic_symbol (typename Base::kind_type t, std::string&& v, location_type&& l)
         : Base (t)
@@ -1091,21 +1099,84 @@ namespace yy {
         , location (l)
       {}
 #endif
-
 #if 201103L <= YY_CPLUSPLUS
-      basic_symbol (typename Base::kind_type t, std::vector<Noeud *>&& v, location_type&& l)
+      basic_symbol (typename Base::kind_type t, std::vector<ExpressionPtr>&& v, location_type&& l)
         : Base (t)
         , value (std::move (v))
         , location (std::move (l))
       {}
 #else
-      basic_symbol (typename Base::kind_type t, const std::vector<Noeud *>& v, const location_type& l)
+      basic_symbol (typename Base::kind_type t, const std::vector<ExpressionPtr>& v, const location_type& l)
         : Base (t)
         , value (v)
         , location (l)
       {}
 #endif
-
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::vector<Position>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::vector<Position>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::vector<std::shared_ptr<AttributNode>>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::vector<std::shared_ptr<AttributNode>>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::vector<std::shared_ptr<ConditionNode>>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::vector<std::shared_ptr<ConditionNode>>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::vector<std::shared_ptr<Noeud>>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::vector<std::shared_ptr<Noeud>>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::vector<std::string>&& v, location_type&& l)
+        : Base (t)
+        , value (std::move (v))
+        , location (std::move (l))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::vector<std::string>& v, const location_type& l)
+        : Base (t)
+        , value (v)
+        , location (l)
+      {}
+#endif
 #if 201103L <= YY_CPLUSPLUS
       basic_symbol (typename Base::kind_type t, string_operators&& v, location_type&& l)
         : Base (t)
@@ -1127,116 +1198,194 @@ namespace yy {
       }
 
       /// Destroy contents, and record that is empty.
-      void clear () YY_NOEXCEPT
+      void clear ()
       {
         // User destructor.
-        symbol_kind_type yykind = this->kind ();
+        symbol_number_type yytype = this->type_get ();
         basic_symbol<Base>& yysym = *this;
         (void) yysym;
-        switch (yykind)
+        switch (yytype)
         {
        default:
           break;
         }
 
-        // Value type destructor.
-switch (yykind)
+        // Type destructor.
+switch (yytype)
     {
-      case symbol_kind::S_accesCouleurFigure: // accesCouleurFigure
-        value.template destroy< AccesCouleurFigure * > ();
-        break;
-
-      case symbol_kind::S_accesFigure: // accesFigure
-        value.template destroy< AccesFigureNode * > ();
-        break;
-
-      case symbol_kind::S_programme: // programme
-      case symbol_kind::S_subProgramme: // subProgramme
+      case 69: // programme
+      case 70: // subProgramme
         value.template destroy< ArbreSyntaxique > ();
         break;
 
-      case symbol_kind::S_declarationCanva: // declarationCanva
-        value.template destroy< CanevaNode * > ();
+      case 77: // couleurValue
+        value.template destroy< CouleurPtr > ();
         break;
 
-      case symbol_kind::S_carre: // carre
-        value.template destroy< CarreNode * > ();
+      case 110: // operation
+        value.template destroy< ExpressionPtr > ();
         break;
 
-      case symbol_kind::S_condition: // condition
-        value.template destroy< ConditionNode * > ();
+      case 94: // setTaille
+        value.template destroy< TailleType > ();
         break;
 
-      case symbol_kind::S_stringCondition: // stringCondition
-        value.template destroy< CouleurConditionNode * > ();
-        break;
-
-      case symbol_kind::S_declarationVariable: // declarationVariable
-        value.template destroy< DeclarationVariable * > ();
-        break;
-
-      case symbol_kind::S_declarationFigure: // declarationFigure
-        value.template destroy< FigureNode * > ();
-        break;
-
-      case symbol_kind::S_if: // if
-        value.template destroy< IfNode * > ();
-        break;
-
-      case symbol_kind::S_modificationFigure: // modificationFigure
-        value.template destroy< ModificationNode * > ();
-        break;
-
-      case symbol_kind::S_instruction: // instruction
-      case symbol_kind::S_expression: // expression
-        value.template destroy< Noeud * > ();
-        break;
-
-      case symbol_kind::S_BOOL: // BOOL
+      case 80: // boolValue
         value.template destroy< bool > ();
         break;
 
-      case symbol_kind::S_FLOAT: // FLOAT
+      case 6: // FLOAT
         value.template destroy< float > ();
         break;
 
-      case symbol_kind::S_NUMBER: // NUMBER
-      case symbol_kind::S_operation: // operation
+      case 5: // NUMBER
         value.template destroy< int > ();
         break;
 
-      case symbol_kind::S_attributsInline: // attributsInline
-      case symbol_kind::S_attributsCSS: // attributsCSS
-      case symbol_kind::S_attributs: // attributs
-        value.template destroy< std::map<std::string, std::string> > ();
+      case 97: // numberComparator
+        value.template destroy< operators > ();
         break;
 
-      case symbol_kind::S_attributAffectation: // attributAffectation
-      case symbol_kind::S_setAttribut: // setAttribut
-        value.template destroy< std::pair<std::string, std::string> > ();
+      case 92: // accesFigure
+        value.template destroy< std::shared_ptr<AccesFigureNode> > ();
         break;
 
-      case symbol_kind::S_INT_TYPE: // INT_TYPE
-      case symbol_kind::S_BOOL_TYPE: // BOOL_TYPE
-      case symbol_kind::S_FLOAT_TYPE: // FLOAT_TYPE
-      case symbol_kind::S_VARIABLE: // VARIABLE
-      case symbol_kind::S_STRING: // STRING
-      case symbol_kind::S_HEXA_VALUE: // HEXA_VALUE
-      case symbol_kind::S_COULEUR: // COULEUR
-      case symbol_kind::S_ROTATION: // ROTATION
-      case symbol_kind::S_REMPLISSAGE: // REMPLISSAGE
-      case symbol_kind::S_OPACITE: // OPACITE
-      case symbol_kind::S_EPAISSEUR: // EPAISSEUR
-      case symbol_kind::S_pourcentage: // pourcentage
-      case symbol_kind::S_chaine: // chaine
+      case 105: // affectation
+        value.template destroy< std::shared_ptr<AffectationSimpleVariableNode> > ();
+        break;
+
+      case 109: // appelFonction
+        value.template destroy< std::shared_ptr<AppelFonctionNode> > ();
+        break;
+
+      case 76: // attributAffectation
+      case 93: // setAttribut
+        value.template destroy< std::shared_ptr<AttributNode> > ();
+        break;
+
+      case 82: // declarationCanva
+        value.template destroy< std::shared_ptr<CanevaNode> > ();
+        break;
+
+      case 84: // carre
+        value.template destroy< std::shared_ptr<CarreNode> > ();
+        break;
+
+      case 87: // cercle
+        value.template destroy< std::shared_ptr<CercleNode> > ();
+        break;
+
+      case 90: // chemin
+        value.template destroy< std::shared_ptr<CheminNode> > ();
+        break;
+
+      case 99: // condition
+        value.template destroy< std::shared_ptr<ConditionNode> > ();
+        break;
+
+      case 96: // declarationVariable
+        value.template destroy< std::shared_ptr<DeclarationVariable> > ();
+        break;
+
+      case 81: // declarationVariableSimple
+        value.template destroy< std::shared_ptr<DeclarationVariableSimple> > ();
+        break;
+
+      case 88: // ellipse
+        value.template destroy< std::shared_ptr<EllipseNode> > ();
+        break;
+
+      case 83: // declarationFigure
+        value.template destroy< std::shared_ptr<FigureNode> > ();
+        break;
+
+      case 108: // fonction
+        value.template destroy< std::shared_ptr<FonctionNode> > ();
+        break;
+
+      case 103: // boucleFor
+        value.template destroy< std::shared_ptr<ForLoopNode> > ();
+        break;
+
+      case 101: // if
+        value.template destroy< std::shared_ptr<IfNode> > ();
+        break;
+
+      case 89: // ligne
+        value.template destroy< std::shared_ptr<LigneNode> > ();
+        break;
+
+      case 95: // modificationFigure
+        value.template destroy< std::shared_ptr<ModificationFigureNode> > ();
+        break;
+
+      case 72: // instruction
+      case 78: // expression
+        value.template destroy< std::shared_ptr<Noeud> > ();
+        break;
+
+      case 85: // rectangle
+        value.template destroy< std::shared_ptr<RectangleNode> > ();
+        break;
+
+      case 91: // texte
+        value.template destroy< std::shared_ptr<TexteNode> > ();
+        break;
+
+      case 86: // triangle
+        value.template destroy< std::shared_ptr<TriangleNode> > ();
+        break;
+
+      case 104: // boucleWhile
+        value.template destroy< std::shared_ptr<WhileNode> > ();
+        break;
+
+      case 9: // INT_TYPE
+      case 10: // BOOL_TYPE
+      case 11: // FLOAT_TYPE
+      case 12: // VARIABLE
+      case 13: // STRING
+      case 16: // HEXA_VALUE
+      case 17: // COULEUR
+      case 18: // ROTATION
+      case 19: // REMPLISSAGE
+      case 20: // OPACITE
+      case 21: // EPAISSEUR
+      case 37: // TAILLE
+      case 38: // HAUTEUR
+      case 39: // LARGEUR
+      case 79: // variable
         value.template destroy< std::string > ();
         break;
 
-      case symbol_kind::S_instructions: // instructions
-        value.template destroy< std::vector<Noeud *> > ();
+      case 107: // argumentsValues
+        value.template destroy< std::vector<ExpressionPtr> > ();
         break;
 
-      case symbol_kind::S_stringComparator: // stringComparator
+      case 111: // vectPos
+        value.template destroy< std::vector<Position> > ();
+        break;
+
+      case 73: // attributsInline
+      case 74: // attributsCSS
+      case 75: // attributs
+        value.template destroy< std::vector<std::shared_ptr<AttributNode>> > ();
+        break;
+
+      case 100: // conditions
+        value.template destroy< std::vector<std::shared_ptr<ConditionNode>> > ();
+        break;
+
+      case 71: // instructions
+      case 102: // else
+        value.template destroy< std::vector<std::shared_ptr<Noeud>> > ();
+        break;
+
+      case 106: // arguments
+        value.template destroy< std::vector<std::string> > ();
+        break;
+
+      case 98: // stringComparator
         value.template destroy< string_operators > ();
         break;
 
@@ -1246,18 +1395,6 @@ switch (yykind)
 
         Base::clear ();
       }
-
-#if YYDEBUG || 0
-      /// The user-facing name of this symbol.
-      const char *name () const YY_NOEXCEPT
-      {
-        return  Parser ::symbol_name (this->kind ());
-      }
-#endif // #if YYDEBUG || 0
-
-
-      /// Backward compatibility (Bison 3.6).
-      symbol_kind_type type_get () const YY_NOEXCEPT;
 
       /// Whether empty.
       bool empty () const YY_NOEXCEPT;
@@ -1279,51 +1416,46 @@ switch (yykind)
     };
 
     /// Type access provider for token (enum) based symbols.
-    struct by_kind
+    struct by_type
     {
       /// Default constructor.
-      by_kind ();
+      by_type ();
 
 #if 201103L <= YY_CPLUSPLUS
       /// Move constructor.
-      by_kind (by_kind&& that);
+      by_type (by_type&& that);
 #endif
 
       /// Copy constructor.
-      by_kind (const by_kind& that);
+      by_type (const by_type& that);
 
-      /// The symbol kind as needed by the constructor.
-      typedef token_kind_type kind_type;
+      /// The symbol type as needed by the constructor.
+      typedef token_type kind_type;
 
       /// Constructor from (external) token numbers.
-      by_kind (kind_type t);
+      by_type (kind_type t);
 
       /// Record that this symbol is empty.
-      void clear () YY_NOEXCEPT;
+      void clear ();
 
-      /// Steal the symbol kind from \a that.
-      void move (by_kind& that);
+      /// Steal the symbol type from \a that.
+      void move (by_type& that);
 
       /// The (internal) type number (corresponding to \a type).
       /// \a empty when empty.
-      symbol_kind_type kind () const YY_NOEXCEPT;
+      symbol_number_type type_get () const YY_NOEXCEPT;
 
-      /// Backward compatibility (Bison 3.6).
-      symbol_kind_type type_get () const YY_NOEXCEPT;
-
-      /// The symbol kind.
-      /// \a S_YYEMPTY when empty.
-      symbol_kind_type kind_;
+      /// The symbol type.
+      /// \a empty_symbol when empty.
+      /// An int, not token_number_type, to be able to store empty_symbol.
+      int type;
     };
 
-    /// Backward compatibility for a private implementation detail (Bison 3.6).
-    typedef by_kind by_type;
-
     /// "External" symbols: returned by the scanner.
-    struct symbol_type : basic_symbol<by_kind>
+    struct symbol_type : basic_symbol<by_type>
     {
       /// Superclass.
-      typedef basic_symbol<by_kind> super_type;
+      typedef basic_symbol<by_type> super_type;
 
       /// Empty symbol.
       symbol_type () {}
@@ -1332,85 +1464,60 @@ switch (yykind)
 #if 201103L <= YY_CPLUSPLUS
       symbol_type (int tok, location_type l)
         : super_type(token_type (tok), std::move (l))
+      {
+        YY_ASSERT (tok == 0 || tok == token::NL || tok == token::END || tok == token::TRUE || tok == token::FALSE || tok == token::ATTRIBUT || tok == token::INLINE_AFFECTATION || tok == token::SI || tok == token::ALORS || tok == token::SINON || tok == token::FUNCTION || tok == token::REPETE || tok == token::FOIS || tok == token::WHILE || tok == token::EQUAL || tok == token::NOTEQUAL || tok == token::LESS || tok == token::LESSEQUAL || tok == token::GREATER || tok == token::GREATEREQUAL || tok == token::STRINGEQUAL || tok == token::STRINGNOTEQUAL || tok == token::RECTANGLE || tok == token::CARRE || tok == token::TRIANGLE || tok == token::CERCLE || tok == token::ELLIPSE || tok == token::LIGNE || tok == token::CHEMIN || tok == token::TEXTE || tok == token::STOP || tok == token::DEGRE || tok == token::AND || tok == 45 || tok == 43 || tok == 42 || tok == 47 || tok == token::NEG || tok == 38 || tok == 59 || tok == 123 || tok == 125 || tok == 58 || tok == 61 || tok == 91 || tok == 93 || tok == 46 || tok == 37 || tok == 40 || tok == 41);
+      }
 #else
       symbol_type (int tok, const location_type& l)
         : super_type(token_type (tok), l)
-#endif
       {
-        YY_ASSERT (tok == token::YYEOF
-                   || (token::YYerror <= tok && tok <= token::END)
-                   || (token::ATTRIBUT <= tok && tok <= token::INLINE_AFFECTATION)
-                   || (token::SI <= tok && tok <= token::SVG)
-                   || tok == 45
-                   || tok == 43
-                   || tok == 42
-                   || tok == 47
-                   || tok == token::NEG
-                   || tok == 38
-                   || tok == 59
-                   || tok == 123
-                   || tok == 125
-                   || tok == 58
-                   || tok == 91
-                   || tok == 93
-                   || tok == 61
-                   || tok == 46
-                   || tok == 37
-                   || (40 <= tok && tok <= 41));
+        YY_ASSERT (tok == 0 || tok == token::NL || tok == token::END || tok == token::TRUE || tok == token::FALSE || tok == token::ATTRIBUT || tok == token::INLINE_AFFECTATION || tok == token::SI || tok == token::ALORS || tok == token::SINON || tok == token::FUNCTION || tok == token::REPETE || tok == token::FOIS || tok == token::WHILE || tok == token::EQUAL || tok == token::NOTEQUAL || tok == token::LESS || tok == token::LESSEQUAL || tok == token::GREATER || tok == token::GREATEREQUAL || tok == token::STRINGEQUAL || tok == token::STRINGNOTEQUAL || tok == token::RECTANGLE || tok == token::CARRE || tok == token::TRIANGLE || tok == token::CERCLE || tok == token::ELLIPSE || tok == token::LIGNE || tok == token::CHEMIN || tok == token::TEXTE || tok == token::STOP || tok == token::DEGRE || tok == token::AND || tok == 45 || tok == 43 || tok == 42 || tok == 47 || tok == token::NEG || tok == 38 || tok == 59 || tok == 123 || tok == 125 || tok == 58 || tok == 61 || tok == 91 || tok == 93 || tok == 46 || tok == 37 || tok == 40 || tok == 41);
       }
-#if 201103L <= YY_CPLUSPLUS
-      symbol_type (int tok, bool v, location_type l)
-        : super_type(token_type (tok), std::move (v), std::move (l))
-#else
-      symbol_type (int tok, const bool& v, const location_type& l)
-        : super_type(token_type (tok), v, l)
 #endif
-      {
-        YY_ASSERT (tok == token::BOOL);
-      }
 #if 201103L <= YY_CPLUSPLUS
       symbol_type (int tok, float v, location_type l)
         : super_type(token_type (tok), std::move (v), std::move (l))
-#else
-      symbol_type (int tok, const float& v, const location_type& l)
-        : super_type(token_type (tok), v, l)
-#endif
       {
         YY_ASSERT (tok == token::FLOAT);
       }
+#else
+      symbol_type (int tok, const float& v, const location_type& l)
+        : super_type(token_type (tok), v, l)
+      {
+        YY_ASSERT (tok == token::FLOAT);
+      }
+#endif
 #if 201103L <= YY_CPLUSPLUS
       symbol_type (int tok, int v, location_type l)
         : super_type(token_type (tok), std::move (v), std::move (l))
-#else
-      symbol_type (int tok, const int& v, const location_type& l)
-        : super_type(token_type (tok), v, l)
-#endif
       {
         YY_ASSERT (tok == token::NUMBER);
       }
+#else
+      symbol_type (int tok, const int& v, const location_type& l)
+        : super_type(token_type (tok), v, l)
+      {
+        YY_ASSERT (tok == token::NUMBER);
+      }
+#endif
 #if 201103L <= YY_CPLUSPLUS
       symbol_type (int tok, std::string v, location_type l)
         : super_type(token_type (tok), std::move (v), std::move (l))
+      {
+        YY_ASSERT (tok == token::INT_TYPE || tok == token::BOOL_TYPE || tok == token::FLOAT_TYPE || tok == token::VARIABLE || tok == token::STRING || tok == token::HEXA_VALUE || tok == token::COULEUR || tok == token::ROTATION || tok == token::REMPLISSAGE || tok == token::OPACITE || tok == token::EPAISSEUR || tok == token::TAILLE || tok == token::HAUTEUR || tok == token::LARGEUR);
+      }
 #else
       symbol_type (int tok, const std::string& v, const location_type& l)
         : super_type(token_type (tok), v, l)
-#endif
       {
-        YY_ASSERT ((token::INT_TYPE <= tok && tok <= token::STRING)
-                   || (token::HEXA_VALUE <= tok && tok <= token::EPAISSEUR));
+        YY_ASSERT (tok == token::INT_TYPE || tok == token::BOOL_TYPE || tok == token::FLOAT_TYPE || tok == token::VARIABLE || tok == token::STRING || tok == token::HEXA_VALUE || tok == token::COULEUR || tok == token::ROTATION || tok == token::REMPLISSAGE || tok == token::OPACITE || tok == token::EPAISSEUR || tok == token::TAILLE || tok == token::HAUTEUR || tok == token::LARGEUR);
       }
+#endif
     };
 
     /// Build a parser object.
      Parser  (Scanner &scanner_yyarg, Driver &driver_yyarg);
     virtual ~ Parser  ();
-
-#if 201103L <= YY_CPLUSPLUS
-    /// Non copyable.
-     Parser  (const  Parser &) = delete;
-    /// Non copyable.
-     Parser & operator= (const  Parser &) = delete;
-#endif
 
     /// Parse.  An alias for parse ().
     /// \returns  0 iff parsing succeeded.
@@ -1442,59 +1549,7 @@ switch (yykind)
     /// Report a syntax error.
     void error (const syntax_error& err);
 
-#if YYDEBUG || 0
-    /// The user-facing name of the symbol whose (internal) number is
-    /// YYSYMBOL.  No bounds checking.
-    static const char *symbol_name (symbol_kind_type yysymbol);
-#endif // #if YYDEBUG || 0
-
-
     // Implementation of make_symbol for each symbol type.
-#if 201103L <= YY_CPLUSPLUS
-      static
-      symbol_type
-      make_YYEOF (location_type l)
-      {
-        return symbol_type (token::YYEOF, std::move (l));
-      }
-#else
-      static
-      symbol_type
-      make_YYEOF (const location_type& l)
-      {
-        return symbol_type (token::YYEOF, l);
-      }
-#endif
-#if 201103L <= YY_CPLUSPLUS
-      static
-      symbol_type
-      make_YYerror (location_type l)
-      {
-        return symbol_type (token::YYerror, std::move (l));
-      }
-#else
-      static
-      symbol_type
-      make_YYerror (const location_type& l)
-      {
-        return symbol_type (token::YYerror, l);
-      }
-#endif
-#if 201103L <= YY_CPLUSPLUS
-      static
-      symbol_type
-      make_YYUNDEF (location_type l)
-      {
-        return symbol_type (token::YYUNDEF, std::move (l));
-      }
-#else
-      static
-      symbol_type
-      make_YYUNDEF (const location_type& l)
-      {
-        return symbol_type (token::YYUNDEF, l);
-      }
-#endif
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
@@ -1558,16 +1613,31 @@ switch (yykind)
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
-      make_BOOL (bool v, location_type l)
+      make_TRUE (location_type l)
       {
-        return symbol_type (token::BOOL, std::move (v), std::move (l));
+        return symbol_type (token::TRUE, std::move (l));
       }
 #else
       static
       symbol_type
-      make_BOOL (const bool& v, const location_type& l)
+      make_TRUE (const location_type& l)
       {
-        return symbol_type (token::BOOL, v, l);
+        return symbol_type (token::TRUE, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_FALSE (location_type l)
+      {
+        return symbol_type (token::FALSE, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_FALSE (const location_type& l)
+      {
+        return symbol_type (token::FALSE, l);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
@@ -1813,6 +1883,21 @@ switch (yykind)
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
+      make_FUNCTION (location_type l)
+      {
+        return symbol_type (token::FUNCTION, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_FUNCTION (const location_type& l)
+      {
+        return symbol_type (token::FUNCTION, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
       make_REPETE (location_type l)
       {
         return symbol_type (token::REPETE, std::move (l));
@@ -1838,6 +1923,21 @@ switch (yykind)
       make_FOIS (const location_type& l)
       {
         return symbol_type (token::FOIS, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_WHILE (location_type l)
+      {
+        return symbol_type (token::WHILE, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_WHILE (const location_type& l)
+      {
+        return symbol_type (token::WHILE, l);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
@@ -1963,16 +2063,46 @@ switch (yykind)
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
-      make_TAILLE (location_type l)
+      make_TAILLE (std::string v, location_type l)
       {
-        return symbol_type (token::TAILLE, std::move (l));
+        return symbol_type (token::TAILLE, std::move (v), std::move (l));
       }
 #else
       static
       symbol_type
-      make_TAILLE (const location_type& l)
+      make_TAILLE (const std::string& v, const location_type& l)
       {
-        return symbol_type (token::TAILLE, l);
+        return symbol_type (token::TAILLE, v, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_HAUTEUR (std::string v, location_type l)
+      {
+        return symbol_type (token::HAUTEUR, std::move (v), std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_HAUTEUR (const std::string& v, const location_type& l)
+      {
+        return symbol_type (token::HAUTEUR, v, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_LARGEUR (std::string v, location_type l)
+      {
+        return symbol_type (token::LARGEUR, std::move (v), std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_LARGEUR (const std::string& v, const location_type& l)
+      {
+        return symbol_type (token::LARGEUR, v, l);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
@@ -2113,16 +2243,31 @@ switch (yykind)
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
-      make_SVG (location_type l)
+      make_DEGRE (location_type l)
       {
-        return symbol_type (token::SVG, std::move (l));
+        return symbol_type (token::DEGRE, std::move (l));
       }
 #else
       static
       symbol_type
-      make_SVG (const location_type& l)
+      make_DEGRE (const location_type& l)
       {
-        return symbol_type (token::SVG, l);
+        return symbol_type (token::DEGRE, l);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_AND (location_type l)
+      {
+        return symbol_type (token::AND, std::move (l));
+      }
+#else
+      static
+      symbol_type
+      make_AND (const location_type& l)
+      {
+        return symbol_type (token::AND, l);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
@@ -2143,16 +2288,18 @@ switch (yykind)
 
 
   private:
-#if YY_CPLUSPLUS < 201103L
-    /// Non copyable.
+    /// This class is not copyable.
      Parser  (const  Parser &);
-    /// Non copyable.
      Parser & operator= (const  Parser &);
-#endif
-
 
     /// Stored state numbers (used for stacks).
-    typedef signed char state_type;
+    typedef short state_type;
+
+    /// Generate an error message.
+    /// \param yystate   the state where the error occurred.
+    /// \param yyla      the lookahead token.
+    virtual std::string yysyntax_error_ (state_type yystate,
+                                         const symbol_type& yyla) const;
 
     /// Compute post-reduction state.
     /// \param yystate   the current state
@@ -2167,19 +2314,13 @@ switch (yykind)
     /// \param yyvalue   the value to check
     static bool yy_table_value_is_error_ (int yyvalue);
 
-    static const signed char yypact_ninf_;
+    static const short yypact_ninf_;
     static const signed char yytable_ninf_;
 
-    /// Convert a scanner token kind \a t to a symbol kind.
-    /// In theory \a t should be a token_kind_type, but character literals
+    /// Convert a scanner token number \a t to a symbol number.
+    /// In theory \a t should be a token_type, but character literals
     /// are valid, yet not members of the token_type enum.
-    static symbol_kind_type yytranslate_ (int t);
-
-#if YYDEBUG || 0
-    /// For a symbol, its name in clear.
-    static const char* const yytname_[];
-#endif // #if YYDEBUG || 0
-
+    static token_number_type yytranslate_ (int t);
 
     // Tables.
     // YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
@@ -2192,17 +2333,17 @@ switch (yykind)
     static const signed char yydefact_[];
 
     // YYPGOTO[NTERM-NUM].
-    static const signed char yypgoto_[];
+    static const short yypgoto_[];
 
     // YYDEFGOTO[NTERM-NUM].
-    static const signed char yydefgoto_[];
+    static const short yydefgoto_[];
 
     // YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
     // positive, shift that token.  If negative, reduce the rule whose
     // number is the opposite.  If YYTABLE_NINF, syntax error.
-    static const signed char yytable_[];
+    static const short yytable_[];
 
-    static const signed char yycheck_[];
+    static const short yycheck_[];
 
     // YYSTOS[STATE-NUM] -- The (internal number of the) accessing
     // symbol of state STATE-NUM.
@@ -2216,19 +2357,22 @@ switch (yykind)
 
 
 #if YYDEBUG
+    /// For a symbol, its name in clear.
+    static const char* const yytname_[];
+
     // YYRLINE[YYN] -- Source line where rule number YYN was defined.
     static const short yyrline_[];
     /// Report on the debug stream that the rule \a r is going to be reduced.
-    virtual void yy_reduce_print_ (int r) const;
+    virtual void yy_reduce_print_ (int r);
     /// Print the state stack on the debug stream.
-    virtual void yy_stack_print_ () const;
+    virtual void yystack_print_ ();
 
     /// Debugging level.
     int yydebug_;
     /// Debug stream.
     std::ostream* yycdebug_;
 
-    /// \brief Display a symbol kind, value and location.
+    /// \brief Display a symbol type, value and location.
     /// \param yyo    The output stream.
     /// \param yysym  The symbol.
     template <typename Base>
@@ -2249,7 +2393,7 @@ switch (yykind)
       /// Default constructor.
       by_state () YY_NOEXCEPT;
 
-      /// The symbol kind as needed by the constructor.
+      /// The symbol type as needed by the constructor.
       typedef state_type kind_type;
 
       /// Constructor.
@@ -2261,12 +2405,12 @@ switch (yykind)
       /// Record that this symbol is empty.
       void clear () YY_NOEXCEPT;
 
-      /// Steal the symbol kind from \a that.
+      /// Steal the symbol type from \a that.
       void move (by_state& that);
 
-      /// The symbol kind (corresponding to \a state).
-      /// \a symbol_kind::S_YYEMPTY when empty.
-      symbol_kind_type kind () const YY_NOEXCEPT;
+      /// The (internal) type number (corresponding to \a state).
+      /// \a empty_symbol when empty.
+      symbol_number_type type_get () const YY_NOEXCEPT;
 
       /// The state number used to denote an empty symbol.
       /// We use the initial state, as it does not have a value.
@@ -2305,21 +2449,14 @@ switch (yykind)
     {
     public:
       // Hide our reversed order.
-      typedef typename S::iterator iterator;
-      typedef typename S::const_iterator const_iterator;
+      typedef typename S::reverse_iterator iterator;
+      typedef typename S::const_reverse_iterator const_iterator;
       typedef typename S::size_type size_type;
       typedef typename std::ptrdiff_t index_type;
 
       stack (size_type n = 200)
         : seq_ (n)
       {}
-
-#if 201103L <= YY_CPLUSPLUS
-      /// Non copyable.
-      stack (const stack&) = delete;
-      /// Non copyable.
-      stack& operator= (const stack&) = delete;
-#endif
 
       /// Random access.
       ///
@@ -2371,18 +2508,24 @@ switch (yykind)
         return index_type (seq_.size ());
       }
 
+      std::ptrdiff_t
+      ssize () const YY_NOEXCEPT
+      {
+        return std::ptrdiff_t (size ());
+      }
+
       /// Iterator on top of the stack (going downwards).
       const_iterator
       begin () const YY_NOEXCEPT
       {
-        return seq_.begin ();
+        return seq_.rbegin ();
       }
 
       /// Bottom of the stack.
       const_iterator
       end () const YY_NOEXCEPT
       {
-        return seq_.end ();
+        return seq_.rend ();
       }
 
       /// Present a slice of the top of a stack.
@@ -2406,12 +2549,8 @@ switch (yykind)
       };
 
     private:
-#if YY_CPLUSPLUS < 201103L
-      /// Non copyable.
       stack (const stack&);
-      /// Non copyable.
       stack& operator= (const stack&);
-#endif
       /// The wrapped container.
       S seq_;
     };
@@ -2441,26 +2580,32 @@ switch (yykind)
     /// Pop \a n symbols from the stack.
     void yypop_ (int n = 1);
 
+    /// Some specific tokens.
+    static const token_number_type yy_error_token_ = 1;
+    static const token_number_type yy_undef_token_ = 2;
+
     /// Constants.
     enum
     {
-      yylast_ = 143,     ///< Last index in yytable_.
-      yynnts_ = 26,  ///< Number of nonterminal symbols.
-      yyfinal_ = 27 ///< Termination state number.
+      yyeof_ = 0,
+      yylast_ = 395,     ///< Last index in yytable_.
+      yynnts_ = 44,  ///< Number of nonterminal symbols.
+      yyfinal_ = 68, ///< Termination state number.
+      yyntokens_ = 68  ///< Number of tokens.
     };
 
 
     // User arguments.
     Scanner &scanner;
     Driver &driver;
-
   };
 
 
 } // yy
-#line 2462 "/home/etud/Bureau/projet_theorie/dessin/build/parser.hpp"
+#line 2606 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.hpp"
 
 
 
 
-#endif // !YY_YY_HOME_ETUD_BUREAU_PROJET_THEORIE_DESSIN_BUILD_PARSER_HPP_INCLUDED
+
+#endif // !YY_YY_MNT_C_USERS_PAULL_ONEDRIVE_BUREAU_COMPILATEUR_DESSIN_BUILD_PARSER_HPP_INCLUDED

@@ -16,13 +16,5 @@ double Driver::getVariable(const std::string & name) const {
 }
 
 void Driver::setVariable(const std::string & name, double value) {
-    //TODO Affecte une valeur à une variable avec l'utilisation du contexte variables
+    variables[name] = value;
 }
-
-std::shared_ptr<Caneva> Driver::getCaneva() const{
-    return _caneva;
-}
-void Driver::setCaneva(std::shared_ptr<Caneva> caneva){
-    _caneva = caneva;
-}
-

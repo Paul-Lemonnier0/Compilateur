@@ -43,8 +43,18 @@ fin return token::END;
 "." return '.';
 "%" return '%';
 
-"svg" {
-    return token::SVG;
+
+
+"°" {
+    return token::DEGRE;
+}
+
+"&&" {
+    return token::AND;
+}
+
+"fonction" {
+    return token::FUNCTION;
 }
 
 "si" {
@@ -55,8 +65,16 @@ fin return token::END;
     return token::ALORS;
 }
 
-"repete" {
+"sinon" {
+    return token::SINON;
+}
+
+"répète" {
     return token::REPETE;
+}
+
+"tant que" {
+    return token::WHILE;
 }
 
 "fois" {
@@ -100,14 +118,25 @@ fin return token::END;
 }
 
 "taille" {
+    yylval->build<std::string>(YYText());
     return token::TAILLE;
+}
+
+"hauteur" {
+    yylval->build<std::string>(YYText());
+    return token::HAUTEUR;
+}
+
+"largeur" {
+    yylval->build<std::string>(YYText());
+    return token::LARGEUR;
 }
 
 "rectangle" {
     return token::RECTANGLE;
 }
 
-"carre" {
+"carré" {
     return token::CARRE;
 }
 
@@ -154,12 +183,12 @@ fin return token::END;
     return token::REMPLISSAGE;
 }
 
-"opacite" {
+"opacité" {
     yylval->build<std::string>(YYText());
     return token::OPACITE;
 }
 
-"epaisseur" {
+"épaisseur" {
     yylval->build<std::string>(YYText());
     return token::EPAISSEUR;
 }
@@ -189,9 +218,12 @@ fin return token::END;
     return token::HEXA_VALUE;
 }
 
-"true"|"false" {
-    yylval->build<bool>(YYText());
-    return token::BOOL;
+"true" {
+    return token::TRUE;
+}
+
+"false" {
+    return token::FALSE;
 }
 
 [0-9]+ {
@@ -225,8 +257,10 @@ fin return token::END;
 }
 
 
-"\""([a-zA-Z]+" ")*[a-zA-Z]*"\"" {
+"\""(([a-zA-Z]|[0-9])+" ")*([a-zA-Z]|[0-9])*"\"" {
+    yylval->build<std::string>(YYText());
     return token::STRING;
 }
+
 
 %%
