@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/etud/Bureau/projet_theorie/dessin/expressions/figure.hh
+iostream
+-
+vector
+-
+string
+-
+memory
+-
+fstream
+-
+
+/home/etud/Bureau/projet_theorie/dessin/expressions/noeud.cc
+noeud.hh
+/home/etud/Bureau/projet_theorie/dessin/expressions/noeud.hh
+
+/home/etud/Bureau/projet_theorie/dessin/expressions/noeud.hh
+string
+-
+vector
+-
+memory
+-
+map
+-
+figure.hh
+/home/etud/Bureau/projet_theorie/dessin/expressions/figure.hh
+

@@ -1,0 +1,4 @@
+/home/etud/Bureau/projet_theorie/dessin/build/CMakeFiles/rebuild_cache.dir
+/home/etud/Bureau/projet_theorie/dessin/build/CMakeFiles/edit_cache.dir
+/home/etud/Bureau/projet_theorie/dessin/build/CMakeFiles/dessin.dir
+/home/etud/Bureau/projet_theorie/dessin/build/CMakeFiles/expressions.dir
