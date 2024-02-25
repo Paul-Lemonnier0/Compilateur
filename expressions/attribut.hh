@@ -1,4 +1,5 @@
 #include "noeud.hh"
+#include <algorithm>
 
 class Couleur {
     public:
@@ -62,7 +63,7 @@ class CouleurTrad {
 
 
 
-class AttributNode: public Noeud {
+class AttributNode: public NoeudInterpretable {
     public:
         ~AttributNode() = default;
 
@@ -103,6 +104,10 @@ class ColorNode: public ColorAttributNode {
             CouleurTrad couleur_trad;
             std::string couleur = _value->getCouleur(contexte);
 
+            std::transform(couleur.begin(), couleur.end(), couleur.begin(), [](unsigned char c) {
+                return std::tolower(c);
+            });
+
             return " stroke=\"" + couleur_trad.TranslateToEnglish(couleur) + "\" ";
         }
 };
@@ -133,6 +138,8 @@ class NumericAttributNode : public AttributNode {
     public:
         NumericAttributNode(ExpressionPtr value):
             AttributNode(), _value(value) {}
+
+        ExpressionPtr getValue() { return _value;}
 
         void set(ExpressionPtr value) {
             _value = value;
@@ -185,5 +192,51 @@ class EpaisseurNode: public NumericAttributNode {
 
         std::string analyseCode(Contexte & contexte) {
             return " stroke-width=\"" + std::to_string(_value->calculer(contexte)) + "\" ";
+        }
+};
+
+class PositionXNode: public NumericAttributNode {
+    private:
+        std::string _attribut;
+    public:
+        PositionXNode(std::string x,ExpressionPtr valX):
+            NumericAttributNode(valX), _attribut(x) {}
+
+        PositionXNode():
+            NumericAttributNode(std::make_shared<Constante>(0)) {}
+
+        std::string type() const override { return "positionx"; }
+
+        std::string attribut() { return _attribut; }
+
+        std::string analyseCode(Contexte & contexte) {
+            if(_attribut.length() == 9)
+                return " x=\"" + std::to_string(_value->calculer(contexte)) + "\" ";
+            else 
+                return " x" + std::to_string(_attribut[9]) + "=\"" + std::to_string(_value->calculer(contexte)) + "\" ";
+            
+        }
+};
+
+class PositionYNode: public NumericAttributNode {
+    private:
+        std::string _attribut;
+    public:
+        PositionYNode(std::string y,ExpressionPtr valY):
+            NumericAttributNode(valY), _attribut(y) {}
+
+        PositionYNode():
+            NumericAttributNode(std::make_shared<Constante>(0)) {}
+
+        std::string type() const override { return "positiony"; }
+
+        std::string attribut() { return _attribut; }
+
+        std::string analyseCode(Contexte & contexte) {
+            if(_attribut.length() == 9)
+                return " y=\"" + std::to_string(_value->calculer(contexte)) + "\" ";
+            else 
+                return " y" + std::to_string(_attribut[9]) + "=\"" + std::to_string(_value->calculer(contexte)) + "\" ";
+            
         }
 };

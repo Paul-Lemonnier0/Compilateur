@@ -21,6 +21,8 @@ fonction.hh
 ../expressions/attribut.hh
 noeud.hh
 ../expressions/noeud.hh
+algorithm
+-
 
 ../expressions/boucles.hh
 condition.hh
@@ -220,6 +222,12 @@ string
 cstdlib
 -
 unistd.h
+-
+
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/parser/driver.cc
+driver.hh
+/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/parser/driver.hh
+iostream
 -
 
 /mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/parser/driver.hh

@@ -28,11 +28,13 @@ enum class string_operators { equal, not_equal };
 class Noeud {
     public:
         virtual ~Noeud() = default;
-
-        virtual std::string analyseCode(Contexte & contexte) = 0;
 };
 
 
+class NoeudInterpretable: public Noeud {
+    public:
+        virtual std::string analyseCode(Contexte & contexte) = 0;
+};
 
 
 class AccesFigureNode: public Noeud {
@@ -56,10 +58,6 @@ class AccesIndexNode: public AccesFigureNode {
         int index() const {
             return _index;
         }
-
-        std::string analyseCode(Contexte & contexte) {
-            return "";
-        }
 };
 
 class AccesVariableNode: public AccesFigureNode {
@@ -72,10 +70,6 @@ class AccesVariableNode: public AccesFigureNode {
 
         std::string varName() const {
             return _varName;
-        }
-
-        std::string analyseCode(Contexte & contexte) override{
-            return "";
         }
 };
 
@@ -105,10 +99,6 @@ class AffectationSimpleVariableNode: public Noeud {
     public:
         AffectationSimpleVariableNode(std::string name):
             Noeud(), _varName(name) {}
-
-        std::string analyseCode(Contexte & contexte) override {
-            return "";
-        }
 
         virtual void setVariable(Contexte & contexte) const = 0;
 };
@@ -164,10 +154,6 @@ class NoeudInterne: public Noeud {
         std::vector<std::shared_ptr<Noeud>> instructions() const {
             return _instructions;
         }
-
-        std::string analyseCode(Contexte & contexte) override{
-            return "";
-        }
 };
 
 
@@ -178,10 +164,6 @@ class DeclarationVariableSimple: public Noeud {
     public:
         DeclarationVariableSimple(std::string name):
             _name(name){}
-
-        std::string analyseCode(Contexte & contexte) override {
-            return "";
-        }
 
         std::string const & nom() const {
             return _name;

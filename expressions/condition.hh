@@ -8,10 +8,6 @@ class ConditionNode: public Noeud {
         virtual ~ConditionNode() = default;
         virtual bool evaluate(Contexte & contexte) const = 0;
 
-        std::string analyseCode(Contexte & contexte) override {
-            return "";
-        }
-
         static bool evaluateString(string_operators op, std::string str1, std::string str2) {
                 switch(op){
                     case string_operators::equal:
@@ -92,6 +88,28 @@ class CouleurConditionNode: public FigureConditionNode {
         }
 };
 
+class NumberConditionNode: public ConditionNode {
+    private:
+        ExpressionPtr _val1;
+        operators _operateur;
+        ExpressionPtr _val2;
+
+    public:
+
+        NumberConditionNode(ExpressionPtr val1, operators operateur, ExpressionPtr val2):
+            _val1(val1), 
+            _operateur(operateur), 
+            _val2(val2)
+        {}
+
+        bool evaluate(Contexte & contexte) const {
+            double val1 = _val1->calculer(contexte);
+            double val2 = _val2->calculer(contexte);
+
+            return ConditionNode::evaluateNumbers(_operateur, val1, val2);
+        }
+};
+
 
 class TailleConditionNode: public FigureConditionNode {
     private:
@@ -111,14 +129,12 @@ class TailleConditionNode: public FigureConditionNode {
             if(_fig != nullptr) {
                 double val2 = _val2->calculer(contexte);
 
-                if(_tailleType == TailleType::taille){
-                    if(std::shared_ptr<FG_TailleUniforme> uniformeFig = std::dynamic_pointer_cast<FG_TailleUniforme>(_fig)){
-                        double taille = uniformeFig->getTaille()->calculer(contexte);
-                        return ConditionNode::evaluateNumbers(_operateur, taille, val2);
-                    }
+                if(std::shared_ptr<FG_TailleUniforme> uniformeFig = std::dynamic_pointer_cast<FG_TailleUniforme>(_fig)){
+                    double taille = uniformeFig->getTaille()->calculer(contexte);
+                    return ConditionNode::evaluateNumbers(_operateur, taille, val2);
                 }
-
-                else {
+                
+                else if (_tailleType != TailleType::taille) {
                     if(std::shared_ptr<FG_TailleNonUniforme> nonUniformeFig = std::dynamic_pointer_cast<FG_TailleNonUniforme>(_fig)){
                         if(_tailleType == TailleType::hauteur){
                             double hauteur = nonUniformeFig->getHeight()->calculer(contexte);
@@ -151,6 +167,7 @@ class BooleanVariableConditionNode: public ConditionNode {
         }
 };
 
+
 class IfNode: public NoeudInterne {
     private:
         std::vector<std::shared_ptr<Noeud>> _elseInstructions;
@@ -179,5 +196,50 @@ class IfNode: public NoeudInterne {
 
         std::vector<std::shared_ptr<Noeud>> elseInstructions() const {
             return _elseInstructions;
+        }
+};
+
+class PositionConditionNode: public FigureConditionNode {
+    private:
+        operators _operateur;
+        ExpressionPtr _val2;
+        std::string _position;
+
+    public:
+
+        PositionConditionNode(std::shared_ptr<AccesFigureNode> val1, std::string position, operators operateur, ExpressionPtr val2):
+            FigureConditionNode(val1), 
+            _operateur(operateur), 
+            _val2(val2),
+            _position(position)
+        {}
+
+        std::shared_ptr<AccesFigureNode> getAccesFigureNode() {
+            return _val1;
+        }
+
+        void setFigure(std::shared_ptr<FigureNode> fig){
+            _fig = fig;
+        }
+
+        bool evaluate(Contexte & contexte) const override {
+            if(_fig != nullptr){
+                double val2 = _val2->calculer(contexte);
+
+                int nombre = 0;
+                if(_position.length() == 10) //ou avec un stoi ici
+                    nombre = _position[9]-48;
+
+                if(_position[8] == 'X') {
+                    double positionX = _fig->getPositionX(nombre)->calculer(contexte);
+                    return ConditionNode::evaluateNumbers(_operateur, positionX, val2);
+                }
+                else {
+                    double positionY = _fig->getPositionY(nombre)->calculer(contexte);
+                    return ConditionNode::evaluateNumbers(_operateur, positionY, val2);
+                }
+            }
+
+            return false;
         }
 };

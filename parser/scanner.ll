@@ -42,6 +42,7 @@ fin return token::END;
 "]" return ']';
 "." return '.';
 "%" return '%';
+"," return ',';
 
 
 
@@ -117,97 +118,103 @@ fin return token::END;
     return token::SINON;
 }
 
-"taille" {
+("t"|"T")("a"|"A")("i"|"I")("l"|"L")("l"|"L")("e"|"E") {
     yylval->build<std::string>(YYText());
     return token::TAILLE;
 }
 
-"hauteur" {
-    yylval->build<std::string>(YYText());
-    return token::HAUTEUR;
-}
-
-"largeur" {
-    yylval->build<std::string>(YYText());
-    return token::LARGEUR;
-}
-
-"rectangle" {
+("r"|"R")("e"|"E")("c"|"C")("t"|"T")("a"|"A")("n"|"N")("g"|"G")("l"|"L")("e"|"E") {
     return token::RECTANGLE;
 }
 
-"carré" {
+("c"|"C")("a"|"A")("r"|"R"){2}("é"|"É") {
     return token::CARRE;
 }
 
-"triangle" {
+("t"|"T")("r"|"R")("i"|"I")("a"|"A")("n"|"N")("g"|"G")("l"|"L")("e"|"E") {
     return token::TRIANGLE;
 }
 
-"cercle" {
+("c"|"C")("e"|"E")("r"|"R")("c"|"C")("l"|"L")("e"|"E") {
     return token::CERCLE;
 }
 
-"ellipse" {
+("e"|"E")("l"|"L"){2}("i"|"I")("p"|"P")("s"|"S")("e"|"E") {
     return token::ELLIPSE;
 }
 
-"ligne" {
+("l"|"L")("i"|"I")("g"|"G")("n"|"N")("e"|"E") {
     return token::LIGNE;
 }
 
-"chemin" {
+("c"|"C")("h"|"H")("e"|"E")("m"|"M")("i"|"I")("n"|"N") {
     return token::CHEMIN;
 }
 
-"texte" {
+("t"|"T")("e"|"E")("x"|"X")("t"|"T")("e"|"E") {
     return token::TEXTE;
 }
 
-"stop" {
+("l"|"L")("a"|"A")("r"|"R")("g"|"G")("e"|"E")("u"|"U")("r"|"R") {
+    return token::LARGEUR;
+}
+
+("h"|"H")("a"|"A")("u"|"U")("t"|"T")("e"|"E")("u"|"U")("r"|"R") {
+    return token::HAUTEUR;
+}
+
+("s"|"S")("t"|"T")("o"|"O")("p"|"P") {
     return token::STOP;
 }
 
-"couleur" {
+("c"|"C")("o"|"O")("u"|"U")("l"|"L")("e"|"E")("u"|"U")("r"|"R") {
     yylval->build<std::string>(YYText());
     return token::COULEUR;
 }
 
-"rotation" {
+("r"|"R")("o"|"O")("t"|"T")("a"|"A")("t"|"T")("i"|"I")("o"|"O")("n"|"N") {
     yylval->build<std::string>(YYText());
     return token::ROTATION;
 }
 
-"remplissage" {
+("r"|"R")("e"|"E")("m"|"M")("p"|"P")("l"|"L")("i"|"I")("s"|"S")("s"|"S")("a"|"A")("g"|"G")("e"|"E") {
     yylval->build<std::string>(YYText());
     return token::REMPLISSAGE;
 }
 
-"opacité" {
+("o"|"O")("p"|"P")("a"|"A")("c"|"C")("i"|"I")("t"|"T")("é"|"É") {
     yylval->build<std::string>(YYText());
     return token::OPACITE;
 }
 
-"épaisseur" {
+("é"|"É")("p"|"P")("a"|"A")("i"|"I")("s"|"S")("s"|"S")("e"|"E")("u"|"U")("r"|"R") {
     yylval->build<std::string>(YYText());
     return token::EPAISSEUR;
 }
 
-"entier" {
+("e"|"E")("n"|"N")("t"|"T")("i"|"I")("e"|"E")("r"|"R") {
     yylval->build<std::string>(YYText());
     return token::INT_TYPE;
 }
 
-"booléen" {
+("b"|"B")("o"|"O")("o"|"O")("l"|"L")("é"|"É")("e"|"E")("n"|"N") {
     yylval->build<std::string>(YYText());
     return token::BOOL_TYPE;
 }
 
-"réel" {
+("r"|"R")("é"|"É")("e"|"E")("l"|"L") {
     yylval->build<std::string>(YYText());
     return token::FLOAT_TYPE;
 }
 
+"positionX"([1-9]|"") {
+    yylval->build<std::string>(YYText());
+    return token::POSITIONX;
+}
+"positionY"([1-9]|"") {
+    yylval->build<std::string>(YYText());
+    return token::POSITIONY;
+}
 
 "->" {
     return token::INLINE_AFFECTATION;
@@ -241,15 +248,25 @@ fin return token::END;
     return token::NL;
 }
 
+
 "rgb("(([0-9])|([1-9][0-9])|(1[0-9]{2})|(2[0-5]{2})),(([0-9])|([1-9][0-9])|(1[0-9]{2})|(2[0-5]{2})),(([0-9])|([1-9][0-9])|(1[0-9]{2})|(2[0-5]{2}))")" {
     yylval->build<std::string>(YYText());
     return token::HEXA_VALUE;
 }
 
-"rouge"|"vert"|"bleu"|"jaune"|"violet"|"magenta"|"cyan"|"noir"|"blanc" {
+("r"|"R")("o"|"O")("u"|"U")("g"|"G")("e"|"E") |
+("v"|"V")("e"|"E")("r"|"R")("t"|"T") |
+("b"|"B")("l"|"L")("e"|"E")("u"|"U") |
+("j"|"J")("a"|"A")("u"|"U")("n"|"N")("e"|"E") |
+("v"|"V")("i"|"I")("o"|"O")("l"|"L")("e"|"E")("t"|"T") |
+("m"|"M")("a"|"A")("g"|"G")("e"|"E")("n"|"N")("t"|"T")("a"|"A") |
+("c"|"C")("y"|"Y")("a"|"A")("n"|"N") |
+("n"|"N")("o"|"O")("i"|"I")("r"|"R") |
+("b"|"B")("l"|"L")("a"|"A")("n"|"N")("c"|"C") {
     yylval->build<std::string>(YYText());
     return token::HEXA_VALUE;
 }
+
 
 [a-zA-Z]([a-zA-Z]|[0-9]+)* {
     yylval->build<std::string>(YYText());

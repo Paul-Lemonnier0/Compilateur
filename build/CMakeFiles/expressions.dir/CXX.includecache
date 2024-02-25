@@ -25,6 +25,8 @@ fonction.hh
 /mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/expressions/attribut.hh
 noeud.hh
 /mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/expressions/noeud.hh
+algorithm
+-
 
 /mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/expressions/boucles.hh
 condition.hh
@@ -63,10 +65,6 @@ expression.hh
 /mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/expressions/expressionUnaire.hh
 expression.hh
 /mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/expressions/expression.hh
-
-/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/expressions/figure.cc
-figure.hh
-/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/expressions/figure.hh
 
 /mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/expressions/figure.hh
 iostream

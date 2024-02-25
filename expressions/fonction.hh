@@ -54,8 +54,4 @@ class AppelFonctionNode: public Noeud {
         std::string nom() const {
             return _nom;
         }
-
-        std::string analyseCode(Contexte & contexte) override {
-            return "";
-        }
 };

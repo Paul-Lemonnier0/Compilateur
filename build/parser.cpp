@@ -180,24 +180,24 @@ namespace yy {
   {
     switch (this->type_get ())
     {
-      case 69: // programme
-      case 70: // subProgramme
+      case 72: // programme
+      case 73: // subProgramme
         value.move< ArbreSyntaxique > (std::move (that.value));
         break;
 
-      case 77: // couleurValue
+      case 80: // couleurValue
         value.move< CouleurPtr > (std::move (that.value));
         break;
 
-      case 110: // operation
+      case 114: // operation
         value.move< ExpressionPtr > (std::move (that.value));
         break;
 
-      case 94: // setTaille
+      case 97: // setTaille
         value.move< TailleType > (std::move (that.value));
         break;
 
-      case 80: // boolValue
+      case 83: // boolValue
         value.move< bool > (std::move (that.value));
         break;
 
@@ -209,101 +209,101 @@ namespace yy {
         value.move< int > (std::move (that.value));
         break;
 
-      case 97: // numberComparator
+      case 100: // numberComparator
         value.move< operators > (std::move (that.value));
         break;
 
-      case 92: // accesFigure
+      case 95: // accesFigure
         value.move< std::shared_ptr<AccesFigureNode> > (std::move (that.value));
         break;
 
-      case 105: // affectation
+      case 109: // affectation
         value.move< std::shared_ptr<AffectationSimpleVariableNode> > (std::move (that.value));
         break;
 
-      case 109: // appelFonction
+      case 113: // appelFonction
         value.move< std::shared_ptr<AppelFonctionNode> > (std::move (that.value));
         break;
 
-      case 76: // attributAffectation
-      case 93: // setAttribut
+      case 79: // attributAffectation
+      case 96: // setAttribut
         value.move< std::shared_ptr<AttributNode> > (std::move (that.value));
         break;
 
-      case 82: // declarationCanva
+      case 85: // declarationCanva
         value.move< std::shared_ptr<CanevaNode> > (std::move (that.value));
         break;
 
-      case 84: // carre
+      case 87: // carre
         value.move< std::shared_ptr<CarreNode> > (std::move (that.value));
         break;
 
-      case 87: // cercle
+      case 90: // cercle
         value.move< std::shared_ptr<CercleNode> > (std::move (that.value));
         break;
 
-      case 90: // chemin
+      case 93: // chemin
         value.move< std::shared_ptr<CheminNode> > (std::move (that.value));
         break;
 
-      case 99: // condition
+      case 103: // condition
         value.move< std::shared_ptr<ConditionNode> > (std::move (that.value));
         break;
 
-      case 96: // declarationVariable
+      case 99: // declarationVariable
         value.move< std::shared_ptr<DeclarationVariable> > (std::move (that.value));
         break;
 
-      case 81: // declarationVariableSimple
+      case 84: // declarationVariableSimple
         value.move< std::shared_ptr<DeclarationVariableSimple> > (std::move (that.value));
         break;
 
-      case 88: // ellipse
+      case 91: // ellipse
         value.move< std::shared_ptr<EllipseNode> > (std::move (that.value));
         break;
 
-      case 83: // declarationFigure
+      case 86: // declarationFigure
         value.move< std::shared_ptr<FigureNode> > (std::move (that.value));
         break;
 
-      case 108: // fonction
+      case 112: // fonction
         value.move< std::shared_ptr<FonctionNode> > (std::move (that.value));
         break;
 
-      case 103: // boucleFor
+      case 107: // boucleFor
         value.move< std::shared_ptr<ForLoopNode> > (std::move (that.value));
         break;
 
-      case 101: // if
+      case 105: // if
         value.move< std::shared_ptr<IfNode> > (std::move (that.value));
         break;
 
-      case 89: // ligne
+      case 92: // ligne
         value.move< std::shared_ptr<LigneNode> > (std::move (that.value));
         break;
 
-      case 95: // modificationFigure
+      case 98: // modificationFigure
         value.move< std::shared_ptr<ModificationFigureNode> > (std::move (that.value));
         break;
 
-      case 72: // instruction
-      case 78: // expression
+      case 75: // instruction
+      case 81: // expression
         value.move< std::shared_ptr<Noeud> > (std::move (that.value));
         break;
 
-      case 85: // rectangle
+      case 88: // rectangle
         value.move< std::shared_ptr<RectangleNode> > (std::move (that.value));
         break;
 
-      case 91: // texte
+      case 94: // texte
         value.move< std::shared_ptr<TexteNode> > (std::move (that.value));
         break;
 
-      case 86: // triangle
+      case 89: // triangle
         value.move< std::shared_ptr<TriangleNode> > (std::move (that.value));
         break;
 
-      case 104: // boucleWhile
+      case 108: // boucleWhile
         value.move< std::shared_ptr<WhileNode> > (std::move (that.value));
         break;
 
@@ -312,47 +312,48 @@ namespace yy {
       case 11: // FLOAT_TYPE
       case 12: // VARIABLE
       case 13: // STRING
-      case 16: // HEXA_VALUE
-      case 17: // COULEUR
-      case 18: // ROTATION
-      case 19: // REMPLISSAGE
-      case 20: // OPACITE
-      case 21: // EPAISSEUR
-      case 37: // TAILLE
-      case 38: // HAUTEUR
-      case 39: // LARGEUR
-      case 79: // variable
+      case 14: // POSITIONX
+      case 15: // POSITIONY
+      case 18: // HEXA_VALUE
+      case 19: // COULEUR
+      case 20: // ROTATION
+      case 21: // REMPLISSAGE
+      case 22: // OPACITE
+      case 23: // EPAISSEUR
+      case 39: // TAILLE
+      case 82: // variable
+      case 102: // positionValue
         value.move< std::string > (std::move (that.value));
         break;
 
-      case 107: // argumentsValues
+      case 111: // argumentsValues
         value.move< std::vector<ExpressionPtr> > (std::move (that.value));
         break;
 
-      case 111: // vectPos
-        value.move< std::vector<Position> > (std::move (that.value));
-        break;
-
-      case 73: // attributsInline
-      case 74: // attributsCSS
-      case 75: // attributs
+      case 76: // attributsInline
+      case 77: // attributsCSS
+      case 78: // attributs
         value.move< std::vector<std::shared_ptr<AttributNode>> > (std::move (that.value));
         break;
 
-      case 100: // conditions
+      case 104: // conditions
         value.move< std::vector<std::shared_ptr<ConditionNode>> > (std::move (that.value));
         break;
 
-      case 71: // instructions
-      case 102: // else
+      case 74: // instructions
+      case 106: // else
         value.move< std::vector<std::shared_ptr<Noeud>> > (std::move (that.value));
         break;
 
-      case 106: // arguments
+      case 115: // vectPos
+        value.move< std::vector<std::shared_ptr<PositionNode>> > (std::move (that.value));
+        break;
+
+      case 110: // arguments
         value.move< std::vector<std::string> > (std::move (that.value));
         break;
 
-      case 98: // stringComparator
+      case 101: // stringComparator
         value.move< string_operators > (std::move (that.value));
         break;
 
@@ -371,24 +372,24 @@ namespace yy {
   {
     switch (this->type_get ())
     {
-      case 69: // programme
-      case 70: // subProgramme
+      case 72: // programme
+      case 73: // subProgramme
         value.copy< ArbreSyntaxique > (YY_MOVE (that.value));
         break;
 
-      case 77: // couleurValue
+      case 80: // couleurValue
         value.copy< CouleurPtr > (YY_MOVE (that.value));
         break;
 
-      case 110: // operation
+      case 114: // operation
         value.copy< ExpressionPtr > (YY_MOVE (that.value));
         break;
 
-      case 94: // setTaille
+      case 97: // setTaille
         value.copy< TailleType > (YY_MOVE (that.value));
         break;
 
-      case 80: // boolValue
+      case 83: // boolValue
         value.copy< bool > (YY_MOVE (that.value));
         break;
 
@@ -400,101 +401,101 @@ namespace yy {
         value.copy< int > (YY_MOVE (that.value));
         break;
 
-      case 97: // numberComparator
+      case 100: // numberComparator
         value.copy< operators > (YY_MOVE (that.value));
         break;
 
-      case 92: // accesFigure
+      case 95: // accesFigure
         value.copy< std::shared_ptr<AccesFigureNode> > (YY_MOVE (that.value));
         break;
 
-      case 105: // affectation
+      case 109: // affectation
         value.copy< std::shared_ptr<AffectationSimpleVariableNode> > (YY_MOVE (that.value));
         break;
 
-      case 109: // appelFonction
+      case 113: // appelFonction
         value.copy< std::shared_ptr<AppelFonctionNode> > (YY_MOVE (that.value));
         break;
 
-      case 76: // attributAffectation
-      case 93: // setAttribut
+      case 79: // attributAffectation
+      case 96: // setAttribut
         value.copy< std::shared_ptr<AttributNode> > (YY_MOVE (that.value));
         break;
 
-      case 82: // declarationCanva
+      case 85: // declarationCanva
         value.copy< std::shared_ptr<CanevaNode> > (YY_MOVE (that.value));
         break;
 
-      case 84: // carre
+      case 87: // carre
         value.copy< std::shared_ptr<CarreNode> > (YY_MOVE (that.value));
         break;
 
-      case 87: // cercle
+      case 90: // cercle
         value.copy< std::shared_ptr<CercleNode> > (YY_MOVE (that.value));
         break;
 
-      case 90: // chemin
+      case 93: // chemin
         value.copy< std::shared_ptr<CheminNode> > (YY_MOVE (that.value));
         break;
 
-      case 99: // condition
+      case 103: // condition
         value.copy< std::shared_ptr<ConditionNode> > (YY_MOVE (that.value));
         break;
 
-      case 96: // declarationVariable
+      case 99: // declarationVariable
         value.copy< std::shared_ptr<DeclarationVariable> > (YY_MOVE (that.value));
         break;
 
-      case 81: // declarationVariableSimple
+      case 84: // declarationVariableSimple
         value.copy< std::shared_ptr<DeclarationVariableSimple> > (YY_MOVE (that.value));
         break;
 
-      case 88: // ellipse
+      case 91: // ellipse
         value.copy< std::shared_ptr<EllipseNode> > (YY_MOVE (that.value));
         break;
 
-      case 83: // declarationFigure
+      case 86: // declarationFigure
         value.copy< std::shared_ptr<FigureNode> > (YY_MOVE (that.value));
         break;
 
-      case 108: // fonction
+      case 112: // fonction
         value.copy< std::shared_ptr<FonctionNode> > (YY_MOVE (that.value));
         break;
 
-      case 103: // boucleFor
+      case 107: // boucleFor
         value.copy< std::shared_ptr<ForLoopNode> > (YY_MOVE (that.value));
         break;
 
-      case 101: // if
+      case 105: // if
         value.copy< std::shared_ptr<IfNode> > (YY_MOVE (that.value));
         break;
 
-      case 89: // ligne
+      case 92: // ligne
         value.copy< std::shared_ptr<LigneNode> > (YY_MOVE (that.value));
         break;
 
-      case 95: // modificationFigure
+      case 98: // modificationFigure
         value.copy< std::shared_ptr<ModificationFigureNode> > (YY_MOVE (that.value));
         break;
 
-      case 72: // instruction
-      case 78: // expression
+      case 75: // instruction
+      case 81: // expression
         value.copy< std::shared_ptr<Noeud> > (YY_MOVE (that.value));
         break;
 
-      case 85: // rectangle
+      case 88: // rectangle
         value.copy< std::shared_ptr<RectangleNode> > (YY_MOVE (that.value));
         break;
 
-      case 91: // texte
+      case 94: // texte
         value.copy< std::shared_ptr<TexteNode> > (YY_MOVE (that.value));
         break;
 
-      case 86: // triangle
+      case 89: // triangle
         value.copy< std::shared_ptr<TriangleNode> > (YY_MOVE (that.value));
         break;
 
-      case 104: // boucleWhile
+      case 108: // boucleWhile
         value.copy< std::shared_ptr<WhileNode> > (YY_MOVE (that.value));
         break;
 
@@ -503,47 +504,48 @@ namespace yy {
       case 11: // FLOAT_TYPE
       case 12: // VARIABLE
       case 13: // STRING
-      case 16: // HEXA_VALUE
-      case 17: // COULEUR
-      case 18: // ROTATION
-      case 19: // REMPLISSAGE
-      case 20: // OPACITE
-      case 21: // EPAISSEUR
-      case 37: // TAILLE
-      case 38: // HAUTEUR
-      case 39: // LARGEUR
-      case 79: // variable
+      case 14: // POSITIONX
+      case 15: // POSITIONY
+      case 18: // HEXA_VALUE
+      case 19: // COULEUR
+      case 20: // ROTATION
+      case 21: // REMPLISSAGE
+      case 22: // OPACITE
+      case 23: // EPAISSEUR
+      case 39: // TAILLE
+      case 82: // variable
+      case 102: // positionValue
         value.copy< std::string > (YY_MOVE (that.value));
         break;
 
-      case 107: // argumentsValues
+      case 111: // argumentsValues
         value.copy< std::vector<ExpressionPtr> > (YY_MOVE (that.value));
         break;
 
-      case 111: // vectPos
-        value.copy< std::vector<Position> > (YY_MOVE (that.value));
-        break;
-
-      case 73: // attributsInline
-      case 74: // attributsCSS
-      case 75: // attributs
+      case 76: // attributsInline
+      case 77: // attributsCSS
+      case 78: // attributs
         value.copy< std::vector<std::shared_ptr<AttributNode>> > (YY_MOVE (that.value));
         break;
 
-      case 100: // conditions
+      case 104: // conditions
         value.copy< std::vector<std::shared_ptr<ConditionNode>> > (YY_MOVE (that.value));
         break;
 
-      case 71: // instructions
-      case 102: // else
+      case 74: // instructions
+      case 106: // else
         value.copy< std::vector<std::shared_ptr<Noeud>> > (YY_MOVE (that.value));
         break;
 
-      case 106: // arguments
+      case 115: // vectPos
+        value.copy< std::vector<std::shared_ptr<PositionNode>> > (YY_MOVE (that.value));
+        break;
+
+      case 110: // arguments
         value.copy< std::vector<std::string> > (YY_MOVE (that.value));
         break;
 
-      case 98: // stringComparator
+      case 101: // stringComparator
         value.copy< string_operators > (YY_MOVE (that.value));
         break;
 
@@ -569,24 +571,24 @@ namespace yy {
     super_type::move (s);
     switch (this->type_get ())
     {
-      case 69: // programme
-      case 70: // subProgramme
+      case 72: // programme
+      case 73: // subProgramme
         value.move< ArbreSyntaxique > (YY_MOVE (s.value));
         break;
 
-      case 77: // couleurValue
+      case 80: // couleurValue
         value.move< CouleurPtr > (YY_MOVE (s.value));
         break;
 
-      case 110: // operation
+      case 114: // operation
         value.move< ExpressionPtr > (YY_MOVE (s.value));
         break;
 
-      case 94: // setTaille
+      case 97: // setTaille
         value.move< TailleType > (YY_MOVE (s.value));
         break;
 
-      case 80: // boolValue
+      case 83: // boolValue
         value.move< bool > (YY_MOVE (s.value));
         break;
 
@@ -598,101 +600,101 @@ namespace yy {
         value.move< int > (YY_MOVE (s.value));
         break;
 
-      case 97: // numberComparator
+      case 100: // numberComparator
         value.move< operators > (YY_MOVE (s.value));
         break;
 
-      case 92: // accesFigure
+      case 95: // accesFigure
         value.move< std::shared_ptr<AccesFigureNode> > (YY_MOVE (s.value));
         break;
 
-      case 105: // affectation
+      case 109: // affectation
         value.move< std::shared_ptr<AffectationSimpleVariableNode> > (YY_MOVE (s.value));
         break;
 
-      case 109: // appelFonction
+      case 113: // appelFonction
         value.move< std::shared_ptr<AppelFonctionNode> > (YY_MOVE (s.value));
         break;
 
-      case 76: // attributAffectation
-      case 93: // setAttribut
+      case 79: // attributAffectation
+      case 96: // setAttribut
         value.move< std::shared_ptr<AttributNode> > (YY_MOVE (s.value));
         break;
 
-      case 82: // declarationCanva
+      case 85: // declarationCanva
         value.move< std::shared_ptr<CanevaNode> > (YY_MOVE (s.value));
         break;
 
-      case 84: // carre
+      case 87: // carre
         value.move< std::shared_ptr<CarreNode> > (YY_MOVE (s.value));
         break;
 
-      case 87: // cercle
+      case 90: // cercle
         value.move< std::shared_ptr<CercleNode> > (YY_MOVE (s.value));
         break;
 
-      case 90: // chemin
+      case 93: // chemin
         value.move< std::shared_ptr<CheminNode> > (YY_MOVE (s.value));
         break;
 
-      case 99: // condition
+      case 103: // condition
         value.move< std::shared_ptr<ConditionNode> > (YY_MOVE (s.value));
         break;
 
-      case 96: // declarationVariable
+      case 99: // declarationVariable
         value.move< std::shared_ptr<DeclarationVariable> > (YY_MOVE (s.value));
         break;
 
-      case 81: // declarationVariableSimple
+      case 84: // declarationVariableSimple
         value.move< std::shared_ptr<DeclarationVariableSimple> > (YY_MOVE (s.value));
         break;
 
-      case 88: // ellipse
+      case 91: // ellipse
         value.move< std::shared_ptr<EllipseNode> > (YY_MOVE (s.value));
         break;
 
-      case 83: // declarationFigure
+      case 86: // declarationFigure
         value.move< std::shared_ptr<FigureNode> > (YY_MOVE (s.value));
         break;
 
-      case 108: // fonction
+      case 112: // fonction
         value.move< std::shared_ptr<FonctionNode> > (YY_MOVE (s.value));
         break;
 
-      case 103: // boucleFor
+      case 107: // boucleFor
         value.move< std::shared_ptr<ForLoopNode> > (YY_MOVE (s.value));
         break;
 
-      case 101: // if
+      case 105: // if
         value.move< std::shared_ptr<IfNode> > (YY_MOVE (s.value));
         break;
 
-      case 89: // ligne
+      case 92: // ligne
         value.move< std::shared_ptr<LigneNode> > (YY_MOVE (s.value));
         break;
 
-      case 95: // modificationFigure
+      case 98: // modificationFigure
         value.move< std::shared_ptr<ModificationFigureNode> > (YY_MOVE (s.value));
         break;
 
-      case 72: // instruction
-      case 78: // expression
+      case 75: // instruction
+      case 81: // expression
         value.move< std::shared_ptr<Noeud> > (YY_MOVE (s.value));
         break;
 
-      case 85: // rectangle
+      case 88: // rectangle
         value.move< std::shared_ptr<RectangleNode> > (YY_MOVE (s.value));
         break;
 
-      case 91: // texte
+      case 94: // texte
         value.move< std::shared_ptr<TexteNode> > (YY_MOVE (s.value));
         break;
 
-      case 86: // triangle
+      case 89: // triangle
         value.move< std::shared_ptr<TriangleNode> > (YY_MOVE (s.value));
         break;
 
-      case 104: // boucleWhile
+      case 108: // boucleWhile
         value.move< std::shared_ptr<WhileNode> > (YY_MOVE (s.value));
         break;
 
@@ -701,47 +703,48 @@ namespace yy {
       case 11: // FLOAT_TYPE
       case 12: // VARIABLE
       case 13: // STRING
-      case 16: // HEXA_VALUE
-      case 17: // COULEUR
-      case 18: // ROTATION
-      case 19: // REMPLISSAGE
-      case 20: // OPACITE
-      case 21: // EPAISSEUR
-      case 37: // TAILLE
-      case 38: // HAUTEUR
-      case 39: // LARGEUR
-      case 79: // variable
+      case 14: // POSITIONX
+      case 15: // POSITIONY
+      case 18: // HEXA_VALUE
+      case 19: // COULEUR
+      case 20: // ROTATION
+      case 21: // REMPLISSAGE
+      case 22: // OPACITE
+      case 23: // EPAISSEUR
+      case 39: // TAILLE
+      case 82: // variable
+      case 102: // positionValue
         value.move< std::string > (YY_MOVE (s.value));
         break;
 
-      case 107: // argumentsValues
+      case 111: // argumentsValues
         value.move< std::vector<ExpressionPtr> > (YY_MOVE (s.value));
         break;
 
-      case 111: // vectPos
-        value.move< std::vector<Position> > (YY_MOVE (s.value));
-        break;
-
-      case 73: // attributsInline
-      case 74: // attributsCSS
-      case 75: // attributs
+      case 76: // attributsInline
+      case 77: // attributsCSS
+      case 78: // attributs
         value.move< std::vector<std::shared_ptr<AttributNode>> > (YY_MOVE (s.value));
         break;
 
-      case 100: // conditions
+      case 104: // conditions
         value.move< std::vector<std::shared_ptr<ConditionNode>> > (YY_MOVE (s.value));
         break;
 
-      case 71: // instructions
-      case 102: // else
+      case 74: // instructions
+      case 106: // else
         value.move< std::vector<std::shared_ptr<Noeud>> > (YY_MOVE (s.value));
         break;
 
-      case 106: // arguments
+      case 115: // vectPos
+        value.move< std::vector<std::shared_ptr<PositionNode>> > (YY_MOVE (s.value));
+        break;
+
+      case 110: // arguments
         value.move< std::vector<std::string> > (YY_MOVE (s.value));
         break;
 
-      case 98: // stringComparator
+      case 101: // stringComparator
         value.move< string_operators > (YY_MOVE (s.value));
         break;
 
@@ -836,24 +839,24 @@ namespace yy {
   {
     switch (that.type_get ())
     {
-      case 69: // programme
-      case 70: // subProgramme
+      case 72: // programme
+      case 73: // subProgramme
         value.YY_MOVE_OR_COPY< ArbreSyntaxique > (YY_MOVE (that.value));
         break;
 
-      case 77: // couleurValue
+      case 80: // couleurValue
         value.YY_MOVE_OR_COPY< CouleurPtr > (YY_MOVE (that.value));
         break;
 
-      case 110: // operation
+      case 114: // operation
         value.YY_MOVE_OR_COPY< ExpressionPtr > (YY_MOVE (that.value));
         break;
 
-      case 94: // setTaille
+      case 97: // setTaille
         value.YY_MOVE_OR_COPY< TailleType > (YY_MOVE (that.value));
         break;
 
-      case 80: // boolValue
+      case 83: // boolValue
         value.YY_MOVE_OR_COPY< bool > (YY_MOVE (that.value));
         break;
 
@@ -865,101 +868,101 @@ namespace yy {
         value.YY_MOVE_OR_COPY< int > (YY_MOVE (that.value));
         break;
 
-      case 97: // numberComparator
+      case 100: // numberComparator
         value.YY_MOVE_OR_COPY< operators > (YY_MOVE (that.value));
         break;
 
-      case 92: // accesFigure
+      case 95: // accesFigure
         value.YY_MOVE_OR_COPY< std::shared_ptr<AccesFigureNode> > (YY_MOVE (that.value));
         break;
 
-      case 105: // affectation
+      case 109: // affectation
         value.YY_MOVE_OR_COPY< std::shared_ptr<AffectationSimpleVariableNode> > (YY_MOVE (that.value));
         break;
 
-      case 109: // appelFonction
+      case 113: // appelFonction
         value.YY_MOVE_OR_COPY< std::shared_ptr<AppelFonctionNode> > (YY_MOVE (that.value));
         break;
 
-      case 76: // attributAffectation
-      case 93: // setAttribut
+      case 79: // attributAffectation
+      case 96: // setAttribut
         value.YY_MOVE_OR_COPY< std::shared_ptr<AttributNode> > (YY_MOVE (that.value));
         break;
 
-      case 82: // declarationCanva
+      case 85: // declarationCanva
         value.YY_MOVE_OR_COPY< std::shared_ptr<CanevaNode> > (YY_MOVE (that.value));
         break;
 
-      case 84: // carre
+      case 87: // carre
         value.YY_MOVE_OR_COPY< std::shared_ptr<CarreNode> > (YY_MOVE (that.value));
         break;
 
-      case 87: // cercle
+      case 90: // cercle
         value.YY_MOVE_OR_COPY< std::shared_ptr<CercleNode> > (YY_MOVE (that.value));
         break;
 
-      case 90: // chemin
+      case 93: // chemin
         value.YY_MOVE_OR_COPY< std::shared_ptr<CheminNode> > (YY_MOVE (that.value));
         break;
 
-      case 99: // condition
+      case 103: // condition
         value.YY_MOVE_OR_COPY< std::shared_ptr<ConditionNode> > (YY_MOVE (that.value));
         break;
 
-      case 96: // declarationVariable
+      case 99: // declarationVariable
         value.YY_MOVE_OR_COPY< std::shared_ptr<DeclarationVariable> > (YY_MOVE (that.value));
         break;
 
-      case 81: // declarationVariableSimple
+      case 84: // declarationVariableSimple
         value.YY_MOVE_OR_COPY< std::shared_ptr<DeclarationVariableSimple> > (YY_MOVE (that.value));
         break;
 
-      case 88: // ellipse
+      case 91: // ellipse
         value.YY_MOVE_OR_COPY< std::shared_ptr<EllipseNode> > (YY_MOVE (that.value));
         break;
 
-      case 83: // declarationFigure
+      case 86: // declarationFigure
         value.YY_MOVE_OR_COPY< std::shared_ptr<FigureNode> > (YY_MOVE (that.value));
         break;
 
-      case 108: // fonction
+      case 112: // fonction
         value.YY_MOVE_OR_COPY< std::shared_ptr<FonctionNode> > (YY_MOVE (that.value));
         break;
 
-      case 103: // boucleFor
+      case 107: // boucleFor
         value.YY_MOVE_OR_COPY< std::shared_ptr<ForLoopNode> > (YY_MOVE (that.value));
         break;
 
-      case 101: // if
+      case 105: // if
         value.YY_MOVE_OR_COPY< std::shared_ptr<IfNode> > (YY_MOVE (that.value));
         break;
 
-      case 89: // ligne
+      case 92: // ligne
         value.YY_MOVE_OR_COPY< std::shared_ptr<LigneNode> > (YY_MOVE (that.value));
         break;
 
-      case 95: // modificationFigure
+      case 98: // modificationFigure
         value.YY_MOVE_OR_COPY< std::shared_ptr<ModificationFigureNode> > (YY_MOVE (that.value));
         break;
 
-      case 72: // instruction
-      case 78: // expression
+      case 75: // instruction
+      case 81: // expression
         value.YY_MOVE_OR_COPY< std::shared_ptr<Noeud> > (YY_MOVE (that.value));
         break;
 
-      case 85: // rectangle
+      case 88: // rectangle
         value.YY_MOVE_OR_COPY< std::shared_ptr<RectangleNode> > (YY_MOVE (that.value));
         break;
 
-      case 91: // texte
+      case 94: // texte
         value.YY_MOVE_OR_COPY< std::shared_ptr<TexteNode> > (YY_MOVE (that.value));
         break;
 
-      case 86: // triangle
+      case 89: // triangle
         value.YY_MOVE_OR_COPY< std::shared_ptr<TriangleNode> > (YY_MOVE (that.value));
         break;
 
-      case 104: // boucleWhile
+      case 108: // boucleWhile
         value.YY_MOVE_OR_COPY< std::shared_ptr<WhileNode> > (YY_MOVE (that.value));
         break;
 
@@ -968,47 +971,48 @@ namespace yy {
       case 11: // FLOAT_TYPE
       case 12: // VARIABLE
       case 13: // STRING
-      case 16: // HEXA_VALUE
-      case 17: // COULEUR
-      case 18: // ROTATION
-      case 19: // REMPLISSAGE
-      case 20: // OPACITE
-      case 21: // EPAISSEUR
-      case 37: // TAILLE
-      case 38: // HAUTEUR
-      case 39: // LARGEUR
-      case 79: // variable
+      case 14: // POSITIONX
+      case 15: // POSITIONY
+      case 18: // HEXA_VALUE
+      case 19: // COULEUR
+      case 20: // ROTATION
+      case 21: // REMPLISSAGE
+      case 22: // OPACITE
+      case 23: // EPAISSEUR
+      case 39: // TAILLE
+      case 82: // variable
+      case 102: // positionValue
         value.YY_MOVE_OR_COPY< std::string > (YY_MOVE (that.value));
         break;
 
-      case 107: // argumentsValues
+      case 111: // argumentsValues
         value.YY_MOVE_OR_COPY< std::vector<ExpressionPtr> > (YY_MOVE (that.value));
         break;
 
-      case 111: // vectPos
-        value.YY_MOVE_OR_COPY< std::vector<Position> > (YY_MOVE (that.value));
-        break;
-
-      case 73: // attributsInline
-      case 74: // attributsCSS
-      case 75: // attributs
+      case 76: // attributsInline
+      case 77: // attributsCSS
+      case 78: // attributs
         value.YY_MOVE_OR_COPY< std::vector<std::shared_ptr<AttributNode>> > (YY_MOVE (that.value));
         break;
 
-      case 100: // conditions
+      case 104: // conditions
         value.YY_MOVE_OR_COPY< std::vector<std::shared_ptr<ConditionNode>> > (YY_MOVE (that.value));
         break;
 
-      case 71: // instructions
-      case 102: // else
+      case 74: // instructions
+      case 106: // else
         value.YY_MOVE_OR_COPY< std::vector<std::shared_ptr<Noeud>> > (YY_MOVE (that.value));
         break;
 
-      case 106: // arguments
+      case 115: // vectPos
+        value.YY_MOVE_OR_COPY< std::vector<std::shared_ptr<PositionNode>> > (YY_MOVE (that.value));
+        break;
+
+      case 110: // arguments
         value.YY_MOVE_OR_COPY< std::vector<std::string> > (YY_MOVE (that.value));
         break;
 
-      case 98: // stringComparator
+      case 101: // stringComparator
         value.YY_MOVE_OR_COPY< string_operators > (YY_MOVE (that.value));
         break;
 
@@ -1027,24 +1031,24 @@ namespace yy {
   {
     switch (that.type_get ())
     {
-      case 69: // programme
-      case 70: // subProgramme
+      case 72: // programme
+      case 73: // subProgramme
         value.move< ArbreSyntaxique > (YY_MOVE (that.value));
         break;
 
-      case 77: // couleurValue
+      case 80: // couleurValue
         value.move< CouleurPtr > (YY_MOVE (that.value));
         break;
 
-      case 110: // operation
+      case 114: // operation
         value.move< ExpressionPtr > (YY_MOVE (that.value));
         break;
 
-      case 94: // setTaille
+      case 97: // setTaille
         value.move< TailleType > (YY_MOVE (that.value));
         break;
 
-      case 80: // boolValue
+      case 83: // boolValue
         value.move< bool > (YY_MOVE (that.value));
         break;
 
@@ -1056,101 +1060,101 @@ namespace yy {
         value.move< int > (YY_MOVE (that.value));
         break;
 
-      case 97: // numberComparator
+      case 100: // numberComparator
         value.move< operators > (YY_MOVE (that.value));
         break;
 
-      case 92: // accesFigure
+      case 95: // accesFigure
         value.move< std::shared_ptr<AccesFigureNode> > (YY_MOVE (that.value));
         break;
 
-      case 105: // affectation
+      case 109: // affectation
         value.move< std::shared_ptr<AffectationSimpleVariableNode> > (YY_MOVE (that.value));
         break;
 
-      case 109: // appelFonction
+      case 113: // appelFonction
         value.move< std::shared_ptr<AppelFonctionNode> > (YY_MOVE (that.value));
         break;
 
-      case 76: // attributAffectation
-      case 93: // setAttribut
+      case 79: // attributAffectation
+      case 96: // setAttribut
         value.move< std::shared_ptr<AttributNode> > (YY_MOVE (that.value));
         break;
 
-      case 82: // declarationCanva
+      case 85: // declarationCanva
         value.move< std::shared_ptr<CanevaNode> > (YY_MOVE (that.value));
         break;
 
-      case 84: // carre
+      case 87: // carre
         value.move< std::shared_ptr<CarreNode> > (YY_MOVE (that.value));
         break;
 
-      case 87: // cercle
+      case 90: // cercle
         value.move< std::shared_ptr<CercleNode> > (YY_MOVE (that.value));
         break;
 
-      case 90: // chemin
+      case 93: // chemin
         value.move< std::shared_ptr<CheminNode> > (YY_MOVE (that.value));
         break;
 
-      case 99: // condition
+      case 103: // condition
         value.move< std::shared_ptr<ConditionNode> > (YY_MOVE (that.value));
         break;
 
-      case 96: // declarationVariable
+      case 99: // declarationVariable
         value.move< std::shared_ptr<DeclarationVariable> > (YY_MOVE (that.value));
         break;
 
-      case 81: // declarationVariableSimple
+      case 84: // declarationVariableSimple
         value.move< std::shared_ptr<DeclarationVariableSimple> > (YY_MOVE (that.value));
         break;
 
-      case 88: // ellipse
+      case 91: // ellipse
         value.move< std::shared_ptr<EllipseNode> > (YY_MOVE (that.value));
         break;
 
-      case 83: // declarationFigure
+      case 86: // declarationFigure
         value.move< std::shared_ptr<FigureNode> > (YY_MOVE (that.value));
         break;
 
-      case 108: // fonction
+      case 112: // fonction
         value.move< std::shared_ptr<FonctionNode> > (YY_MOVE (that.value));
         break;
 
-      case 103: // boucleFor
+      case 107: // boucleFor
         value.move< std::shared_ptr<ForLoopNode> > (YY_MOVE (that.value));
         break;
 
-      case 101: // if
+      case 105: // if
         value.move< std::shared_ptr<IfNode> > (YY_MOVE (that.value));
         break;
 
-      case 89: // ligne
+      case 92: // ligne
         value.move< std::shared_ptr<LigneNode> > (YY_MOVE (that.value));
         break;
 
-      case 95: // modificationFigure
+      case 98: // modificationFigure
         value.move< std::shared_ptr<ModificationFigureNode> > (YY_MOVE (that.value));
         break;
 
-      case 72: // instruction
-      case 78: // expression
+      case 75: // instruction
+      case 81: // expression
         value.move< std::shared_ptr<Noeud> > (YY_MOVE (that.value));
         break;
 
-      case 85: // rectangle
+      case 88: // rectangle
         value.move< std::shared_ptr<RectangleNode> > (YY_MOVE (that.value));
         break;
 
-      case 91: // texte
+      case 94: // texte
         value.move< std::shared_ptr<TexteNode> > (YY_MOVE (that.value));
         break;
 
-      case 86: // triangle
+      case 89: // triangle
         value.move< std::shared_ptr<TriangleNode> > (YY_MOVE (that.value));
         break;
 
-      case 104: // boucleWhile
+      case 108: // boucleWhile
         value.move< std::shared_ptr<WhileNode> > (YY_MOVE (that.value));
         break;
 
@@ -1159,47 +1163,48 @@ namespace yy {
       case 11: // FLOAT_TYPE
       case 12: // VARIABLE
       case 13: // STRING
-      case 16: // HEXA_VALUE
-      case 17: // COULEUR
-      case 18: // ROTATION
-      case 19: // REMPLISSAGE
-      case 20: // OPACITE
-      case 21: // EPAISSEUR
-      case 37: // TAILLE
-      case 38: // HAUTEUR
-      case 39: // LARGEUR
-      case 79: // variable
+      case 14: // POSITIONX
+      case 15: // POSITIONY
+      case 18: // HEXA_VALUE
+      case 19: // COULEUR
+      case 20: // ROTATION
+      case 21: // REMPLISSAGE
+      case 22: // OPACITE
+      case 23: // EPAISSEUR
+      case 39: // TAILLE
+      case 82: // variable
+      case 102: // positionValue
         value.move< std::string > (YY_MOVE (that.value));
         break;
 
-      case 107: // argumentsValues
+      case 111: // argumentsValues
         value.move< std::vector<ExpressionPtr> > (YY_MOVE (that.value));
         break;
 
-      case 111: // vectPos
-        value.move< std::vector<Position> > (YY_MOVE (that.value));
-        break;
-
-      case 73: // attributsInline
-      case 74: // attributsCSS
-      case 75: // attributs
+      case 76: // attributsInline
+      case 77: // attributsCSS
+      case 78: // attributs
         value.move< std::vector<std::shared_ptr<AttributNode>> > (YY_MOVE (that.value));
         break;
 
-      case 100: // conditions
+      case 104: // conditions
         value.move< std::vector<std::shared_ptr<ConditionNode>> > (YY_MOVE (that.value));
         break;
 
-      case 71: // instructions
-      case 102: // else
+      case 74: // instructions
+      case 106: // else
         value.move< std::vector<std::shared_ptr<Noeud>> > (YY_MOVE (that.value));
         break;
 
-      case 106: // arguments
+      case 115: // vectPos
+        value.move< std::vector<std::shared_ptr<PositionNode>> > (YY_MOVE (that.value));
+        break;
+
+      case 110: // arguments
         value.move< std::vector<std::string> > (YY_MOVE (that.value));
         break;
 
-      case 98: // stringComparator
+      case 101: // stringComparator
         value.move< string_operators > (YY_MOVE (that.value));
         break;
 
@@ -1218,24 +1223,24 @@ namespace yy {
     state = that.state;
     switch (that.type_get ())
     {
-      case 69: // programme
-      case 70: // subProgramme
+      case 72: // programme
+      case 73: // subProgramme
         value.copy< ArbreSyntaxique > (that.value);
         break;
 
-      case 77: // couleurValue
+      case 80: // couleurValue
         value.copy< CouleurPtr > (that.value);
         break;
 
-      case 110: // operation
+      case 114: // operation
         value.copy< ExpressionPtr > (that.value);
         break;
 
-      case 94: // setTaille
+      case 97: // setTaille
         value.copy< TailleType > (that.value);
         break;
 
-      case 80: // boolValue
+      case 83: // boolValue
         value.copy< bool > (that.value);
         break;
 
@@ -1247,101 +1252,101 @@ namespace yy {
         value.copy< int > (that.value);
         break;
 
-      case 97: // numberComparator
+      case 100: // numberComparator
         value.copy< operators > (that.value);
         break;
 
-      case 92: // accesFigure
+      case 95: // accesFigure
         value.copy< std::shared_ptr<AccesFigureNode> > (that.value);
         break;
 
-      case 105: // affectation
+      case 109: // affectation
         value.copy< std::shared_ptr<AffectationSimpleVariableNode> > (that.value);
         break;
 
-      case 109: // appelFonction
+      case 113: // appelFonction
         value.copy< std::shared_ptr<AppelFonctionNode> > (that.value);
         break;
 
-      case 76: // attributAffectation
-      case 93: // setAttribut
+      case 79: // attributAffectation
+      case 96: // setAttribut
         value.copy< std::shared_ptr<AttributNode> > (that.value);
         break;
 
-      case 82: // declarationCanva
+      case 85: // declarationCanva
         value.copy< std::shared_ptr<CanevaNode> > (that.value);
         break;
 
-      case 84: // carre
+      case 87: // carre
         value.copy< std::shared_ptr<CarreNode> > (that.value);
         break;
 
-      case 87: // cercle
+      case 90: // cercle
         value.copy< std::shared_ptr<CercleNode> > (that.value);
         break;
 
-      case 90: // chemin
+      case 93: // chemin
         value.copy< std::shared_ptr<CheminNode> > (that.value);
         break;
 
-      case 99: // condition
+      case 103: // condition
         value.copy< std::shared_ptr<ConditionNode> > (that.value);
         break;
 
-      case 96: // declarationVariable
+      case 99: // declarationVariable
         value.copy< std::shared_ptr<DeclarationVariable> > (that.value);
         break;
 
-      case 81: // declarationVariableSimple
+      case 84: // declarationVariableSimple
         value.copy< std::shared_ptr<DeclarationVariableSimple> > (that.value);
         break;
 
-      case 88: // ellipse
+      case 91: // ellipse
         value.copy< std::shared_ptr<EllipseNode> > (that.value);
         break;
 
-      case 83: // declarationFigure
+      case 86: // declarationFigure
         value.copy< std::shared_ptr<FigureNode> > (that.value);
         break;
 
-      case 108: // fonction
+      case 112: // fonction
         value.copy< std::shared_ptr<FonctionNode> > (that.value);
         break;
 
-      case 103: // boucleFor
+      case 107: // boucleFor
         value.copy< std::shared_ptr<ForLoopNode> > (that.value);
         break;
 
-      case 101: // if
+      case 105: // if
         value.copy< std::shared_ptr<IfNode> > (that.value);
         break;
 
-      case 89: // ligne
+      case 92: // ligne
         value.copy< std::shared_ptr<LigneNode> > (that.value);
         break;
 
-      case 95: // modificationFigure
+      case 98: // modificationFigure
         value.copy< std::shared_ptr<ModificationFigureNode> > (that.value);
         break;
 
-      case 72: // instruction
-      case 78: // expression
+      case 75: // instruction
+      case 81: // expression
         value.copy< std::shared_ptr<Noeud> > (that.value);
         break;
 
-      case 85: // rectangle
+      case 88: // rectangle
         value.copy< std::shared_ptr<RectangleNode> > (that.value);
         break;
 
-      case 91: // texte
+      case 94: // texte
         value.copy< std::shared_ptr<TexteNode> > (that.value);
         break;
 
-      case 86: // triangle
+      case 89: // triangle
         value.copy< std::shared_ptr<TriangleNode> > (that.value);
         break;
 
-      case 104: // boucleWhile
+      case 108: // boucleWhile
         value.copy< std::shared_ptr<WhileNode> > (that.value);
         break;
 
@@ -1350,47 +1355,48 @@ namespace yy {
       case 11: // FLOAT_TYPE
       case 12: // VARIABLE
       case 13: // STRING
-      case 16: // HEXA_VALUE
-      case 17: // COULEUR
-      case 18: // ROTATION
-      case 19: // REMPLISSAGE
-      case 20: // OPACITE
-      case 21: // EPAISSEUR
-      case 37: // TAILLE
-      case 38: // HAUTEUR
-      case 39: // LARGEUR
-      case 79: // variable
+      case 14: // POSITIONX
+      case 15: // POSITIONY
+      case 18: // HEXA_VALUE
+      case 19: // COULEUR
+      case 20: // ROTATION
+      case 21: // REMPLISSAGE
+      case 22: // OPACITE
+      case 23: // EPAISSEUR
+      case 39: // TAILLE
+      case 82: // variable
+      case 102: // positionValue
         value.copy< std::string > (that.value);
         break;
 
-      case 107: // argumentsValues
+      case 111: // argumentsValues
         value.copy< std::vector<ExpressionPtr> > (that.value);
         break;
 
-      case 111: // vectPos
-        value.copy< std::vector<Position> > (that.value);
-        break;
-
-      case 73: // attributsInline
-      case 74: // attributsCSS
-      case 75: // attributs
+      case 76: // attributsInline
+      case 77: // attributsCSS
+      case 78: // attributs
         value.copy< std::vector<std::shared_ptr<AttributNode>> > (that.value);
         break;
 
-      case 100: // conditions
+      case 104: // conditions
         value.copy< std::vector<std::shared_ptr<ConditionNode>> > (that.value);
         break;
 
-      case 71: // instructions
-      case 102: // else
+      case 74: // instructions
+      case 106: // else
         value.copy< std::vector<std::shared_ptr<Noeud>> > (that.value);
         break;
 
-      case 106: // arguments
+      case 115: // vectPos
+        value.copy< std::vector<std::shared_ptr<PositionNode>> > (that.value);
+        break;
+
+      case 110: // arguments
         value.copy< std::vector<std::string> > (that.value);
         break;
 
-      case 98: // stringComparator
+      case 101: // stringComparator
         value.copy< string_operators > (that.value);
         break;
 
@@ -1408,24 +1414,24 @@ namespace yy {
     state = that.state;
     switch (that.type_get ())
     {
-      case 69: // programme
-      case 70: // subProgramme
+      case 72: // programme
+      case 73: // subProgramme
         value.move< ArbreSyntaxique > (that.value);
         break;
 
-      case 77: // couleurValue
+      case 80: // couleurValue
         value.move< CouleurPtr > (that.value);
         break;
 
-      case 110: // operation
+      case 114: // operation
         value.move< ExpressionPtr > (that.value);
         break;
 
-      case 94: // setTaille
+      case 97: // setTaille
         value.move< TailleType > (that.value);
         break;
 
-      case 80: // boolValue
+      case 83: // boolValue
         value.move< bool > (that.value);
         break;
 
@@ -1437,101 +1443,101 @@ namespace yy {
         value.move< int > (that.value);
         break;
 
-      case 97: // numberComparator
+      case 100: // numberComparator
         value.move< operators > (that.value);
         break;
 
-      case 92: // accesFigure
+      case 95: // accesFigure
         value.move< std::shared_ptr<AccesFigureNode> > (that.value);
         break;
 
-      case 105: // affectation
+      case 109: // affectation
         value.move< std::shared_ptr<AffectationSimpleVariableNode> > (that.value);
         break;
 
-      case 109: // appelFonction
+      case 113: // appelFonction
         value.move< std::shared_ptr<AppelFonctionNode> > (that.value);
         break;
 
-      case 76: // attributAffectation
-      case 93: // setAttribut
+      case 79: // attributAffectation
+      case 96: // setAttribut
         value.move< std::shared_ptr<AttributNode> > (that.value);
         break;
 
-      case 82: // declarationCanva
+      case 85: // declarationCanva
         value.move< std::shared_ptr<CanevaNode> > (that.value);
         break;
 
-      case 84: // carre
+      case 87: // carre
         value.move< std::shared_ptr<CarreNode> > (that.value);
         break;
 
-      case 87: // cercle
+      case 90: // cercle
         value.move< std::shared_ptr<CercleNode> > (that.value);
         break;
 
-      case 90: // chemin
+      case 93: // chemin
         value.move< std::shared_ptr<CheminNode> > (that.value);
         break;
 
-      case 99: // condition
+      case 103: // condition
         value.move< std::shared_ptr<ConditionNode> > (that.value);
         break;
 
-      case 96: // declarationVariable
+      case 99: // declarationVariable
         value.move< std::shared_ptr<DeclarationVariable> > (that.value);
         break;
 
-      case 81: // declarationVariableSimple
+      case 84: // declarationVariableSimple
         value.move< std::shared_ptr<DeclarationVariableSimple> > (that.value);
         break;
 
-      case 88: // ellipse
+      case 91: // ellipse
         value.move< std::shared_ptr<EllipseNode> > (that.value);
         break;
 
-      case 83: // declarationFigure
+      case 86: // declarationFigure
         value.move< std::shared_ptr<FigureNode> > (that.value);
         break;
 
-      case 108: // fonction
+      case 112: // fonction
         value.move< std::shared_ptr<FonctionNode> > (that.value);
         break;
 
-      case 103: // boucleFor
+      case 107: // boucleFor
         value.move< std::shared_ptr<ForLoopNode> > (that.value);
         break;
 
-      case 101: // if
+      case 105: // if
         value.move< std::shared_ptr<IfNode> > (that.value);
         break;
 
-      case 89: // ligne
+      case 92: // ligne
         value.move< std::shared_ptr<LigneNode> > (that.value);
         break;
 
-      case 95: // modificationFigure
+      case 98: // modificationFigure
         value.move< std::shared_ptr<ModificationFigureNode> > (that.value);
         break;
 
-      case 72: // instruction
-      case 78: // expression
+      case 75: // instruction
+      case 81: // expression
         value.move< std::shared_ptr<Noeud> > (that.value);
         break;
 
-      case 85: // rectangle
+      case 88: // rectangle
         value.move< std::shared_ptr<RectangleNode> > (that.value);
         break;
 
-      case 91: // texte
+      case 94: // texte
         value.move< std::shared_ptr<TexteNode> > (that.value);
         break;
 
-      case 86: // triangle
+      case 89: // triangle
         value.move< std::shared_ptr<TriangleNode> > (that.value);
         break;
 
-      case 104: // boucleWhile
+      case 108: // boucleWhile
         value.move< std::shared_ptr<WhileNode> > (that.value);
         break;
 
@@ -1540,47 +1546,48 @@ namespace yy {
       case 11: // FLOAT_TYPE
       case 12: // VARIABLE
       case 13: // STRING
-      case 16: // HEXA_VALUE
-      case 17: // COULEUR
-      case 18: // ROTATION
-      case 19: // REMPLISSAGE
-      case 20: // OPACITE
-      case 21: // EPAISSEUR
-      case 37: // TAILLE
-      case 38: // HAUTEUR
-      case 39: // LARGEUR
-      case 79: // variable
+      case 14: // POSITIONX
+      case 15: // POSITIONY
+      case 18: // HEXA_VALUE
+      case 19: // COULEUR
+      case 20: // ROTATION
+      case 21: // REMPLISSAGE
+      case 22: // OPACITE
+      case 23: // EPAISSEUR
+      case 39: // TAILLE
+      case 82: // variable
+      case 102: // positionValue
         value.move< std::string > (that.value);
         break;
 
-      case 107: // argumentsValues
+      case 111: // argumentsValues
         value.move< std::vector<ExpressionPtr> > (that.value);
         break;
 
-      case 111: // vectPos
-        value.move< std::vector<Position> > (that.value);
-        break;
-
-      case 73: // attributsInline
-      case 74: // attributsCSS
-      case 75: // attributs
+      case 76: // attributsInline
+      case 77: // attributsCSS
+      case 78: // attributs
         value.move< std::vector<std::shared_ptr<AttributNode>> > (that.value);
         break;
 
-      case 100: // conditions
+      case 104: // conditions
         value.move< std::vector<std::shared_ptr<ConditionNode>> > (that.value);
         break;
 
-      case 71: // instructions
-      case 102: // else
+      case 74: // instructions
+      case 106: // else
         value.move< std::vector<std::shared_ptr<Noeud>> > (that.value);
         break;
 
-      case 106: // arguments
+      case 115: // vectPos
+        value.move< std::vector<std::shared_ptr<PositionNode>> > (that.value);
+        break;
+
+      case 110: // arguments
         value.move< std::vector<std::string> > (that.value);
         break;
 
-      case 98: // stringComparator
+      case 101: // stringComparator
         value.move< string_operators > (that.value);
         break;
 
@@ -1833,24 +1840,24 @@ namespace yy {
          when using variants.  */
       switch (yyr1_[yyn])
     {
-      case 69: // programme
-      case 70: // subProgramme
+      case 72: // programme
+      case 73: // subProgramme
         yylhs.value.emplace< ArbreSyntaxique > ();
         break;
 
-      case 77: // couleurValue
+      case 80: // couleurValue
         yylhs.value.emplace< CouleurPtr > ();
         break;
 
-      case 110: // operation
+      case 114: // operation
         yylhs.value.emplace< ExpressionPtr > ();
         break;
 
-      case 94: // setTaille
+      case 97: // setTaille
         yylhs.value.emplace< TailleType > ();
         break;
 
-      case 80: // boolValue
+      case 83: // boolValue
         yylhs.value.emplace< bool > ();
         break;
 
@@ -1862,101 +1869,101 @@ namespace yy {
         yylhs.value.emplace< int > ();
         break;
 
-      case 97: // numberComparator
+      case 100: // numberComparator
         yylhs.value.emplace< operators > ();
         break;
 
-      case 92: // accesFigure
+      case 95: // accesFigure
         yylhs.value.emplace< std::shared_ptr<AccesFigureNode> > ();
         break;
 
-      case 105: // affectation
+      case 109: // affectation
         yylhs.value.emplace< std::shared_ptr<AffectationSimpleVariableNode> > ();
         break;
 
-      case 109: // appelFonction
+      case 113: // appelFonction
         yylhs.value.emplace< std::shared_ptr<AppelFonctionNode> > ();
         break;
 
-      case 76: // attributAffectation
-      case 93: // setAttribut
+      case 79: // attributAffectation
+      case 96: // setAttribut
         yylhs.value.emplace< std::shared_ptr<AttributNode> > ();
         break;
 
-      case 82: // declarationCanva
+      case 85: // declarationCanva
         yylhs.value.emplace< std::shared_ptr<CanevaNode> > ();
         break;
 
-      case 84: // carre
+      case 87: // carre
         yylhs.value.emplace< std::shared_ptr<CarreNode> > ();
         break;
 
-      case 87: // cercle
+      case 90: // cercle
         yylhs.value.emplace< std::shared_ptr<CercleNode> > ();
         break;
 
-      case 90: // chemin
+      case 93: // chemin
         yylhs.value.emplace< std::shared_ptr<CheminNode> > ();
         break;
 
-      case 99: // condition
+      case 103: // condition
         yylhs.value.emplace< std::shared_ptr<ConditionNode> > ();
         break;
 
-      case 96: // declarationVariable
+      case 99: // declarationVariable
         yylhs.value.emplace< std::shared_ptr<DeclarationVariable> > ();
         break;
 
-      case 81: // declarationVariableSimple
+      case 84: // declarationVariableSimple
         yylhs.value.emplace< std::shared_ptr<DeclarationVariableSimple> > ();
         break;
 
-      case 88: // ellipse
+      case 91: // ellipse
         yylhs.value.emplace< std::shared_ptr<EllipseNode> > ();
         break;
 
-      case 83: // declarationFigure
+      case 86: // declarationFigure
         yylhs.value.emplace< std::shared_ptr<FigureNode> > ();
         break;
 
-      case 108: // fonction
+      case 112: // fonction
         yylhs.value.emplace< std::shared_ptr<FonctionNode> > ();
         break;
 
-      case 103: // boucleFor
+      case 107: // boucleFor
         yylhs.value.emplace< std::shared_ptr<ForLoopNode> > ();
         break;
 
-      case 101: // if
+      case 105: // if
         yylhs.value.emplace< std::shared_ptr<IfNode> > ();
         break;
 
-      case 89: // ligne
+      case 92: // ligne
         yylhs.value.emplace< std::shared_ptr<LigneNode> > ();
         break;
 
-      case 95: // modificationFigure
+      case 98: // modificationFigure
         yylhs.value.emplace< std::shared_ptr<ModificationFigureNode> > ();
         break;
 
-      case 72: // instruction
-      case 78: // expression
+      case 75: // instruction
+      case 81: // expression
         yylhs.value.emplace< std::shared_ptr<Noeud> > ();
         break;
 
-      case 85: // rectangle
+      case 88: // rectangle
         yylhs.value.emplace< std::shared_ptr<RectangleNode> > ();
         break;
 
-      case 91: // texte
+      case 94: // texte
         yylhs.value.emplace< std::shared_ptr<TexteNode> > ();
         break;
 
-      case 86: // triangle
+      case 89: // triangle
         yylhs.value.emplace< std::shared_ptr<TriangleNode> > ();
         break;
 
-      case 104: // boucleWhile
+      case 108: // boucleWhile
         yylhs.value.emplace< std::shared_ptr<WhileNode> > ();
         break;
 
@@ -1965,47 +1972,48 @@ namespace yy {
       case 11: // FLOAT_TYPE
       case 12: // VARIABLE
       case 13: // STRING
-      case 16: // HEXA_VALUE
-      case 17: // COULEUR
-      case 18: // ROTATION
-      case 19: // REMPLISSAGE
-      case 20: // OPACITE
-      case 21: // EPAISSEUR
-      case 37: // TAILLE
-      case 38: // HAUTEUR
-      case 39: // LARGEUR
-      case 79: // variable
+      case 14: // POSITIONX
+      case 15: // POSITIONY
+      case 18: // HEXA_VALUE
+      case 19: // COULEUR
+      case 20: // ROTATION
+      case 21: // REMPLISSAGE
+      case 22: // OPACITE
+      case 23: // EPAISSEUR
+      case 39: // TAILLE
+      case 82: // variable
+      case 102: // positionValue
         yylhs.value.emplace< std::string > ();
         break;
 
-      case 107: // argumentsValues
+      case 111: // argumentsValues
         yylhs.value.emplace< std::vector<ExpressionPtr> > ();
         break;
 
-      case 111: // vectPos
-        yylhs.value.emplace< std::vector<Position> > ();
-        break;
-
-      case 73: // attributsInline
-      case 74: // attributsCSS
-      case 75: // attributs
+      case 76: // attributsInline
+      case 77: // attributsCSS
+      case 78: // attributs
         yylhs.value.emplace< std::vector<std::shared_ptr<AttributNode>> > ();
         break;
 
-      case 100: // conditions
+      case 104: // conditions
         yylhs.value.emplace< std::vector<std::shared_ptr<ConditionNode>> > ();
         break;
 
-      case 71: // instructions
-      case 102: // else
+      case 74: // instructions
+      case 106: // else
         yylhs.value.emplace< std::vector<std::shared_ptr<Noeud>> > ();
         break;
 
-      case 106: // arguments
+      case 115: // vectPos
+        yylhs.value.emplace< std::vector<std::shared_ptr<PositionNode>> > ();
+        break;
+
+      case 110: // arguments
         yylhs.value.emplace< std::vector<std::string> > ();
         break;
 
-      case 98: // stringComparator
+      case 101: // stringComparator
         yylhs.value.emplace< string_operators > ();
         break;
 
@@ -2030,841 +2038,963 @@ namespace yy {
           switch (yyn)
             {
   case 2:
-#line 174 "parser/parser.yy"
+#line 178 "parser/parser.yy"
                  {
         driver.analyseCode(yystack_[0].value.as < ArbreSyntaxique > ());
-    }
-#line 2038 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
-    break;
-
-  case 3:
-#line 180 "parser/parser.yy"
-                                {
-        yystack_[0].value.as < ArbreSyntaxique > ().addNode(yystack_[2].value.as < std::shared_ptr<Noeud> > ());
-        yylhs.value.as < ArbreSyntaxique > () = yystack_[0].value.as < ArbreSyntaxique > ();
+        YYACCEPT;
     }
 #line 2047 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 4:
-#line 187 "parser/parser.yy"
-       {
+  case 3:
+#line 185 "parser/parser.yy"
+                                {
+        yystack_[0].value.as < ArbreSyntaxique > ().addNode(yystack_[2].value.as < std::shared_ptr<Noeud> > ());
+        yylhs.value.as < ArbreSyntaxique > () = yystack_[0].value.as < ArbreSyntaxique > ();
     }
-#line 2054 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2056 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 5:
-#line 191 "parser/parser.yy"
-                                {
-        yystack_[0].value.as < std::vector<std::shared_ptr<Noeud>> > ().push_back(yystack_[2].value.as < std::shared_ptr<Noeud> > ());
-        yylhs.value.as < std::vector<std::shared_ptr<Noeud>> > () = yystack_[0].value.as < std::vector<std::shared_ptr<Noeud>> > ();
+  case 4:
+#line 192 "parser/parser.yy"
+       {
     }
 #line 2063 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
+  case 5:
+#line 196 "parser/parser.yy"
+                                {
+        yystack_[0].value.as < std::vector<std::shared_ptr<Noeud>> > ().push_back(yystack_[2].value.as < std::shared_ptr<Noeud> > ());
+        yylhs.value.as < std::vector<std::shared_ptr<Noeud>> > () = yystack_[0].value.as < std::vector<std::shared_ptr<Noeud>> > ();
+    }
+#line 2072 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
   case 6:
-#line 199 "parser/parser.yy"
+#line 204 "parser/parser.yy"
     {
 
     }
-#line 2071 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2080 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 7:
-#line 204 "parser/parser.yy"
+#line 209 "parser/parser.yy"
                 {
         yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<Noeud> > ();
     }
-#line 2079 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2088 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 8:
-#line 209 "parser/parser.yy"
+#line 214 "parser/parser.yy"
                         {
         yylhs.value.as < std::vector<std::shared_ptr<AttributNode>> > ().push_back(yystack_[0].value.as < std::shared_ptr<AttributNode> > ());
-    }
-#line 2087 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
-    break;
-
-  case 9:
-#line 215 "parser/parser.yy"
-                                            {
-        yystack_[2].value.as < std::vector<std::shared_ptr<AttributNode>> > ().push_back(yystack_[0].value.as < std::shared_ptr<AttributNode> > ());
-        yylhs.value.as < std::vector<std::shared_ptr<AttributNode>> > () = yystack_[2].value.as < std::vector<std::shared_ptr<AttributNode>> > ();
     }
 #line 2096 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 10:
-#line 222 "parser/parser.yy"
-                            {
-        yylhs.value.as < std::vector<std::shared_ptr<AttributNode>> > ().push_back(yystack_[1].value.as < std::shared_ptr<AttributNode> > ());
+  case 9:
+#line 220 "parser/parser.yy"
+                                            {
+        yystack_[2].value.as < std::vector<std::shared_ptr<AttributNode>> > ().push_back(yystack_[0].value.as < std::shared_ptr<AttributNode> > ());
+        yylhs.value.as < std::vector<std::shared_ptr<AttributNode>> > () = yystack_[2].value.as < std::vector<std::shared_ptr<AttributNode>> > ();
     }
-#line 2104 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2105 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 11:
-#line 228 "parser/parser.yy"
-                                            {
-        yystack_[3].value.as < std::vector<std::shared_ptr<AttributNode>> > ().push_back(yystack_[0].value.as < std::shared_ptr<AttributNode> > ());
-        yylhs.value.as < std::vector<std::shared_ptr<AttributNode>> > () = yystack_[3].value.as < std::vector<std::shared_ptr<AttributNode>> > ();
+  case 10:
+#line 227 "parser/parser.yy"
+                            {
+        yylhs.value.as < std::vector<std::shared_ptr<AttributNode>> > ().push_back(yystack_[1].value.as < std::shared_ptr<AttributNode> > ());
     }
 #line 2113 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
+  case 11:
+#line 233 "parser/parser.yy"
+                                            {
+        yystack_[3].value.as < std::vector<std::shared_ptr<AttributNode>> > ().push_back(yystack_[1].value.as < std::shared_ptr<AttributNode> > ());
+        yylhs.value.as < std::vector<std::shared_ptr<AttributNode>> > () = yystack_[3].value.as < std::vector<std::shared_ptr<AttributNode>> > ();
+    }
+#line 2122 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
   case 12:
-#line 234 "parser/parser.yy"
+#line 239 "parser/parser.yy"
        {}
-#line 2119 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2128 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 13:
-#line 238 "parser/parser.yy"
+#line 243 "parser/parser.yy"
                                {
         yylhs.value.as < std::vector<std::shared_ptr<AttributNode>> > () = yystack_[2].value.as < std::vector<std::shared_ptr<AttributNode>> > ();
     }
-#line 2127 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2136 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 14:
-#line 244 "parser/parser.yy"
+#line 249 "parser/parser.yy"
                                            {
         yylhs.value.as < std::vector<std::shared_ptr<AttributNode>> > () = yystack_[1].value.as < std::vector<std::shared_ptr<AttributNode>> > ();
     }
-#line 2135 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2144 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 15:
-#line 250 "parser/parser.yy"
+#line 255 "parser/parser.yy"
                              {
         yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<ColorNode>(yystack_[0].value.as < CouleurPtr > ());
     }
-#line 2143 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2152 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 16:
-#line 256 "parser/parser.yy"
+#line 261 "parser/parser.yy"
                                   {
         yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<RemplissageNode>(yystack_[0].value.as < CouleurPtr > ());
     }
-#line 2151 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2160 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 17:
-#line 262 "parser/parser.yy"
+#line 267 "parser/parser.yy"
                                 {
         yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<RotationNode>(yystack_[1].value.as < ExpressionPtr > ());
     }
-#line 2159 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2168 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 18:
-#line 268 "parser/parser.yy"
-                          {
-        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<OpaciteNode>(yystack_[0].value.as < ExpressionPtr > ());
+#line 273 "parser/parser.yy"
+                              {
+        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<OpaciteNode>(yystack_[1].value.as < ExpressionPtr > ());
     }
-#line 2167 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2176 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 19:
-#line 274 "parser/parser.yy"
+#line 279 "parser/parser.yy"
                             {
         yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<EpaisseurNode>(yystack_[0].value.as < ExpressionPtr > ());
     }
-#line 2175 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2184 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 20:
-#line 279 "parser/parser.yy"
-               {
-        yylhs.value.as < CouleurPtr > () = std::make_shared<CouleurConstante>(yystack_[0].value.as < std::string > ());
+#line 285 "parser/parser.yy"
+                             {
+        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<PositionXNode>(yystack_[2].value.as < std::string > (),yystack_[0].value.as < ExpressionPtr > ());
     }
-#line 2183 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2192 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 21:
-#line 285 "parser/parser.yy"
-             {
-        yylhs.value.as < CouleurPtr > () = std::make_shared<CouleurVariable>(yystack_[0].value.as < std::string > ());
+#line 291 "parser/parser.yy"
+                             {
+        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<PositionYNode>(yystack_[2].value.as < std::string > (),yystack_[0].value.as < ExpressionPtr > ());
     }
-#line 2191 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2200 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 22:
-#line 291 "parser/parser.yy"
-                         { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[1].value.as < std::shared_ptr<CanevaNode> > (); }
-#line 2197 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 296 "parser/parser.yy"
+               {
+        yylhs.value.as < CouleurPtr > () = std::make_shared<CouleurConstante>(yystack_[0].value.as < std::string > ());
+    }
+#line 2208 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 23:
-#line 292 "parser/parser.yy"
-                      { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<FigureNode> > (); }
-#line 2203 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 302 "parser/parser.yy"
+             {
+        yylhs.value.as < CouleurPtr > () = std::make_shared<CouleurVariable>(yystack_[0].value.as < std::string > ());
+    }
+#line 2216 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 24:
-#line 293 "parser/parser.yy"
-                       { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<ModificationFigureNode> > (); }
-#line 2209 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 308 "parser/parser.yy"
+                         { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[1].value.as < std::shared_ptr<CanevaNode> > (); }
+#line 2222 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 25:
-#line 294 "parser/parser.yy"
-                              { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<DeclarationVariableSimple> > (); }
-#line 2215 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 309 "parser/parser.yy"
+                      { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<FigureNode> > (); }
+#line 2228 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 26:
-#line 295 "parser/parser.yy"
-                        { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<DeclarationVariable> > (); }
-#line 2221 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 310 "parser/parser.yy"
+                           { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[1].value.as < std::shared_ptr<ModificationFigureNode> > (); }
+#line 2234 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 27:
-#line 296 "parser/parser.yy"
-       { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<IfNode> > (); }
-#line 2227 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 311 "parser/parser.yy"
+                                  { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[1].value.as < std::shared_ptr<DeclarationVariableSimple> > (); }
+#line 2240 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 28:
-#line 297 "parser/parser.yy"
-                { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<AccesFigureNode> > (); }
-#line 2233 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 312 "parser/parser.yy"
+                        { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<DeclarationVariable> > (); }
+#line 2246 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 29:
-#line 298 "parser/parser.yy"
-              { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<ForLoopNode> > (); }
-#line 2239 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 313 "parser/parser.yy"
+       { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<IfNode> > (); }
+#line 2252 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 30:
-#line 299 "parser/parser.yy"
-                { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<WhileNode> > (); }
-#line 2245 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 314 "parser/parser.yy"
+                { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<AccesFigureNode> > (); }
+#line 2258 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 31:
-#line 300 "parser/parser.yy"
-                { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<AffectationSimpleVariableNode> > (); }
-#line 2251 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 315 "parser/parser.yy"
+              { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<ForLoopNode> > (); }
+#line 2264 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 32:
-#line 301 "parser/parser.yy"
-             { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<FonctionNode> > (); }
-#line 2257 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 316 "parser/parser.yy"
+                { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<WhileNode> > (); }
+#line 2270 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 33:
-#line 302 "parser/parser.yy"
-                      { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[1].value.as < std::shared_ptr<AppelFonctionNode> > (); }
-#line 2263 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 317 "parser/parser.yy"
+                    { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[1].value.as < std::shared_ptr<AffectationSimpleVariableNode> > (); }
+#line 2276 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 34:
-#line 305 "parser/parser.yy"
-    { yylhs.value.as < std::string > () = yystack_[0].value.as < std::string > (); }
-#line 2269 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 318 "parser/parser.yy"
+             { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[0].value.as < std::shared_ptr<FonctionNode> > (); }
+#line 2282 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 35:
-#line 305 "parser/parser.yy"
-                      {
-        yylhs.value.as < std::string > () = yystack_[0].value.as < std::string > ();
-    }
-#line 2277 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 319 "parser/parser.yy"
+                      { yylhs.value.as < std::shared_ptr<Noeud> > () = yystack_[1].value.as < std::shared_ptr<AppelFonctionNode> > (); }
+#line 2288 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 36:
-#line 310 "parser/parser.yy"
-         {
-        yylhs.value.as < bool > () = true;
-    }
-#line 2285 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 322 "parser/parser.yy"
+    { yylhs.value.as < std::string > () = yystack_[0].value.as < std::string > (); }
+#line 2294 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 37:
-#line 316 "parser/parser.yy"
-          {
-        yylhs.value.as < bool > () = false;
+#line 322 "parser/parser.yy"
+                      {
+        yylhs.value.as < std::string > () = yystack_[0].value.as < std::string > ();
     }
-#line 2293 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2302 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 38:
-#line 321 "parser/parser.yy"
-                                    {
-        yylhs.value.as < std::shared_ptr<DeclarationVariableSimple> > () = std::make_shared<DeclarationVariableInt>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < ExpressionPtr > ());
+#line 327 "parser/parser.yy"
+         {
+        yylhs.value.as < bool > () = true;
     }
-#line 2301 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2310 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 39:
-#line 327 "parser/parser.yy"
-                                     {
-        yylhs.value.as < std::shared_ptr<DeclarationVariableSimple> > () = std::make_shared<DeclarationVariableBool>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < bool > ());
+#line 333 "parser/parser.yy"
+          {
+        yylhs.value.as < bool > () = false;
     }
-#line 2309 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2318 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 40:
-#line 333 "parser/parser.yy"
+#line 338 "parser/parser.yy"
                                     {
-        yylhs.value.as < std::shared_ptr<DeclarationVariableSimple> > () = std::make_shared<DeclarationVariableString>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < std::string > ());
+        yylhs.value.as < std::shared_ptr<DeclarationVariableSimple> > () = std::make_shared<DeclarationVariableInt>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < ExpressionPtr > ());
     }
-#line 2317 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2326 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 41:
-#line 338 "parser/parser.yy"
-                               {
-        yylhs.value.as < std::shared_ptr<CanevaNode> > () = std::make_shared<CanevaNode>(yystack_[1].value.as < ExpressionPtr > (), yystack_[0].value.as < ExpressionPtr > ());
+#line 344 "parser/parser.yy"
+                                      {
+        yylhs.value.as < std::shared_ptr<DeclarationVariableSimple> > () = std::make_shared<DeclarationVariableInt>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < ExpressionPtr > ());
     }
-#line 2325 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2334 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 42:
-#line 344 "parser/parser.yy"
-       {
- yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<CarreNode> > ();
- }
-#line 2333 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 350 "parser/parser.yy"
+                                     {
+        yylhs.value.as < std::shared_ptr<DeclarationVariableSimple> > () = std::make_shared<DeclarationVariableBool>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < bool > ());
+    }
+#line 2342 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 43:
-#line 347 "parser/parser.yy"
-             {
- yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<RectangleNode> > ();
- }
-#line 2341 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 356 "parser/parser.yy"
+                                    {
+        yylhs.value.as < std::shared_ptr<DeclarationVariableSimple> > () = std::make_shared<DeclarationVariableString>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < std::string > ());
+    }
+#line 2350 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 44:
-#line 350 "parser/parser.yy"
-            {
- yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<TriangleNode> > ();
- }
-#line 2349 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 361 "parser/parser.yy"
+                               {
+        yylhs.value.as < std::shared_ptr<CanevaNode> > () = std::make_shared<CanevaNode>(yystack_[1].value.as < ExpressionPtr > (), yystack_[0].value.as < ExpressionPtr > ());
+    }
+#line 2358 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 45:
-#line 354 "parser/parser.yy"
-          {
- yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<CercleNode> > ();
+#line 367 "parser/parser.yy"
+       {
+ yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<CarreNode> > ();
  }
-#line 2357 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2366 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 46:
-#line 358 "parser/parser.yy"
+#line 371 "parser/parser.yy"
            {
- yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<EllipseNode> > ();
+ yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<RectangleNode> > ();
  }
-#line 2365 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2374 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 47:
-#line 362 "parser/parser.yy"
+#line 375 "parser/parser.yy"
           {
- yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<CheminNode> > ();
+ yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<TriangleNode> > ();
  }
-#line 2373 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2382 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 48:
-#line 366 "parser/parser.yy"
-         {
- yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<LigneNode> > ();
+#line 380 "parser/parser.yy"
+        {
+ yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<CercleNode> > ();
  }
-#line 2381 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2390 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 49:
-#line 370 "parser/parser.yy"
+#line 385 "parser/parser.yy"
          {
- yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<TexteNode> > ();
+ yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<EllipseNode> > ();
  }
-#line 2389 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2398 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 50:
-#line 378 "parser/parser.yy"
+#line 390 "parser/parser.yy"
+        {
+ yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<CheminNode> > ();
+ }
+#line 2406 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 51:
+#line 395 "parser/parser.yy"
+       {
+ yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<LigneNode> > ();
+ }
+#line 2414 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 52:
+#line 400 "parser/parser.yy"
+       {
+ yylhs.value.as < std::shared_ptr<FigureNode> > () = yystack_[0].value.as < std::shared_ptr<TexteNode> > ();
+ }
+#line 2422 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 53:
+#line 408 "parser/parser.yy"
                                                {
     std::shared_ptr<CarreNode> carre = std::make_shared<CarreNode>(yystack_[3].value.as < ExpressionPtr > (), yystack_[2].value.as < ExpressionPtr > (), yystack_[1].value.as < ExpressionPtr > ());
     carre->setAttributs(yystack_[0].value.as < std::vector<std::shared_ptr<AttributNode>> > ());
     yylhs.value.as < std::shared_ptr<CarreNode> > () = carre;
  }
-#line 2399 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2432 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 51:
-#line 385 "parser/parser.yy"
+  case 54:
+#line 415 "parser/parser.yy"
                                                                                                      {
     std::shared_ptr<RectangleNode> rectangle = std::make_shared<RectangleNode>(yystack_[8].value.as < ExpressionPtr > (), yystack_[7].value.as < ExpressionPtr > (), yystack_[6].value.as < ExpressionPtr > (),yystack_[5].value.as < ExpressionPtr > (),yystack_[4].value.as < ExpressionPtr > (),yystack_[3].value.as < ExpressionPtr > (),yystack_[2].value.as < ExpressionPtr > (),yystack_[1].value.as < ExpressionPtr > ());
     rectangle->setAttributs(yystack_[0].value.as < std::vector<std::shared_ptr<AttributNode>> > ());
     yylhs.value.as < std::shared_ptr<RectangleNode> > () = rectangle;
  }
-#line 2409 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2442 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 52:
-#line 393 "parser/parser.yy"
+  case 55:
+#line 423 "parser/parser.yy"
                                                             {
     std::shared_ptr<TriangleNode> triangle = std::make_shared<TriangleNode>(yystack_[4].value.as < ExpressionPtr > (), yystack_[3].value.as < ExpressionPtr > (), yystack_[2].value.as < ExpressionPtr > (),yystack_[1].value.as < ExpressionPtr > ());
     triangle->setAttributs(yystack_[0].value.as < std::vector<std::shared_ptr<AttributNode>> > ());
     yylhs.value.as < std::shared_ptr<TriangleNode> > () = triangle;
  }
-#line 2419 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2452 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 53:
-#line 401 "parser/parser.yy"
+  case 56:
+#line 431 "parser/parser.yy"
                                                 {
     std::shared_ptr<CercleNode> cercle = std::make_shared<CercleNode>(yystack_[3].value.as < ExpressionPtr > (), yystack_[2].value.as < ExpressionPtr > (), yystack_[1].value.as < ExpressionPtr > ());
     cercle->setAttributs(yystack_[0].value.as < std::vector<std::shared_ptr<AttributNode>> > ());
     yylhs.value.as < std::shared_ptr<CercleNode> > () = cercle;
  }
-#line 2429 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2462 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 54:
-#line 409 "parser/parser.yy"
+  case 57:
+#line 439 "parser/parser.yy"
                                                           {
     std::shared_ptr<EllipseNode> ellipse = std::make_shared<EllipseNode>(yystack_[4].value.as < ExpressionPtr > (), yystack_[3].value.as < ExpressionPtr > (), yystack_[2].value.as < ExpressionPtr > (),yystack_[1].value.as < ExpressionPtr > ());
     ellipse->setAttributs(yystack_[0].value.as < std::vector<std::shared_ptr<AttributNode>> > ());
     yylhs.value.as < std::shared_ptr<EllipseNode> > () = ellipse;
  }
-#line 2439 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2472 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 55:
-#line 417 "parser/parser.yy"
+  case 58:
+#line 447 "parser/parser.yy"
                                                         {
     std::shared_ptr<LigneNode> ligne = std::make_shared<LigneNode>(yystack_[4].value.as < ExpressionPtr > (), yystack_[3].value.as < ExpressionPtr > (), yystack_[2].value.as < ExpressionPtr > (),yystack_[1].value.as < ExpressionPtr > ());
     ligne->setAttributs(yystack_[0].value.as < std::vector<std::shared_ptr<AttributNode>> > ());
     yylhs.value.as < std::shared_ptr<LigneNode> > () = ligne;
  }
-#line 2449 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2482 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 56:
-#line 425 "parser/parser.yy"
+  case 59:
+#line 455 "parser/parser.yy"
                          {
-    std::shared_ptr<CheminNode> chemin = std::make_shared<CheminNode>(yystack_[1].value.as < std::vector<Position> > ());
+    std::shared_ptr<CheminNode> chemin = std::make_shared<CheminNode>(yystack_[1].value.as < std::vector<std::shared_ptr<PositionNode>> > ());
     chemin->setAttributs(yystack_[0].value.as < std::vector<std::shared_ptr<AttributNode>> > ());
     yylhs.value.as < std::shared_ptr<CheminNode> > () = chemin;
  }
-#line 2459 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2492 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 57:
-#line 433 "parser/parser.yy"
+  case 60:
+#line 463 "parser/parser.yy"
                                                   {
     std::shared_ptr<TexteNode> texte = std::make_shared<TexteNode>(yystack_[4].value.as < ExpressionPtr > (), yystack_[3].value.as < ExpressionPtr > (), yystack_[2].value.as < std::string > (),yystack_[1].value.as < std::string > ());
     texte->setAttributs(yystack_[0].value.as < std::vector<std::shared_ptr<AttributNode>> > ());
     yylhs.value.as < std::shared_ptr<TexteNode> > () = texte;
  }
-#line 2469 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
-    break;
-
-  case 58:
-#line 440 "parser/parser.yy"
-                             {
-        yylhs.value.as < std::shared_ptr<AccesFigureNode> > () = std::make_shared<AccesIndexNode>(FigureTypes::carre, yystack_[2].value.as < int > ());
-    }
-#line 2477 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
-    break;
-
-  case 59:
-#line 446 "parser/parser.yy"
-                                {
-        yylhs.value.as < std::shared_ptr<AccesFigureNode> > () = std::make_shared<AccesIndexNode>(FigureTypes::triangle, yystack_[2].value.as < int > ());
-    }
-#line 2485 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
-    break;
-
-  case 60:
-#line 452 "parser/parser.yy"
-                 {
-        yylhs.value.as < std::shared_ptr<AccesFigureNode> > () = std::make_shared<AccesVariableNode>(yystack_[1].value.as < std::string > ());
-    }
-#line 2493 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2502 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 61:
-#line 457 "parser/parser.yy"
+#line 470 "parser/parser.yy"
                              {
-        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<ColorNode>(yystack_[0].value.as < CouleurPtr > ());
+        yylhs.value.as < std::shared_ptr<AccesFigureNode> > () = std::make_shared<AccesIndexNode>(FigureTypes::carre, yystack_[2].value.as < int > ());
     }
-#line 2501 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2510 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 62:
-#line 463 "parser/parser.yy"
-                                  {
-        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<RemplissageNode>(yystack_[0].value.as < CouleurPtr > ());
+#line 475 "parser/parser.yy"
+                                 {
+        yylhs.value.as < std::shared_ptr<AccesFigureNode> > () = std::make_shared<AccesIndexNode>(FigureTypes::rectangle, yystack_[2].value.as < int > ());
     }
-#line 2509 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2518 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 63:
-#line 469 "parser/parser.yy"
+#line 480 "parser/parser.yy"
                                 {
-        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<RotationNode>(yystack_[1].value.as < ExpressionPtr > ());
+        yylhs.value.as < std::shared_ptr<AccesFigureNode> > () = std::make_shared<AccesIndexNode>(FigureTypes::triangle, yystack_[2].value.as < int > ());
     }
-#line 2517 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2526 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 64:
-#line 475 "parser/parser.yy"
+#line 485 "parser/parser.yy"
                               {
-        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<OpaciteNode>(yystack_[1].value.as < ExpressionPtr > ());
+        yylhs.value.as < std::shared_ptr<AccesFigureNode> > () = std::make_shared<AccesIndexNode>(FigureTypes::cercle, yystack_[2].value.as < int > ());
     }
-#line 2525 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2534 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 65:
-#line 481 "parser/parser.yy"
-                            {
-        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<EpaisseurNode>(yystack_[0].value.as < ExpressionPtr > ());
+#line 490 "parser/parser.yy"
+                               {
+        yylhs.value.as < std::shared_ptr<AccesFigureNode> > () = std::make_shared<AccesIndexNode>(FigureTypes::ellipse, yystack_[2].value.as < int > ());
     }
-#line 2533 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2542 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 66:
-#line 487 "parser/parser.yy"
-           {
-        yylhs.value.as < TailleType > () = TailleType::taille;
+#line 495 "parser/parser.yy"
+                             {
+        yylhs.value.as < std::shared_ptr<AccesFigureNode> > () = std::make_shared<AccesIndexNode>(FigureTypes::ligne, yystack_[2].value.as < int > ());
     }
-#line 2541 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2550 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 67:
-#line 491 "parser/parser.yy"
-            {
-        yylhs.value.as < TailleType > () = TailleType::hauteur;
+#line 500 "parser/parser.yy"
+                              {
+        yylhs.value.as < std::shared_ptr<AccesFigureNode> > () = std::make_shared<AccesIndexNode>(FigureTypes::chemin, yystack_[2].value.as < int > ());
     }
-#line 2549 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2558 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 68:
-#line 495 "parser/parser.yy"
-            {
-        yylhs.value.as < TailleType > () = TailleType::largeur;
+#line 505 "parser/parser.yy"
+                             {
+        yylhs.value.as < std::shared_ptr<AccesFigureNode> > () = std::make_shared<AccesIndexNode>(FigureTypes::texte, yystack_[2].value.as < int > ());
     }
-#line 2557 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2566 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 69:
-#line 501 "parser/parser.yy"
-                           {
-        yylhs.value.as < std::shared_ptr<ModificationFigureNode> > () = std::make_shared<ModificationAttributsNode>(yystack_[1].value.as < std::shared_ptr<AccesFigureNode> > (), yystack_[0].value.as < std::shared_ptr<AttributNode> > ());
+#line 511 "parser/parser.yy"
+                 {
+        yylhs.value.as < std::shared_ptr<AccesFigureNode> > () = std::make_shared<AccesVariableNode>(yystack_[1].value.as < std::string > ());
     }
-#line 2565 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2574 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 70:
-#line 507 "parser/parser.yy"
-                                        {
-        yylhs.value.as < std::shared_ptr<ModificationFigureNode> > () = std::make_shared<ModificationTailleFigureNode>(yystack_[3].value.as < std::shared_ptr<AccesFigureNode> > (), yystack_[2].value.as < TailleType > (), yystack_[0].value.as < ExpressionPtr > ());
+#line 516 "parser/parser.yy"
+                             {
+        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<ColorNode>(yystack_[0].value.as < CouleurPtr > ());
     }
-#line 2573 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2582 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 71:
-#line 513 "parser/parser.yy"
-                                   {
-        yylhs.value.as < std::shared_ptr<DeclarationVariable> > () = std::make_shared<DeclarationVariable>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < std::shared_ptr<FigureNode> > ());
+#line 522 "parser/parser.yy"
+                                  {
+        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<RemplissageNode>(yystack_[0].value.as < CouleurPtr > ());
     }
-#line 2581 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2590 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 72:
-#line 518 "parser/parser.yy"
-          { yylhs.value.as < operators > () = operators::equal; }
-#line 2587 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 528 "parser/parser.yy"
+                                {
+        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<RotationNode>(yystack_[1].value.as < ExpressionPtr > ());
+    }
+#line 2598 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 73:
-#line 519 "parser/parser.yy"
-             { yylhs.value.as < operators > () = operators::not_equal; }
-#line 2593 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 534 "parser/parser.yy"
+                              {
+        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<OpaciteNode>(yystack_[1].value.as < ExpressionPtr > ());
+    }
+#line 2606 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 74:
-#line 520 "parser/parser.yy"
-              { yylhs.value.as < operators > () = operators::less_equal; }
-#line 2599 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 540 "parser/parser.yy"
+                            {
+        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<EpaisseurNode>(yystack_[0].value.as < ExpressionPtr > ());
+    }
+#line 2614 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 75:
-#line 521 "parser/parser.yy"
-                 { yylhs.value.as < operators > () = operators::greater_equal; }
-#line 2605 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 546 "parser/parser.yy"
+                             {
+        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<PositionXNode>(yystack_[2].value.as < std::string > (),yystack_[0].value.as < ExpressionPtr > ());
+    }
+#line 2622 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 76:
-#line 522 "parser/parser.yy"
-         { yylhs.value.as < operators > () = operators::less; }
-#line 2611 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 552 "parser/parser.yy"
+                             {
+        yylhs.value.as < std::shared_ptr<AttributNode> > () = std::make_shared<PositionYNode>(yystack_[2].value.as < std::string > (),yystack_[0].value.as < ExpressionPtr > ());
+    }
+#line 2630 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 77:
-#line 523 "parser/parser.yy"
-            { yylhs.value.as < operators > () = operators::greater; }
-#line 2617 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 558 "parser/parser.yy"
+           {
+        yylhs.value.as < TailleType > () = TailleType::taille;
+    }
+#line 2638 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 78:
-#line 526 "parser/parser.yy"
-                { yylhs.value.as < string_operators > () = string_operators::equal; }
-#line 2623 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 562 "parser/parser.yy"
+            {
+        yylhs.value.as < TailleType > () = TailleType::hauteur;
+    }
+#line 2646 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 79:
-#line 527 "parser/parser.yy"
-                   { yylhs.value.as < string_operators > () = string_operators::not_equal; }
-#line 2629 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 566 "parser/parser.yy"
+            {
+        yylhs.value.as < TailleType > () = TailleType::largeur;
+    }
+#line 2654 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 80:
-#line 531 "parser/parser.yy"
-                                                     {
-        yylhs.value.as < std::shared_ptr<ConditionNode> > () = std::make_shared<TailleConditionNode>(yystack_[3].value.as < std::shared_ptr<AccesFigureNode> > (), yystack_[1].value.as < operators > (), yystack_[0].value.as < ExpressionPtr > (), yystack_[2].value.as < TailleType > ());
+#line 572 "parser/parser.yy"
+                           {
+        yylhs.value.as < std::shared_ptr<ModificationFigureNode> > () = std::make_shared<ModificationAttributsNode>(yystack_[1].value.as < std::shared_ptr<AccesFigureNode> > (), yystack_[0].value.as < std::shared_ptr<AttributNode> > ());
     }
-#line 2637 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2662 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 81:
-#line 537 "parser/parser.yy"
-             {
-        yylhs.value.as < std::shared_ptr<ConditionNode> > () = std::make_shared<BooleanVariableConditionNode>(yystack_[0].value.as < std::string > ());
-    }
-#line 2645 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
-    break;
-
-  case 82:
-#line 543 "parser/parser.yy"
-                                                      {
-        yylhs.value.as < std::shared_ptr<ConditionNode> > () = std::make_shared<CouleurConditionNode>(yystack_[3].value.as < std::shared_ptr<AccesFigureNode> > (), yystack_[1].value.as < string_operators > (), yystack_[0].value.as < CouleurPtr > ());
-    }
-#line 2653 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
-    break;
-
-  case 83:
-#line 549 "parser/parser.yy"
-              {
-        yylhs.value.as < std::vector<std::shared_ptr<ConditionNode>> > ().push_back(yystack_[0].value.as < std::shared_ptr<ConditionNode> > ());
-    }
-#line 2661 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
-    break;
-
-  case 84:
-#line 555 "parser/parser.yy"
-                                             {
-        yystack_[5].value.as < std::vector<std::shared_ptr<ConditionNode>> > ().push_back(yystack_[1].value.as < std::shared_ptr<ConditionNode> > ());
-        yylhs.value.as < std::vector<std::shared_ptr<ConditionNode>> > () = yystack_[5].value.as < std::vector<std::shared_ptr<ConditionNode>> > ();
+#line 578 "parser/parser.yy"
+                                        {
+        yylhs.value.as < std::shared_ptr<ModificationFigureNode> > () = std::make_shared<ModificationTailleFigureNode>(yystack_[3].value.as < std::shared_ptr<AccesFigureNode> > (), yystack_[2].value.as < TailleType > (), yystack_[0].value.as < ExpressionPtr > ());
     }
 #line 2670 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 85:
-#line 561 "parser/parser.yy"
-                                                                {
-        yylhs.value.as < std::shared_ptr<IfNode> > () = std::make_shared<IfNode>(yystack_[3].value.as < std::vector<std::shared_ptr<Noeud>> > (), yystack_[0].value.as < std::vector<std::shared_ptr<Noeud>> > (), yystack_[8].value.as < std::vector<std::shared_ptr<ConditionNode>> > ());
+  case 82:
+#line 584 "parser/parser.yy"
+                                   {
+        yylhs.value.as < std::shared_ptr<DeclarationVariable> > () = std::make_shared<DeclarationVariable>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < std::shared_ptr<FigureNode> > ());
     }
 #line 2678 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
+  case 83:
+#line 589 "parser/parser.yy"
+          { yylhs.value.as < operators > () = operators::equal; }
+#line 2684 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 84:
+#line 590 "parser/parser.yy"
+             { yylhs.value.as < operators > () = operators::not_equal; }
+#line 2690 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 85:
+#line 591 "parser/parser.yy"
+              { yylhs.value.as < operators > () = operators::less_equal; }
+#line 2696 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
   case 86:
-#line 566 "parser/parser.yy"
-    {   
-    }
-#line 2685 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 592 "parser/parser.yy"
+                 { yylhs.value.as < operators > () = operators::greater_equal; }
+#line 2702 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 87:
-#line 571 "parser/parser.yy"
-                                  {
-        yylhs.value.as < std::vector<std::shared_ptr<Noeud>> > () = yystack_[1].value.as < std::vector<std::shared_ptr<Noeud>> > ();
-    }
-#line 2693 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 593 "parser/parser.yy"
+         { yylhs.value.as < operators > () = operators::less; }
+#line 2708 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 88:
-#line 577 "parser/parser.yy"
-                                                  {
-        yylhs.value.as < std::shared_ptr<ForLoopNode> > () = std::make_shared<ForLoopNode>(yystack_[1].value.as < std::vector<std::shared_ptr<Noeud>> > (), yystack_[5].value.as < ExpressionPtr > ());
-    }
-#line 2701 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 594 "parser/parser.yy"
+            { yylhs.value.as < operators > () = operators::greater; }
+#line 2714 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 89:
-#line 582 "parser/parser.yy"
-                                                     {
-        yylhs.value.as < std::shared_ptr<WhileNode> > () = std::make_shared<WhileNode>(yystack_[1].value.as < std::vector<std::shared_ptr<Noeud>> > (), yystack_[5].value.as < std::vector<std::shared_ptr<ConditionNode>> > ());
-    }
-#line 2709 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 597 "parser/parser.yy"
+                { yylhs.value.as < string_operators > () = string_operators::equal; }
+#line 2720 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 90:
-#line 588 "parser/parser.yy"
-                           { 
-        yylhs.value.as < std::shared_ptr<AffectationSimpleVariableNode> > () = std::make_shared<AffectationDoubleVariableNode>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < ExpressionPtr > ());
-    }
-#line 2717 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 598 "parser/parser.yy"
+                   { yylhs.value.as < string_operators > () = string_operators::not_equal; }
+#line 2726 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 91:
-#line 594 "parser/parser.yy"
-                           {
-        yylhs.value.as < std::shared_ptr<AffectationSimpleVariableNode> > () = std::make_shared<AffectationBoolVariableNode>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < bool > ());
+#line 601 "parser/parser.yy"
+              {
+        yylhs.value.as < std::string > () = yystack_[0].value.as < std::string > ();
     }
-#line 2725 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2734 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 92:
-#line 600 "parser/parser.yy"
-                            {
-        yylhs.value.as < std::shared_ptr<AffectationSimpleVariableNode> > () = std::make_shared<AffectationCouleurVariableNode>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < std::string > ());
+#line 607 "parser/parser.yy"
+              {
+        yylhs.value.as < std::string > () = yystack_[0].value.as < std::string > ();
     }
-#line 2733 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2742 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 93:
-#line 605 "parser/parser.yy"
-    {
+#line 612 "parser/parser.yy"
+                                                     {
+        yylhs.value.as < std::shared_ptr<ConditionNode> > () = std::make_shared<TailleConditionNode>(yystack_[3].value.as < std::shared_ptr<AccesFigureNode> > (), yystack_[1].value.as < operators > (), yystack_[0].value.as < ExpressionPtr > (), yystack_[2].value.as < TailleType > ());
     }
-#line 2740 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2750 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
   case 94:
-#line 610 "parser/parser.yy"
+#line 618 "parser/parser.yy"
+                                                         {
+        yylhs.value.as < std::shared_ptr<ConditionNode> > () = std::make_shared<PositionConditionNode>(yystack_[3].value.as < std::shared_ptr<AccesFigureNode> > (),yystack_[2].value.as < std::string > (), yystack_[1].value.as < operators > (), yystack_[0].value.as < ExpressionPtr > ());
+    }
+#line 2758 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 95:
+#line 624 "parser/parser.yy"
+                                         {
+        yylhs.value.as < std::shared_ptr<ConditionNode> > () = std::make_shared<NumberConditionNode>(yystack_[2].value.as < ExpressionPtr > (), yystack_[1].value.as < operators > (), yystack_[0].value.as < ExpressionPtr > ());
+    }
+#line 2766 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 96:
+#line 630 "parser/parser.yy"
+             {
+        yylhs.value.as < std::shared_ptr<ConditionNode> > () = std::make_shared<BooleanVariableConditionNode>(yystack_[0].value.as < std::string > ());
+    }
+#line 2774 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 97:
+#line 636 "parser/parser.yy"
+                                                      {
+        yylhs.value.as < std::shared_ptr<ConditionNode> > () = std::make_shared<CouleurConditionNode>(yystack_[3].value.as < std::shared_ptr<AccesFigureNode> > (), yystack_[1].value.as < string_operators > (), yystack_[0].value.as < CouleurPtr > ());
+    }
+#line 2782 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 98:
+#line 642 "parser/parser.yy"
+              {
+        yylhs.value.as < std::vector<std::shared_ptr<ConditionNode>> > ().push_back(yystack_[0].value.as < std::shared_ptr<ConditionNode> > ());
+    }
+#line 2790 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 99:
+#line 648 "parser/parser.yy"
+                                             {
+        yystack_[5].value.as < std::vector<std::shared_ptr<ConditionNode>> > ().push_back(yystack_[1].value.as < std::shared_ptr<ConditionNode> > ());
+        yylhs.value.as < std::vector<std::shared_ptr<ConditionNode>> > () = yystack_[5].value.as < std::vector<std::shared_ptr<ConditionNode>> > ();
+    }
+#line 2799 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 100:
+#line 654 "parser/parser.yy"
+                                                                {
+        yylhs.value.as < std::shared_ptr<IfNode> > () = std::make_shared<IfNode>(yystack_[3].value.as < std::vector<std::shared_ptr<Noeud>> > (), yystack_[0].value.as < std::vector<std::shared_ptr<Noeud>> > (), yystack_[8].value.as < std::vector<std::shared_ptr<ConditionNode>> > ());
+    }
+#line 2807 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 101:
+#line 659 "parser/parser.yy"
+    {
+
+    }
+#line 2815 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 102:
+#line 665 "parser/parser.yy"
+                                  {
+        yylhs.value.as < std::vector<std::shared_ptr<Noeud>> > () = yystack_[1].value.as < std::vector<std::shared_ptr<Noeud>> > ();
+    }
+#line 2823 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 103:
+#line 671 "parser/parser.yy"
+                                                  {
+        yylhs.value.as < std::shared_ptr<ForLoopNode> > () = std::make_shared<ForLoopNode>(yystack_[1].value.as < std::vector<std::shared_ptr<Noeud>> > (), yystack_[5].value.as < ExpressionPtr > ());
+    }
+#line 2831 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 104:
+#line 676 "parser/parser.yy"
+                                                     {
+        yylhs.value.as < std::shared_ptr<WhileNode> > () = std::make_shared<WhileNode>(yystack_[1].value.as < std::vector<std::shared_ptr<Noeud>> > (), yystack_[5].value.as < std::vector<std::shared_ptr<ConditionNode>> > ());
+    }
+#line 2839 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 105:
+#line 682 "parser/parser.yy"
+                           { 
+        yylhs.value.as < std::shared_ptr<AffectationSimpleVariableNode> > () = std::make_shared<AffectationDoubleVariableNode>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < ExpressionPtr > ());
+    }
+#line 2847 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 106:
+#line 688 "parser/parser.yy"
+                           {
+        yylhs.value.as < std::shared_ptr<AffectationSimpleVariableNode> > () = std::make_shared<AffectationBoolVariableNode>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < bool > ());
+    }
+#line 2855 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 107:
+#line 694 "parser/parser.yy"
+                            {
+        yylhs.value.as < std::shared_ptr<AffectationSimpleVariableNode> > () = std::make_shared<AffectationCouleurVariableNode>(yystack_[2].value.as < std::string > (), yystack_[0].value.as < std::string > ());
+    }
+#line 2863 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 108:
+#line 699 "parser/parser.yy"
+    {
+    }
+#line 2870 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+    break;
+
+  case 109:
+#line 704 "parser/parser.yy"
                        {
         yystack_[0].value.as < std::vector<std::string> > ().push_back(yystack_[1].value.as < std::string > ());
         yylhs.value.as < std::vector<std::string> > () = yystack_[0].value.as < std::vector<std::string> > ();
     }
-#line 2749 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2879 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 95:
-#line 616 "parser/parser.yy"
+  case 110:
+#line 710 "parser/parser.yy"
     {
     }
-#line 2756 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2886 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 96:
-#line 621 "parser/parser.yy"
+  case 111:
+#line 715 "parser/parser.yy"
                               {
         yystack_[0].value.as < std::vector<ExpressionPtr> > ().push_back(yystack_[1].value.as < ExpressionPtr > ());
         yylhs.value.as < std::vector<ExpressionPtr> > () = yystack_[0].value.as < std::vector<ExpressionPtr> > ();
     }
-#line 2765 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2895 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 97:
-#line 628 "parser/parser.yy"
+  case 112:
+#line 722 "parser/parser.yy"
                                                                 {
         yylhs.value.as < std::shared_ptr<FonctionNode> > () = std::make_shared<FonctionNode>(yystack_[1].value.as < std::vector<std::shared_ptr<Noeud>> > (), yystack_[7].value.as < std::string > (), yystack_[5].value.as < std::vector<std::string> > ());
     }
-#line 2773 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2903 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 98:
-#line 633 "parser/parser.yy"
+  case 113:
+#line 727 "parser/parser.yy"
                              {
         yylhs.value.as < std::shared_ptr<AppelFonctionNode> > () = std::make_shared<AppelFonctionNode>(yystack_[1].value.as < std::string > (), yystack_[0].value.as < std::vector<ExpressionPtr> > ());
     }
-#line 2781 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2911 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 99:
-#line 639 "parser/parser.yy"
+  case 114:
+#line 733 "parser/parser.yy"
            {
         yylhs.value.as < ExpressionPtr > () = std::make_shared<Constante>(yystack_[0].value.as < int > ());
     }
-#line 2789 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2919 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 100:
-#line 643 "parser/parser.yy"
+  case 115:
+#line 737 "parser/parser.yy"
                {
         yylhs.value.as < ExpressionPtr > () = std::make_shared<Variable>(yystack_[0].value.as < std::string > ());
     }
-#line 2797 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2927 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 101:
-#line 646 "parser/parser.yy"
+  case 116:
+#line 740 "parser/parser.yy"
                         {
         yylhs.value.as < ExpressionPtr > () = yystack_[1].value.as < ExpressionPtr > ();
     }
-#line 2805 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2935 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 102:
-#line 649 "parser/parser.yy"
+  case 117:
+#line 743 "parser/parser.yy"
                               {
         yylhs.value.as < ExpressionPtr > () = std::make_shared<ExpressionBinaire>(yystack_[2].value.as < ExpressionPtr > (),yystack_[0].value.as < ExpressionPtr > (),OperateurBinaire::plus);
     }
-#line 2813 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2943 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 103:
-#line 652 "parser/parser.yy"
+  case 118:
+#line 746 "parser/parser.yy"
                               {
         yylhs.value.as < ExpressionPtr > () = std::make_shared<ExpressionBinaire>(yystack_[2].value.as < ExpressionPtr > (),yystack_[0].value.as < ExpressionPtr > (),OperateurBinaire::moins);
     }
-#line 2821 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2951 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 104:
-#line 655 "parser/parser.yy"
+  case 119:
+#line 749 "parser/parser.yy"
                               {
         yylhs.value.as < ExpressionPtr > () = std::make_shared<ExpressionBinaire>(yystack_[2].value.as < ExpressionPtr > (),yystack_[0].value.as < ExpressionPtr > (),OperateurBinaire::multiplie);
     }
-#line 2829 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2959 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 105:
-#line 658 "parser/parser.yy"
+  case 120:
+#line 752 "parser/parser.yy"
                               {
         yylhs.value.as < ExpressionPtr > () = std::make_shared<ExpressionBinaire>(yystack_[2].value.as < ExpressionPtr > (),yystack_[0].value.as < ExpressionPtr > (),OperateurBinaire::divise);
     }
-#line 2837 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2967 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 106:
-#line 661 "parser/parser.yy"
+  case 121:
+#line 755 "parser/parser.yy"
                               {
         yylhs.value.as < ExpressionPtr > () = std::make_shared<ExpressionUnaire>(yystack_[0].value.as < ExpressionPtr > (),OperateurUnaire::neg);
     }
-#line 2845 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2975 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 107:
-#line 666 "parser/parser.yy"
+  case 122:
+#line 760 "parser/parser.yy"
                         {
-        yylhs.value.as < std::vector<Position> > ().push_back(Position(yystack_[1].value.as < ExpressionPtr > (),yystack_[0].value.as < ExpressionPtr > ()));
+        yylhs.value.as < std::vector<std::shared_ptr<PositionNode>> > ().push_back(std::make_shared<PositionNode>(yystack_[1].value.as < ExpressionPtr > (),yystack_[0].value.as < ExpressionPtr > ()));
     }
-#line 2853 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2983 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
-  case 108:
-#line 669 "parser/parser.yy"
-                                  {
-        yystack_[2].value.as < std::vector<Position> > ().push_back(Position(yystack_[1].value.as < ExpressionPtr > (),yystack_[0].value.as < ExpressionPtr > ()));
-        for(auto i : yystack_[2].value.as < std::vector<Position> > ()) {
-            yylhs.value.as < std::vector<Position> > ().push_back(i);
+  case 123:
+#line 763 "parser/parser.yy"
+                                      {
+        yystack_[3].value.as < std::vector<std::shared_ptr<PositionNode>> > ().push_back(std::make_shared<PositionNode>(yystack_[1].value.as < ExpressionPtr > (),yystack_[0].value.as < ExpressionPtr > ()));
+        for(auto i : yystack_[3].value.as < std::vector<std::shared_ptr<PositionNode>> > ()) {
+            yylhs.value.as < std::vector<std::shared_ptr<PositionNode>> > ().push_back(i);
         }
     }
-#line 2864 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2994 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
     break;
 
 
-#line 2868 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 2998 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
 
             default:
               break;
@@ -3045,246 +3175,301 @@ namespace yy {
   }
 
 
-  const short  Parser ::yypact_ninf_ = -195;
+  const short  Parser ::yypact_ninf_ = -269;
 
-  const signed char  Parser ::yytable_ninf_ = -107;
+  const signed char  Parser ::yytable_ninf_ = -122;
 
   const short
    Parser ::yypact_[] =
   {
-     289,  -195,     4,     4,  -195,     4,   -41,     4,    93,   -35,
-      93,    93,    21,   116,    93,    93,    93,    93,    93,    38,
-    -195,    64,  -195,    31,  -195,    13,  -195,  -195,  -195,  -195,
-    -195,  -195,  -195,  -195,  -195,   341,  -195,  -195,  -195,  -195,
-    -195,  -195,  -195,    16,  -195,    29,    43,    45,    82,    52,
-    -195,    93,    93,  -195,    49,    82,     8,     8,   106,     8,
-     115,     8,     8,     8,     8,     8,    27,     8,  -195,   289,
-     237,  -195,  -195,     8,  -195,    68,    72,    78,    79,    86,
-    -195,  -195,  -195,  -195,    91,  -195,    93,    20,   109,    81,
-      92,    82,   104,   177,  -195,    90,     4,  -195,   -30,   112,
-      93,    93,    93,    93,   107,    93,   296,     8,   110,     8,
-     114,     8,     8,     8,     8,   296,   301,  -195,   178,  -195,
-       8,   136,  -195,  -195,  -195,  -195,    93,    93,  -195,  -195,
-     296,  -195,     3,    93,     3,    93,    93,    93,   296,  -195,
-    -195,   113,   -18,   238,   156,     4,   119,  -195,   180,   -19,
-     -19,  -195,  -195,   133,    73,     8,   129,    84,   132,     8,
-      84,     8,     8,   137,   138,   143,   149,   157,    24,  -195,
-     301,   296,   218,  -195,  -195,  -195,   169,  -195,   330,   296,
-     296,   183,  -195,  -195,     3,  -195,  -195,  -195,  -195,  -195,
-    -195,    93,   179,  -195,   188,   329,   235,     8,  -195,  -195,
-    -195,    84,  -195,    84,    84,     3,    93,     3,    93,    93,
-     301,  -195,     9,   190,    -1,  -195,  -195,   182,  -195,   296,
-     247,   248,   193,   252,   329,     8,  -195,  -195,  -195,  -195,
-     176,  -195,   296,   296,  -195,   197,   254,  -195,  -195,   134,
-     329,   329,  -195,   329,   200,     8,  -195,  -195,   301,   195,
-     204,   205,  -195,  -195,     8,  -195,  -195,   263,  -195,    84,
-     249,  -195,   217,  -195,   273,   329,   226,  -195
+     407,  -269,    12,    12,    12,  -269,    12,   -57,    12,    22,
+     -36,    22,   137,   211,   263,   294,   296,   327,   329,   331,
+      21,  -269,    20,  -269,   210,   -24,    -7,  -269,  -269,  -269,
+    -269,  -269,  -269,  -269,  -269,  -269,   484,    -5,  -269,  -269,
+    -269,  -269,    -3,  -269,     6,  -269,    -4,     4,    30,    34,
+      76,     2,  -269,    22,    22,  -269,   125,    76,   191,    95,
+     191,    97,   191,   101,   191,   107,   191,   108,   191,   109,
+     191,   111,   191,    75,   121,   191,  -269,   407,   276,  -269,
+    -269,   191,  -269,  -269,    63,    67,    69,    77,    79,    82,
+      84,  -269,  -269,  -269,  -269,    92,  -269,  -269,  -269,    22,
+       7,    22,    62,    94,    96,    98,   100,   106,   110,   126,
+     128,    76,   -49,   212,  -269,    78,   477,    12,  -269,   257,
+     112,    22,    22,    22,    22,    88,    22,   358,   132,   191,
+     140,   191,   151,   191,   153,   191,   155,   191,   158,   191,
+     159,   358,   520,  -269,   170,    22,  -269,   162,    83,  -269,
+    -269,  -269,  -269,    22,    22,    22,    22,    22,    22,    22,
+      22,  -269,  -269,   358,  -269,    22,    22,    10,    22,    10,
+      22,    22,    22,   358,  -269,   358,  -269,   160,   408,  -269,
+    -269,   -12,   355,   355,   209,  -269,  -269,  -269,  -269,  -269,
+    -269,    22,    12,   166,  -269,   234,   -25,   -25,  -269,  -269,
+     178,    16,   172,   191,   176,   297,   188,   191,   189,   297,
+     190,   191,   193,   191,   194,   200,   204,   207,   208,   220,
+     223,   224,    15,  -269,   520,   191,   206,   277,   358,   358,
+    -269,  -269,  -269,   369,  -269,   318,   358,   358,   237,  -269,
+    -269,    10,    22,    22,   231,   358,  -269,   236,   448,   306,
+    -269,   191,  -269,  -269,  -269,   297,  -269,  -269,  -269,   297,
+    -269,   297,  -269,    22,    22,    10,    22,    10,    22,    22,
+     520,  -269,   324,   241,   358,  -269,    -1,  -269,  -269,   269,
+    -269,   358,   358,   337,   339,   284,   343,   448,   191,  -269,
+    -269,  -269,   358,   358,  -269,   415,  -269,   322,   358,  -269,
+     386,  -269,  -269,   165,   448,   448,  -269,   448,   293,   191,
+    -269,  -269,  -269,   299,   286,   302,   304,  -269,  -269,   191,
+    -269,  -269,   357,  -269,   297,   341,  -269,   309,  -269,   376,
+     448,   332,  -269
   };
 
   const signed char
    Parser ::yydefact_[] =
   {
-       0,     4,     0,     0,    34,     0,     0,     0,     0,     0,
-      35,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       2,     0,     7,    95,    25,     0,    23,    42,    43,    44,
-      45,    46,    48,    47,    49,    28,    24,    26,    27,    29,
-      30,    31,    32,     0,    35,     0,     0,     0,     0,     0,
-      99,     0,     0,   100,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     1,     0,
-       0,    60,    98,    95,    22,     0,     0,     0,     0,     0,
-      66,    67,    68,    69,     0,    33,     0,     0,     0,     0,
-       0,     0,    81,     0,    83,     0,    93,   106,     0,     0,
-       0,     0,     0,     0,     0,     0,    41,     0,     0,     0,
-       0,     0,     0,     0,     0,   107,     0,    12,     0,    56,
-       0,     0,     3,    36,    37,    92,     0,     0,    91,    71,
-      90,    96,     0,     0,     0,     0,     0,     0,    38,    39,
-      40,     0,     0,     0,     0,    93,     0,   101,     0,   103,
-     102,   104,   105,     0,   103,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,     8,
-       0,   108,     0,    20,    61,    21,     0,    62,     0,    65,
-      70,     0,    78,    79,     0,    72,    73,    76,    74,    77,
-      75,     0,     0,    94,     0,     6,     0,     0,    58,    50,
-      59,     0,    53,     0,     0,     0,     0,     0,     0,     0,
-       0,    14,     0,     0,     0,    63,    64,     0,    82,    80,
-       0,     0,     0,     0,     6,     0,    52,    54,    55,    15,
-       0,    16,    18,    19,     9,     0,     0,    10,    57,     0,
-       6,     6,    88,     6,     0,     0,    17,    13,     0,     0,
-       0,     0,     5,    89,     0,    11,    84,     0,    97,     0,
-      86,    51,     0,    85,     0,     6,     0,    87
+       0,     4,     0,     0,     0,    36,     0,     0,     0,     0,
+       0,    37,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     2,     0,     7,   110,     0,     0,    25,    45,    46,
+      47,    48,    49,    51,    50,    52,    30,     0,    28,    29,
+      31,    32,     0,    34,     0,    37,     0,     0,     0,     0,
+       0,     0,   114,     0,     0,   115,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     1,     0,     0,    69,
+     113,   110,    27,    24,     0,     0,     0,     0,     0,     0,
+       0,    77,    78,    79,    80,     0,    26,    33,    35,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,   115,     0,    98,     0,     0,   108,   121,     0,
+       0,     0,     0,     0,     0,     0,     0,    44,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,   122,     0,    12,     0,     0,    59,     0,     0,     3,
+      38,    39,   107,     0,     0,     0,     0,     0,     0,     0,
+       0,   106,    82,   105,   111,     0,     0,     0,     0,     0,
+       0,     0,     0,    40,    42,    41,    43,     0,     0,    91,
+      92,     0,     0,     0,     0,    83,    84,    87,    85,    88,
+      86,     0,   108,     0,   116,     0,   118,   117,   119,   120,
+       0,   118,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     8,     0,     0,     0,     0,    75,    76,
+      22,    70,    23,     0,    71,     0,    74,    81,     0,    89,
+      90,     0,     0,     0,     0,    95,   109,     0,     6,     0,
+      62,     0,    61,    53,    63,     0,    64,    56,    65,     0,
+      66,     0,    67,     0,     0,     0,     0,     0,     0,     0,
+       0,    14,     0,     0,   123,    68,     0,    72,    73,     0,
+      97,    93,    94,     0,     0,     0,     0,     6,     0,    55,
+      57,    58,    20,    21,    15,     0,    16,     0,    19,     9,
+       0,    10,    60,     0,     6,     6,   103,     6,     0,     0,
+      17,    18,    13,     0,     0,     0,     0,     5,   104,     0,
+      11,    99,     0,   112,     0,   101,    54,     0,   100,     0,
+       6,     0,   102
   };
 
   const short
    Parser ::yypgoto_[] =
   {
-    -195,  -195,   220,  -194,    10,  -195,  -195,  -151,  -159,  -130,
-    -195,     0,   199,  -195,  -195,   221,  -195,  -195,  -195,  -195,
-    -195,  -195,  -195,  -195,   -47,  -195,   194,  -195,  -195,  -195,
-    -195,    54,   -26,  -195,  -195,  -195,  -195,  -195,   150,   224,
-    -195,  -195,    99,  -195
+    -269,  -269,   321,  -268,     1,  -269,  -269,  -192,  -215,  -162,
+    -269,     0,   283,  -269,  -269,   325,  -269,  -269,  -269,  -269,
+    -269,  -269,  -269,  -269,   -45,  -269,   289,  -269,  -269,   -74,
+    -269,  -269,   118,   -47,  -269,  -269,  -269,  -269,  -269,   235,
+     323,  -269,  -269,    29,  -269
   };
 
   const short
    Parser ::yydefgoto_[] =
   {
-      -1,    19,    20,   222,   223,   168,   212,   119,   169,   174,
-      22,    53,   128,    24,    25,    26,    27,    28,    29,    30,
-      31,    32,    33,    34,    35,    83,    84,    36,    37,   191,
-     184,    94,    95,    38,   263,    39,    40,    41,   146,    72,
-      42,    43,    59,    66
+      -1,    20,    21,   285,   286,   222,   272,   146,   223,   231,
+      23,    55,   161,    25,    26,    27,    28,    29,    30,    31,
+      32,    33,    34,    35,    36,    94,    95,    37,    38,   191,
+     241,   183,   114,   115,    39,   328,    40,    41,    42,   193,
+      80,    43,    44,   116,    73
   };
 
   const short
    Parser ::yytable_[] =
   {
-      23,    93,    45,    46,   177,    47,   199,    49,    93,   202,
-      21,   213,   235,    50,   116,     4,     4,   182,   183,   173,
-       4,   100,   101,   102,   103,    48,    50,   123,   124,   104,
-     244,    55,    50,     4,   102,   103,    50,   147,    68,     4,
-      44,    44,   116,     4,    93,    44,   250,   251,    92,   252,
-     226,   234,   227,   228,   218,    92,   117,   118,    44,   105,
-     101,   102,   103,   238,    44,   141,   236,    69,    44,    23,
-      74,   266,    51,    85,    52,   229,    99,   231,    51,    21,
-     210,   211,    51,    58,   117,   118,  -106,    52,  -106,   255,
-      86,    92,    70,    52,     4,    71,   145,    52,    50,   116,
-     100,   101,   102,   103,    87,     4,    88,    54,   261,    56,
-      57,   108,    61,    62,    63,    64,    65,    67,    96,    44,
-     110,    50,    73,    89,    90,   140,  -106,  -106,     4,   132,
-      44,  -106,   175,   133,   175,   100,   101,   102,   103,   134,
-     135,   117,   118,    58,    51,   145,     4,   136,    91,   172,
-      97,    98,   137,    44,    60,   106,   107,   144,   109,    52,
-     111,   112,   113,   114,   115,   120,   121,    51,    71,   130,
-     148,    44,    73,   156,   153,    89,    90,   158,    60,   192,
-     181,   170,    52,   195,   175,   138,   194,   100,   101,   102,
-     103,   196,    93,   198,   142,    23,   200,   205,   206,   149,
-     150,   151,   152,   207,   154,   175,   155,   175,   157,   208,
-     159,   160,   161,   162,    80,    81,    82,   209,   215,   171,
-     100,   101,   102,   103,    23,   246,    61,   100,   101,   102,
-     103,   214,   176,   217,   178,   179,   180,   220,   224,    92,
-      23,    23,    50,    23,   123,   124,   221,   237,   239,     4,
-     240,   241,   242,   125,   197,   243,   247,   248,   201,   253,
-     203,   204,   256,   257,   258,    23,   260,   185,   186,   187,
-     188,   189,   190,   262,    44,   264,   265,    11,   126,   127,
-      14,    15,    16,    17,    18,   267,   139,   143,    51,   122,
-     219,   129,     1,   249,     0,   193,   225,   131,     2,     3,
-       0,     4,     0,    52,     0,   230,     5,   232,   233,     0,
-       0,     6,     0,     0,     7,     8,     0,     9,   163,   164,
-     165,   166,   167,     0,   245,     0,    10,     0,     0,    11,
-      12,    13,    14,    15,    16,    17,    18,     0,     2,     3,
-       0,     4,     0,     0,   254,     0,     5,   100,   101,   102,
-     103,     6,     0,   259,     7,     8,     0,     9,    75,    76,
-      77,    78,    79,     0,     0,     0,    10,     0,     0,    11,
-      12,    13,    14,    15,    16,    17,    18,     0,    80,    81,
-      82,   100,   101,   102,   103,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,   216
+      24,    22,    46,    47,    48,   113,    49,   234,    51,   273,
+     125,    50,   113,   253,   150,   151,   142,   257,    79,   308,
+     -96,    76,     5,    77,     5,   239,   240,    52,   230,  -121,
+     123,   124,    57,  -121,     5,    82,   315,   316,    56,   317,
+      58,    60,    62,    64,    66,    68,    70,    72,    75,    45,
+     112,    45,    83,    81,    96,   299,    97,   112,   143,   144,
+      99,    45,   331,   289,   177,    98,   113,   290,   100,   291,
+     117,  -121,  -121,   270,   271,    53,  -121,    24,    22,   280,
+     176,    52,   118,   119,   302,   313,  -121,   127,     5,   129,
+      54,   131,   142,   133,   101,   135,   227,   137,   102,   139,
+     128,   141,   130,   294,   148,   296,   132,   163,   242,   243,
+      81,   112,   134,   136,   138,    45,   140,   192,   103,   104,
+     105,   106,   107,   108,   109,   110,   147,   165,   173,    53,
+     175,   166,   326,   167,   143,   144,   121,   122,   123,   124,
+     178,   168,    52,   169,   111,   145,   170,   184,   171,     5,
+     196,   197,   198,   199,   120,   201,   172,   200,   203,    59,
+     205,    61,   207,    63,   209,    65,   211,   232,   213,   232,
+      52,    67,   195,   224,   225,    69,    45,     5,   121,   122,
+     123,   124,    60,    62,    64,    66,    68,    70,    72,    75,
+      53,    71,   192,    74,   228,   229,    52,   233,   202,   235,
+     236,   237,    59,     5,    45,    54,   204,   103,   104,   105,
+     106,   107,   108,   109,   110,    52,    52,   206,    53,   208,
+     245,   210,     5,     5,   212,   214,   179,   180,   226,   238,
+      45,   181,   251,    54,   244,   247,   255,   248,   249,   250,
+     259,   232,   261,   252,   126,   122,   123,   124,    24,    45,
+      45,    91,    92,    93,   274,   254,   256,   258,   113,    54,
+     260,   262,   263,    53,    53,   232,   264,   232,    52,   265,
+     266,   281,   282,   275,    78,     5,    61,    79,    54,    54,
+     288,    52,   267,   150,   151,   268,   269,    24,     5,   279,
+     276,   283,   292,   293,   152,   295,   284,   297,   298,    52,
+     301,    52,    45,   112,    24,    24,     5,    24,     5,   287,
+     121,   122,   123,   124,   142,    45,    53,   309,   153,   154,
+     155,   156,   157,   158,   159,   160,   194,   300,    63,    53,
+      24,    54,    52,    45,    52,    45,    52,   303,   319,     5,
+     304,     5,   305,     5,    54,   306,   307,    53,   324,    53,
+     121,   122,   123,   124,   318,   321,   143,   144,   320,    65,
+     325,    67,    54,   322,    54,   323,    45,   327,    45,   329,
+      45,   121,   122,   123,   124,   121,   122,   123,   124,   330,
+      53,   278,    53,   174,    53,   311,   185,   186,   187,   188,
+     189,   190,    69,   332,    71,    54,    74,    54,   149,    54,
+     215,   216,   182,   162,   164,   217,   218,   219,   220,   221,
+       1,   121,   122,   123,   124,     0,     2,     3,     4,     5,
+     277,   314,   121,   122,   123,   124,     6,   246,     0,     0,
+       0,     7,     0,     0,     8,     9,     0,    10,     0,   185,
+     186,   187,   188,   189,   190,     0,    11,   312,     0,    12,
+      13,    14,    15,    16,    17,    18,    19,     2,     3,     4,
+       5,   121,   122,   123,   124,     0,   310,     6,   121,   122,
+     123,   124,     7,     0,     0,     8,     9,   194,    10,     0,
+       0,     0,     0,     0,     0,     0,     0,    11,     0,     0,
+      12,    13,    14,    15,    16,    17,    18,    19,    84,    85,
+       0,     0,     0,    86,    87,    88,    89,    90,   185,   186,
+     187,   188,   189,   190,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,    91,    92,    93,     0,     0,     0,     0,
+     121,   122,   123,   124,   215,   216,     0,     0,     0,   217,
+     218,   219,   220,   221
   };
 
   const short
    Parser ::yycheck_[] =
   {
-       0,    48,     2,     3,   134,     5,   157,     7,    55,   160,
-       0,   170,     3,     5,    15,    12,    12,    35,    36,    16,
-      12,    51,    52,    53,    54,    66,     5,     7,     8,    55,
-     224,    66,     5,    12,    53,    54,     5,    67,     0,    12,
-      37,    37,    15,    12,    91,    37,   240,   241,    48,   243,
-     201,   210,   203,   204,   184,    55,    57,    58,    37,    51,
-      52,    53,    54,   214,    37,    91,    57,     3,    37,    69,
-      57,   265,    51,    57,    66,   205,    27,   207,    51,    69,
-      56,    57,    51,    62,    57,    58,    13,    66,    15,   248,
-      61,    91,    61,    66,    12,    64,    96,    66,     5,    15,
-      51,    52,    53,    54,    61,    12,    61,     8,   259,    10,
-      11,     5,    13,    14,    15,    16,    17,    18,    66,    37,
-       5,     5,    23,    41,    42,    16,    53,    54,    12,    61,
-      37,    58,   132,    61,   134,    51,    52,    53,    54,    61,
-      61,    57,    58,    62,    51,   145,    12,    61,    66,    13,
-      51,    52,    61,    37,    62,    56,    57,    67,    59,    66,
-      61,    62,    63,    64,    65,    66,    67,    51,    64,    70,
-      58,    37,    73,    63,    67,    41,    42,    63,    62,    23,
-      67,     3,    66,     3,   184,    86,    67,    51,    52,    53,
-      54,    58,   239,    64,    17,   195,    64,    60,    60,   100,
-     101,   102,   103,    60,   105,   205,   107,   207,   109,    60,
-     111,   112,   113,   114,    37,    38,    39,    60,    49,   120,
-      51,    52,    53,    54,   224,    49,   127,    51,    52,    53,
-      54,    13,   133,    50,   135,   136,   137,    58,     3,   239,
-     240,   241,     5,   243,     7,     8,    58,    57,    66,    12,
-       3,     3,    59,    16,   155,     3,    59,     3,   159,    59,
-     161,   162,    67,    59,    59,   265,     3,    29,    30,    31,
-      32,    33,    34,    24,    37,    58,     3,    40,    41,    42,
-      43,    44,    45,    46,    47,    59,    87,    93,    51,    69,
-     191,    70,     3,   239,    -1,   145,   197,    73,     9,    10,
-      -1,    12,    -1,    66,    -1,   206,    17,   208,   209,    -1,
-      -1,    22,    -1,    -1,    25,    26,    -1,    28,    17,    18,
-      19,    20,    21,    -1,   225,    -1,    37,    -1,    -1,    40,
-      41,    42,    43,    44,    45,    46,    47,    -1,     9,    10,
-      -1,    12,    -1,    -1,   245,    -1,    17,    51,    52,    53,
-      54,    22,    -1,   254,    25,    26,    -1,    28,    17,    18,
-      19,    20,    21,    -1,    -1,    -1,    37,    -1,    -1,    40,
-      41,    42,    43,    44,    45,    46,    47,    -1,    37,    38,
-      39,    51,    52,    53,    54,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,    -1,    65
+       0,     0,     2,     3,     4,    50,     6,   169,     8,   224,
+      57,    68,    57,   205,     7,     8,    17,   209,    67,   287,
+      69,     0,    12,     3,    12,    37,    38,     5,    18,    13,
+      55,    56,    68,    17,    12,    59,   304,   305,     9,   307,
+      11,    12,    13,    14,    15,    16,    17,    18,    19,    39,
+      50,    39,    59,    24,    59,   270,    59,    57,    59,    60,
+      64,    39,   330,   255,   111,    59,   111,   259,    64,   261,
+      68,    55,    56,    58,    59,    53,    60,    77,    77,   241,
+      18,     5,    53,    54,   276,   300,    70,    58,    12,    60,
+      68,    62,    17,    64,    64,    66,    13,    68,    64,    70,
+       5,    72,     5,   265,    75,   267,     5,    78,   182,   183,
+      81,   111,     5,     5,     5,    39,     5,   117,    42,    43,
+      44,    45,    46,    47,    48,    49,     5,    64,    99,    53,
+     101,    64,   324,    64,    59,    60,    53,    54,    55,    56,
+     111,    64,     5,    64,    68,    70,    64,    69,    64,    12,
+     121,   122,   123,   124,    29,   126,    64,    69,   129,    65,
+     131,    65,   133,    65,   135,    65,   137,   167,   139,   169,
+       5,    65,    60,     3,   145,    65,    39,    12,    53,    54,
+      55,    56,   153,   154,   155,   156,   157,   158,   159,   160,
+      53,    65,   192,    65,   165,   166,     5,   168,    66,   170,
+     171,   172,    65,    12,    39,    68,    66,    42,    43,    44,
+      45,    46,    47,    48,    49,     5,     5,    66,    53,    66,
+     191,    66,    12,    12,    66,    66,    14,    15,    66,    69,
+      39,    19,   203,    68,    25,    69,   207,     3,    60,    67,
+     211,   241,   213,    67,    53,    54,    55,    56,   248,    39,
+      39,    39,    40,    41,   225,    67,    67,    67,   303,    68,
+      67,    67,    62,    53,    53,   265,    62,   267,     5,    62,
+      62,   242,   243,    67,    64,    12,    65,    67,    68,    68,
+     251,     5,    62,     7,     8,    62,    62,   287,    12,    52,
+      13,    60,   263,   264,    18,   266,    60,   268,   269,     5,
+      59,     5,    39,   303,   304,   305,    12,   307,    12,     3,
+      53,    54,    55,    56,    17,    39,    53,   288,    42,    43,
+      44,    45,    46,    47,    48,    49,    69,     3,    65,    53,
+     330,    68,     5,    39,     5,    39,     5,    68,   309,    12,
+       3,    12,     3,    12,    68,    61,     3,    53,   319,    53,
+      53,    54,    55,    56,    61,    69,    59,    60,    59,    65,
+       3,    65,    68,    61,    68,    61,    39,    26,    39,    60,
+      39,    53,    54,    55,    56,    53,    54,    55,    56,     3,
+      53,    63,    53,   100,    53,    63,    31,    32,    33,    34,
+      35,    36,    65,    61,    65,    68,    65,    68,    77,    68,
+      14,    15,   113,    78,    81,    19,    20,    21,    22,    23,
+       3,    53,    54,    55,    56,    -1,     9,    10,    11,    12,
+      51,   303,    53,    54,    55,    56,    19,   192,    -1,    -1,
+      -1,    24,    -1,    -1,    27,    28,    -1,    30,    -1,    31,
+      32,    33,    34,    35,    36,    -1,    39,    61,    -1,    42,
+      43,    44,    45,    46,    47,    48,    49,     9,    10,    11,
+      12,    53,    54,    55,    56,    -1,    51,    19,    53,    54,
+      55,    56,    24,    -1,    -1,    27,    28,    69,    30,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    39,    -1,    -1,
+      42,    43,    44,    45,    46,    47,    48,    49,    14,    15,
+      -1,    -1,    -1,    19,    20,    21,    22,    23,    31,    32,
+      33,    34,    35,    36,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    39,    40,    41,    -1,    -1,    -1,    -1,
+      53,    54,    55,    56,    14,    15,    -1,    -1,    -1,    19,
+      20,    21,    22,    23
   };
 
   const signed char
    Parser ::yystos_[] =
   {
-       0,     3,     9,    10,    12,    17,    22,    25,    26,    28,
-      37,    40,    41,    42,    43,    44,    45,    46,    47,    69,
-      70,    72,    78,    79,    81,    82,    83,    84,    85,    86,
-      87,    88,    89,    90,    91,    92,    95,    96,   101,   103,
-     104,   105,   108,   109,    37,    79,    79,    79,    66,    79,
-       5,    51,    66,    79,   110,    66,   110,   110,    62,   110,
-      62,   110,   110,   110,   110,   110,   111,   110,     0,     3,
-      61,    64,   107,   110,    57,    17,    18,    19,    20,    21,
-      37,    38,    39,    93,    94,    57,    61,    61,    61,    41,
-      42,    66,    79,    92,    99,   100,    66,   110,   110,    27,
-      51,    52,    53,    54,   100,    51,   110,   110,     5,   110,
-       5,   110,   110,   110,   110,   110,    15,    57,    58,    75,
-     110,   110,    70,     7,     8,    16,    41,    42,    80,    83,
-     110,   107,    61,    61,    61,    61,    61,    61,   110,    80,
-      16,   100,    17,    94,    67,    79,   106,    67,    58,   110,
-     110,   110,   110,    67,   110,   110,    63,   110,    63,   110,
-     110,   110,   110,    17,    18,    19,    20,    21,    73,    76,
-       3,   110,    13,    16,    77,    79,   110,    77,   110,   110,
-     110,    67,    35,    36,    98,    29,    30,    31,    32,    33,
-      34,    97,    23,   106,    67,     3,    58,   110,    64,    75,
-      64,   110,    75,   110,   110,    60,    60,    60,    60,    60,
-      56,    57,    74,    76,    13,    49,    65,    50,    77,   110,
-      58,    58,    71,    72,     3,   110,    75,    75,    75,    77,
-     110,    77,   110,   110,    76,     3,    57,    57,    75,    66,
-       3,     3,    59,     3,    71,   110,    49,    59,     3,    99,
-      71,    71,    71,    59,   110,    76,    67,    59,    59,   110,
-       3,    75,    24,   102,    58,     3,    71,    59
+       0,     3,     9,    10,    11,    12,    19,    24,    27,    28,
+      30,    39,    42,    43,    44,    45,    46,    47,    48,    49,
+      72,    73,    75,    81,    82,    84,    85,    86,    87,    88,
+      89,    90,    91,    92,    93,    94,    95,    98,    99,   105,
+     107,   108,   109,   112,   113,    39,    82,    82,    82,    82,
+      68,    82,     5,    53,    68,    82,   114,    68,   114,    65,
+     114,    65,   114,    65,   114,    65,   114,    65,   114,    65,
+     114,    65,   114,   115,    65,   114,     0,     3,    64,    67,
+     111,   114,    59,    59,    14,    15,    19,    20,    21,    22,
+      23,    39,    40,    41,    96,    97,    59,    59,    59,    64,
+      64,    64,    64,    42,    43,    44,    45,    46,    47,    48,
+      49,    68,    82,    95,   103,   104,   114,    68,   114,   114,
+      29,    53,    54,    55,    56,   104,    53,   114,     5,   114,
+       5,   114,     5,   114,     5,   114,     5,   114,     5,   114,
+       5,   114,    17,    59,    60,    70,    78,     5,   114,    73,
+       7,     8,    18,    42,    43,    44,    45,    46,    47,    48,
+      49,    83,    86,   114,   111,    64,    64,    64,    64,    64,
+      64,    64,    64,   114,    83,   114,    18,   104,   114,    14,
+      15,    19,    97,   102,    69,    31,    32,    33,    34,    35,
+      36,   100,    82,   110,    69,    60,   114,   114,   114,   114,
+      69,   114,    66,   114,    66,   114,    66,   114,    66,   114,
+      66,   114,    66,   114,    66,    14,    15,    19,    20,    21,
+      22,    23,    76,    79,     3,   114,    66,    13,   114,   114,
+      18,    80,    82,   114,    80,   114,   114,   114,    69,    37,
+      38,   101,   100,   100,    25,   114,   110,    69,     3,    60,
+      67,   114,    67,    78,    67,   114,    67,    78,    67,   114,
+      67,   114,    67,    62,    62,    62,    62,    62,    62,    62,
+      58,    59,    77,    79,   114,    67,    13,    51,    63,    52,
+      80,   114,   114,    60,    60,    74,    75,     3,   114,    78,
+      78,    78,   114,   114,    80,   114,    80,   114,   114,    79,
+       3,    59,    78,    68,     3,     3,    61,     3,    74,   114,
+      51,    63,    61,    79,   103,    74,    74,    74,    61,   114,
+      59,    69,    61,    61,   114,     3,    78,    26,   106,    60,
+       3,    74,    61
   };
 
   const signed char
    Parser ::yyr1_[] =
   {
-       0,    68,    69,    70,    70,    71,    71,    72,    73,    73,
-      74,    74,    75,    75,    75,    76,    76,    76,    76,    76,
-      77,    77,    78,    78,    78,    78,    78,    78,    78,    78,
-      78,    78,    78,    78,    79,    79,    80,    80,    81,    81,
-      81,    82,    83,    83,    83,    83,    83,    83,    83,    83,
-      84,    85,    86,    87,    88,    89,    90,    91,    92,    92,
-      92,    93,    93,    93,    93,    93,    94,    94,    94,    95,
-      95,    96,    97,    97,    97,    97,    97,    97,    98,    98,
-      99,    99,    99,   100,   100,   101,   102,   102,   103,   104,
-     105,   105,   105,   106,   106,   107,   107,   108,   109,   110,
-     110,   110,   110,   110,   110,   110,   110,   111,   111
+       0,    71,    72,    73,    73,    74,    74,    75,    76,    76,
+      77,    77,    78,    78,    78,    79,    79,    79,    79,    79,
+      79,    79,    80,    80,    81,    81,    81,    81,    81,    81,
+      81,    81,    81,    81,    81,    81,    82,    82,    83,    83,
+      84,    84,    84,    84,    85,    86,    86,    86,    86,    86,
+      86,    86,    86,    87,    88,    89,    90,    91,    92,    93,
+      94,    95,    95,    95,    95,    95,    95,    95,    95,    95,
+      96,    96,    96,    96,    96,    96,    96,    97,    97,    97,
+      98,    98,    99,   100,   100,   100,   100,   100,   100,   101,
+     101,   102,   102,   103,   103,   103,   103,   103,   104,   104,
+     105,   106,   106,   107,   108,   109,   109,   109,   110,   110,
+     111,   111,   112,   113,   114,   114,   114,   114,   114,   114,
+     114,   114,   115,   115
   };
 
   const signed char
    Parser ::yyr2_[] =
   {
        0,     2,     1,     3,     1,     3,     0,     1,     1,     3,
-       2,     4,     1,     5,     3,     3,     3,     4,     3,     3,
-       1,     1,     2,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1,     2,     1,     1,     1,     1,     4,     4,
-       4,     3,     1,     1,     1,     1,     1,     1,     1,     1,
-       5,    10,     6,     5,     6,     6,     3,     6,     5,     5,
-       2,     3,     3,     4,     4,     3,     1,     1,     1,     2,
-       4,     3,     1,     1,     1,     1,     1,     1,     1,     1,
-       4,     1,     4,     1,     7,    11,     0,     5,     7,     8,
-       3,     3,     3,     0,     2,     0,     2,     9,     2,     1,
-       1,     3,     3,     3,     3,     3,     2,     2,     3
+       2,     4,     1,     5,     3,     3,     3,     4,     4,     3,
+       3,     3,     1,     1,     2,     1,     2,     2,     1,     1,
+       1,     1,     1,     2,     1,     2,     1,     1,     1,     1,
+       4,     4,     4,     4,     3,     1,     1,     1,     1,     1,
+       1,     1,     1,     5,    10,     6,     5,     6,     6,     3,
+       6,     5,     5,     5,     5,     5,     5,     5,     5,     2,
+       3,     3,     4,     4,     3,     3,     3,     1,     1,     1,
+       2,     4,     3,     1,     1,     1,     1,     1,     1,     1,
+       1,     1,     1,     4,     4,     3,     1,     4,     1,     7,
+      11,     0,     5,     7,     8,     3,     3,     3,     0,     2,
+       0,     2,     9,     2,     1,     1,     3,     3,     3,     3,
+       3,     2,     2,     4
   };
 
 
@@ -3296,41 +3481,44 @@ namespace yy {
   {
   "$end", "error", "$undefined", "NL", "END", "NUMBER", "FLOAT", "TRUE",
   "FALSE", "INT_TYPE", "BOOL_TYPE", "FLOAT_TYPE", "VARIABLE", "STRING",
-  "ATTRIBUT", "INLINE_AFFECTATION", "HEXA_VALUE", "COULEUR", "ROTATION",
-  "REMPLISSAGE", "OPACITE", "EPAISSEUR", "SI", "ALORS", "SINON",
-  "FUNCTION", "REPETE", "FOIS", "WHILE", "EQUAL", "NOTEQUAL", "LESS",
-  "LESSEQUAL", "GREATER", "GREATEREQUAL", "STRINGEQUAL", "STRINGNOTEQUAL",
-  "TAILLE", "HAUTEUR", "LARGEUR", "RECTANGLE", "CARRE", "TRIANGLE",
-  "CERCLE", "ELLIPSE", "LIGNE", "CHEMIN", "TEXTE", "STOP", "DEGRE", "AND",
-  "'-'", "'+'", "'*'", "'/'", "NEG", "'&'", "';'", "'{'", "'}'", "':'",
-  "'='", "'['", "']'", "'.'", "'%'", "'('", "')'", "$accept", "programme",
-  "subProgramme", "instructions", "instruction", "attributsInline",
-  "attributsCSS", "attributs", "attributAffectation", "couleurValue",
-  "expression", "variable", "boolValue", "declarationVariableSimple",
-  "declarationCanva", "declarationFigure", "carre", "rectangle",
-  "triangle", "cercle", "ellipse", "ligne", "chemin", "texte",
-  "accesFigure", "setAttribut", "setTaille", "modificationFigure",
-  "declarationVariable", "numberComparator", "stringComparator",
-  "condition", "conditions", "if", "else", "boucleFor", "boucleWhile",
-  "affectation", "arguments", "argumentsValues", "fonction",
-  "appelFonction", "operation", "vectPos", YY_NULLPTR
+  "POSITIONX", "POSITIONY", "ATTRIBUT", "INLINE_AFFECTATION", "HEXA_VALUE",
+  "COULEUR", "ROTATION", "REMPLISSAGE", "OPACITE", "EPAISSEUR", "SI",
+  "ALORS", "SINON", "FUNCTION", "REPETE", "FOIS", "WHILE", "EQUAL",
+  "NOTEQUAL", "LESS", "LESSEQUAL", "GREATER", "GREATEREQUAL",
+  "STRINGEQUAL", "STRINGNOTEQUAL", "TAILLE", "HAUTEUR", "LARGEUR",
+  "RECTANGLE", "CARRE", "TRIANGLE", "CERCLE", "ELLIPSE", "LIGNE", "CHEMIN",
+  "TEXTE", "STOP", "DEGRE", "AND", "'-'", "'+'", "'*'", "'/'", "NEG",
+  "'&'", "';'", "'{'", "'}'", "':'", "'%'", "'='", "'['", "']'", "'.'",
+  "'('", "')'", "','", "$accept", "programme", "subProgramme",
+  "instructions", "instruction", "attributsInline", "attributsCSS",
+  "attributs", "attributAffectation", "couleurValue", "expression",
+  "variable", "boolValue", "declarationVariableSimple", "declarationCanva",
+  "declarationFigure", "carre", "rectangle", "triangle", "cercle",
+  "ellipse", "ligne", "chemin", "texte", "accesFigure", "setAttribut",
+  "setTaille", "modificationFigure", "declarationVariable",
+  "numberComparator", "stringComparator", "positionValue", "condition",
+  "conditions", "if", "else", "boucleFor", "boucleWhile", "affectation",
+  "arguments", "argumentsValues", "fonction", "appelFonction", "operation",
+  "vectPos", YY_NULLPTR
   };
 
 
   const short
    Parser ::yyrline_[] =
   {
-       0,   174,   174,   180,   187,   191,   199,   204,   209,   215,
-     222,   228,   234,   238,   244,   250,   256,   262,   268,   274,
-     279,   285,   291,   292,   293,   294,   295,   296,   297,   298,
-     299,   300,   301,   302,   305,   305,   310,   316,   321,   327,
-     333,   338,   344,   347,   350,   354,   358,   362,   366,   370,
-     378,   385,   393,   401,   409,   417,   425,   433,   440,   446,
-     452,   457,   463,   469,   475,   481,   487,   491,   495,   501,
-     507,   513,   518,   519,   520,   521,   522,   523,   526,   527,
-     531,   537,   543,   549,   555,   561,   566,   571,   577,   582,
-     588,   594,   600,   605,   610,   616,   621,   628,   633,   639,
-     643,   646,   649,   652,   655,   658,   661,   666,   669
+       0,   178,   178,   185,   192,   196,   204,   209,   214,   220,
+     227,   233,   239,   243,   249,   255,   261,   267,   273,   279,
+     285,   291,   296,   302,   308,   309,   310,   311,   312,   313,
+     314,   315,   316,   317,   318,   319,   322,   322,   327,   333,
+     338,   344,   350,   356,   361,   367,   371,   375,   380,   385,
+     390,   395,   400,   408,   415,   423,   431,   439,   447,   455,
+     463,   470,   475,   480,   485,   490,   495,   500,   505,   511,
+     516,   522,   528,   534,   540,   546,   552,   558,   562,   566,
+     572,   578,   584,   589,   590,   591,   592,   593,   594,   597,
+     598,   601,   607,   612,   618,   624,   630,   636,   642,   648,
+     654,   659,   665,   671,   676,   682,   688,   694,   699,   704,
+     710,   715,   722,   727,   733,   737,   740,   743,   746,   749,
+     752,   755,   760,   763
   };
 
   // Print the state stack on the debug stream.
@@ -3374,16 +3562,16 @@ namespace yy {
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,    65,    56,     2,
-      66,    67,    53,    52,     2,    51,    64,    54,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,    60,    57,
-       2,    61,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,    63,    58,     2,
+      68,    69,    55,    54,    70,    53,    67,    56,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,    62,    59,
+       2,    64,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,    62,     2,    63,     2,     2,     2,     2,     2,     2,
+       2,    65,     2,    66,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,    58,     2,    59,     2,     2,     2,     2,
+       2,     2,     2,    60,     2,    61,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -3401,9 +3589,9 @@ namespace yy {
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
       25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
       35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
-      45,    46,    47,    48,    49,    50,    55
+      45,    46,    47,    48,    49,    50,    51,    52,    57
     };
-    const int user_token_number_max_ = 306;
+    const int user_token_number_max_ = 308;
 
     if (t <= 0)
       return yyeof_;
@@ -3414,9 +3602,9 @@ namespace yy {
   }
 
 } // yy
-#line 3418 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
+#line 3606 "/mnt/c/Users/paull/Onedrive/Bureau/Compilateur/dessin/build/parser.cpp"
 
-#line 676 "parser/parser.yy"
+#line 770 "parser/parser.yy"
 
 
 void yy::Parser::error( const location_type &l, const std::string & err_msg) {

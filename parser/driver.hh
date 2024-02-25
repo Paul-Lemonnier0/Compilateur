@@ -26,17 +26,7 @@ public:
         _arbreSyntaxique.addNode(node);
     }
 
-    std::shared_ptr<FigureNode> accesFigureIndex(int index, FigureTypes figureType) const {
-        return _arbreSyntaxique.accesFigureIndex(index, figureType);
-    }
-
-    std::shared_ptr<FigureNode> accesVariableValue(std::string const & varName) const{
-        return _arbreSyntaxique.accesVariableValue(varName);
-    }
-
     void analyseCode(ArbreSyntaxique arbre) {
-        std::cout<<arbre.getArbre().size();
-
         std::string svg = arbre.analyseCode(variables);
 
         std::ofstream svgFile("resultSVG.svg");

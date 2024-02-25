@@ -39,13 +39,13 @@ class Position {
         }
 };
 
-class PositionNode: public Noeud {
+class PositionNode: public NoeudInterpretable {
     private:
         Position _p;
 
     public:
         PositionNode(ExpressionPtr x, ExpressionPtr y):
-            Noeud(), _p(x, y){}
+            _p(x, y){}
 
         std::string tostring() const {
             return "position string";
@@ -60,16 +60,16 @@ class PositionNode: public Noeud {
         }
 };
 
-class TailleNode: public Noeud {
+class TailleNode: public NoeudInterpretable {
     private:
         ExpressionPtr _w, _h;
 
     public:
         TailleNode(ExpressionPtr w, ExpressionPtr h):
-            Noeud(), _w(w), _h(h) {}
+            _w(w), _h(h) {}
 
         TailleNode(ExpressionPtr size):
-            Noeud(), _w(size), _h(size) {}
+            _w(size), _h(size) {}
 
         double width(const Contexte & contexte) const {
             return _w->calculer(contexte);
@@ -100,7 +100,7 @@ class CanevaNode: public TailleNode {
             TailleNode(w, h){}
 };
 
-class FigureNode: public Noeud {
+class FigureNode: public NoeudInterpretable {
     private:
 
         std::shared_ptr<ColorNode> _couleur;
@@ -110,7 +110,6 @@ class FigureNode: public Noeud {
 
     public:
         FigureNode():
-            Noeud(),
             _couleur(std::make_shared<ColorNode>()),
             _rotation(std::make_shared<RotationNode>()),
             _opacite(std::make_unique<OpaciteNode>())
@@ -142,20 +141,45 @@ class FigureNode: public Noeud {
         virtual void setAttributs(std::vector<std::shared_ptr<AttributNode>> attributs) = 0;
         virtual void setAttribut(std::shared_ptr<AttributNode> attribut) = 0;
         virtual Position center(Contexte & contexte) const = 0;
+        virtual ExpressionPtr getPositionX(int position) = 0;
+        virtual ExpressionPtr getPositionY(int position) = 0;
 };
 
 class FormeGeometrique : public FigureNode {
-    private : 
+    protected : 
         std::shared_ptr<RemplissageNode> _remplissage;
         std::shared_ptr<EpaisseurNode> _epaisseur;
+        std::shared_ptr<PositionNode> _positionNode;
     public :
-        FormeGeometrique():
+        FormeGeometrique(std::shared_ptr<PositionNode> positionNode):
             FigureNode(),
             _remplissage(std::make_shared<RemplissageNode>()),
-            _epaisseur(std::make_shared<EpaisseurNode>())
+            _epaisseur(std::make_shared<EpaisseurNode>()),
+            _positionNode(positionNode)
             {}
-    
-    void setAttributs(std::vector<std::shared_ptr<AttributNode>> attributs) override{
+
+        std::shared_ptr<PositionNode> positionNode() { return _positionNode;}
+        void setPosition(std::shared_ptr<PositionNode> p) { _positionNode = p;}
+
+        ExpressionPtr getPositionX(int position) override {
+            return _positionNode->pos().x();
+        }
+
+        virtual void setPositionX(std::shared_ptr<PositionXNode> positionX) {
+            if(positionX->attribut().length()==9)
+                _positionNode =  std::make_shared<PositionNode>(positionX->getValue(),_positionNode->pos().y());
+        }
+
+        ExpressionPtr getPositionY(int position) override {
+            return _positionNode->pos().y();
+        }
+
+        virtual void setPositionY(std::shared_ptr<PositionYNode> positionY) {
+            if(positionY->attribut().length()==9)
+                _positionNode = std::make_shared<PositionNode>(_positionNode->pos().x(),positionY->getValue());
+        }
+
+        void setAttributs(std::vector<std::shared_ptr<AttributNode>> attributs) override{
             for(const auto& attribut : attributs)
             {
                 setAttribut(attribut);
@@ -182,6 +206,14 @@ class FormeGeometrique : public FigureNode {
             else if(std::shared_ptr<RotationNode> rotationNode =  std::dynamic_pointer_cast<RotationNode>(attribut)){
                 setRotation(rotationNode);
             }
+
+            else if(std::shared_ptr<PositionXNode> positionX = std::dynamic_pointer_cast<PositionXNode>(attribut)){
+                setPositionX(positionX);
+            }
+            
+            else if(std::shared_ptr<PositionYNode> positionY = std::dynamic_pointer_cast<PositionYNode>(attribut)){
+                setPositionY(positionY);
+            }
         }
 
         std::string analyseCode(Contexte & contexte) override{
@@ -193,6 +225,8 @@ class FormeGeometrique : public FigureNode {
                    getrotation()->analyseCode(contexte) +
                    "," + center(contexte).toString(contexte) + ")\"";
         }
+
+
 };
 
 
@@ -201,11 +235,11 @@ class FormeGeometriqueAvecTaille: public FormeGeometrique {
         std::shared_ptr<TailleNode> _tailleNode;
 
     public:
-        FormeGeometriqueAvecTaille(ExpressionPtr size):    
-            _tailleNode(std::make_shared<TailleNode>(size)) {}
+        FormeGeometriqueAvecTaille(std::shared_ptr<PositionNode> positionNode, ExpressionPtr size):    
+            FormeGeometrique(positionNode), _tailleNode(std::make_shared<TailleNode>(size)) {}
 
-        FormeGeometriqueAvecTaille(ExpressionPtr w, ExpressionPtr h):    
-            _tailleNode(std::make_shared<TailleNode>(w, h)) {}
+        FormeGeometriqueAvecTaille(std::shared_ptr<PositionNode> positionNode, ExpressionPtr w, ExpressionPtr h):    
+            FormeGeometrique(positionNode), _tailleNode(std::make_shared<TailleNode>(w, h)) {}
 
         ExpressionPtr getHeight() const {
             return _tailleNode->height();
@@ -218,8 +252,8 @@ class FormeGeometriqueAvecTaille: public FormeGeometrique {
 
 class FG_TailleUniforme: public FormeGeometriqueAvecTaille {
     public:
-        FG_TailleUniforme(ExpressionPtr size):
-            FormeGeometriqueAvecTaille(size) {}
+        FG_TailleUniforme(std::shared_ptr<PositionNode> positionNode, ExpressionPtr size):
+            FormeGeometriqueAvecTaille(positionNode, size) {}
 
         void setTaille(ExpressionPtr newVal) {
             _tailleNode->setWidth(newVal);
@@ -233,8 +267,8 @@ class FG_TailleUniforme: public FormeGeometriqueAvecTaille {
 
 class FG_TailleNonUniforme: public FormeGeometriqueAvecTaille {
     public:
-        FG_TailleNonUniforme(ExpressionPtr w, ExpressionPtr h):    
-            FormeGeometriqueAvecTaille(w,h) {}
+        FG_TailleNonUniforme(std::shared_ptr<PositionNode> positionNode, ExpressionPtr w, ExpressionPtr h):    
+            FormeGeometriqueAvecTaille(positionNode, w,h) {}
 
         void setHeight(ExpressionPtr newVal) {
             _tailleNode->setHeight(newVal);
@@ -255,17 +289,13 @@ class FG_TailleNonUniforme: public FormeGeometriqueAvecTaille {
 
 
 class CarreNode: public FG_TailleUniforme{
-    private:
-        std::shared_ptr<PositionNode> _positionNode;
-
     public:
         CarreNode(ExpressionPtr x,  ExpressionPtr y, ExpressionPtr size):
-            FG_TailleUniforme(size), 
-            _positionNode(std::make_shared<PositionNode>(x, y))
+            FG_TailleUniforme(std::make_shared<PositionNode>(x, y), size) 
         {}
 
 
-    Position center(Contexte & contexte) const {
+    Position center(Contexte & contexte) const override {
         ExpressionPtr cX = std::make_shared<ExpressionBinaire>(_positionNode->pos().x(), _tailleNode->width(),OperateurBinaire::plus);
         ExpressionPtr cY = std::make_shared<ExpressionBinaire>(_positionNode->pos().y(), _tailleNode->height(),OperateurBinaire::plus);
         
@@ -283,54 +313,128 @@ class CarreNode: public FG_TailleUniforme{
 };
 class RectangleNode: public FormeGeometrique{
     private:
-        std::shared_ptr<PositionNode> _p1, _p2, _p3, _p4;
+        std::shared_ptr<PositionNode> _p2, _p3, _p4;
         std::shared_ptr<TailleNode> _tailleNode;
 
     public:
         RectangleNode(ExpressionPtr x1,  ExpressionPtr y1,ExpressionPtr x2,  ExpressionPtr y2,ExpressionPtr x3,  ExpressionPtr y3,ExpressionPtr x4,  ExpressionPtr y4):
-            FormeGeometrique(), 
-            _p1(std::make_shared<PositionNode>(x1, y1)),
+            FormeGeometrique(std::make_shared<PositionNode>(x1, y1)), 
             _p2(std::make_shared<PositionNode>(x2, y2)),
             _p3(std::make_shared<PositionNode>(x3, y3)),
             _p4(std::make_shared<PositionNode>(x4, y4)),
             _tailleNode(nullptr)
-            {}
+            {
+                ExpressionPtr cX = std::make_shared<ExpressionBinaire>(_p4->pos().x(), positionNode()->pos().x(),OperateurBinaire::moins);
+                ExpressionPtr cY = std::make_shared<ExpressionBinaire>(_p2->pos().y(), positionNode()->pos().y(),OperateurBinaire::moins);
+            
+                _tailleNode =std::make_shared<TailleNode>(cX,cY);
+            }
 
 
-    Position center(Contexte & contexte) const {
-        ExpressionPtr cX = std::make_shared<ExpressionBinaire>(_p1->pos().x(), _tailleNode->width(),OperateurBinaire::plus);
-        ExpressionPtr cY = std::make_shared<ExpressionBinaire>(_p1->pos().y(), _tailleNode->height(),OperateurBinaire::plus);
+    Position center(Contexte & contexte) const override {
+        ExpressionPtr cX = std::make_shared<ExpressionBinaire>(_positionNode->pos().x(), _tailleNode->width(),OperateurBinaire::plus);
+        ExpressionPtr cY = std::make_shared<ExpressionBinaire>(_positionNode->pos().y(), _tailleNode->height(),OperateurBinaire::plus);
         
         Position c = Position(cX, cY);
         return c;
     }
 
     std::string analyseCode(Contexte & contexte) override{
-        ExpressionPtr cX = std::make_shared<ExpressionBinaire>(_p4->pos().x(), _p1->pos().x(),OperateurBinaire::moins);
-        ExpressionPtr cY = std::make_shared<ExpressionBinaire>(_p2->pos().y(), _p1->pos().y(),OperateurBinaire::moins);
-        
-        _tailleNode = std::make_shared<TailleNode>(cX,cY);
-
         return "<rect " +
-            _p1->analyseCode(contexte) +
+            _positionNode->analyseCode(contexte) +
             _tailleNode->analyseCode(contexte) +
             FormeGeometrique::analyseCode(contexte) +
             "/>\n";
     }
+
+    void setPositionX(std::shared_ptr<PositionXNode> positionX) override {
+        if(positionX->attribut().length()==10) {
+            int numero = positionX->attribut()[9] - 48;
+            if(numero == 1) {
+                setPosition(std::make_shared<PositionNode>(positionX->getValue(),_positionNode->pos().y()));
+                ExpressionPtr cX = std::make_shared<ExpressionBinaire>(_p4->pos().x(), _positionNode->pos().x(),OperateurBinaire::moins);
+                ExpressionPtr cY = std::make_shared<ExpressionBinaire>(_p2->pos().y(), _positionNode->pos().y(),OperateurBinaire::moins);
+            
+                _tailleNode =std::make_shared<TailleNode>(cX,cY);
+            }
+            else if (numero == 2) {
+                _p2 = std::make_shared<PositionNode>(positionX->getValue(),_p2->pos().y());
+                }
+            else if (numero == 3) {
+                _p3 = std::make_shared<PositionNode>(positionX->getValue(),_p3->pos().y());
+            }
+            else if (numero == 4) {
+                _p4 = std::make_shared<PositionNode>(positionX->getValue(),_p4->pos().y());
+                ExpressionPtr cX = std::make_shared<ExpressionBinaire>(_p4->pos().x(), _positionNode->pos().x(),OperateurBinaire::moins);
+                ExpressionPtr cY = std::make_shared<ExpressionBinaire>(_p2->pos().y(), _positionNode->pos().y(),OperateurBinaire::moins);
+            
+                _tailleNode =std::make_shared<TailleNode>(cX,cY);
+            }
+        }
+    }
+
+    void setPositionY(std::shared_ptr<PositionYNode> positionY) override {
+        if(positionY->attribut().length()==10) {
+            int numero = positionY->attribut()[9] - 48;
+                if(numero == 1) {
+                    setPosition(std::make_shared<PositionNode>(_positionNode->pos().x(),positionY->getValue()));
+                    ExpressionPtr cX = std::make_shared<ExpressionBinaire>(_p4->pos().x(), _positionNode->pos().x(),OperateurBinaire::moins);
+                    ExpressionPtr cY = std::make_shared<ExpressionBinaire>(_p2->pos().y(), _positionNode->pos().y(),OperateurBinaire::moins);
+                
+                    _tailleNode =std::make_shared<TailleNode>(cX,cY);
+                }
+                else if (numero == 2) {
+                    _p2 = std::make_shared<PositionNode>(_p2->pos().x(),positionY->getValue());
+                }
+                else if (numero == 3) {
+                    _p3 = std::make_shared<PositionNode>(_p3->pos().x(),positionY->getValue());
+                }
+                else if (numero == 4) {
+                    _p4 = std::make_shared<PositionNode>(_p4->pos().x(),positionY->getValue());
+                    ExpressionPtr cX = std::make_shared<ExpressionBinaire>(_p4->pos().x(), _positionNode->pos().x(),OperateurBinaire::moins);
+                    ExpressionPtr cY = std::make_shared<ExpressionBinaire>(_p2->pos().y(), _positionNode->pos().y(),OperateurBinaire::moins);
+                
+                    _tailleNode = std::make_shared<TailleNode>(cX,cY);
+                }
+        }
+    }
+
+    ExpressionPtr getPositionX(int position) override {
+        if(position == 1) {
+            return _positionNode->pos().x();
+        }
+        else if(position == 2) {
+            return _p2->pos().x();
+        }
+        else if(position == 3) {
+            return _p3->pos().x();
+        }
+        return _p4->pos().x();
+    }
+    ExpressionPtr getPositionY(int position) override {
+        if(position == 1) {
+            return _positionNode->pos().y();
+        }
+        else if(position == 2) {
+            return _p2->pos().y();
+        }
+        else if(position == 3) {
+            return _p3->pos().y();
+        }
+        return _p4->pos().y();
+        
+    }
+    
 };
 
 class TriangleNode: public FG_TailleNonUniforme{
-    private:
-        std::shared_ptr<PositionNode> _positionNode;
-
     public:
         TriangleNode(ExpressionPtr x,  ExpressionPtr y, ExpressionPtr w, ExpressionPtr h):
-            FG_TailleNonUniforme(w,h), 
-            _positionNode(std::make_shared<PositionNode>(x, y))
+            FG_TailleNonUniforme(std::make_shared<PositionNode>(x,y), w,h)
         {}
 
 
-    Position center(Contexte & contexte) const {
+    Position center(Contexte & contexte) const override {
         ExpressionPtr const_2 = std::make_shared<Constante>(2);
         ExpressionPtr cX = std::make_shared<ExpressionBinaire>(_tailleNode->width(),const_2,OperateurBinaire::divise);
         cX = std::make_shared<ExpressionBinaire>(_positionNode->pos().x(),cX,OperateurBinaire::plus);
@@ -364,17 +468,13 @@ class TriangleNode: public FG_TailleNonUniforme{
     }
 };
 class CercleNode: public FG_TailleUniforme{
-    private:
-        std::shared_ptr<PositionNode> _positionNode;
-
     public:
         CercleNode(ExpressionPtr x,  ExpressionPtr y, ExpressionPtr r):
-            FG_TailleUniforme(r), 
-            _positionNode(std::make_shared<PositionNode>(x, y))
+            FG_TailleUniforme(std::make_shared<PositionNode>(x,y), r)
         {}
 
 
-    Position center(Contexte & contexte) const {
+    Position center(Contexte & contexte) const override {
         Position c = Position(_positionNode->pos().x(), _positionNode->pos().y());
         return c;
     }
@@ -393,17 +493,15 @@ class CercleNode: public FG_TailleUniforme{
 };
 class EllipseNode: public FG_TailleNonUniforme{
     private:
-        std::shared_ptr<PositionNode> _positionNode;
         std::shared_ptr<TailleNode> _tailleNode;
 
     public:
         EllipseNode(ExpressionPtr x,  ExpressionPtr y, ExpressionPtr w, ExpressionPtr h):
-            FG_TailleNonUniforme(w, h), 
-            _positionNode(std::make_shared<PositionNode>(x, y))
+            FG_TailleNonUniforme(std::make_shared<PositionNode>(x,y), w, h)
         {}
 
 
-    Position center(Contexte & contexte) const {
+    Position center(Contexte & contexte) const override {
         Position c = Position(_positionNode->pos().x(), _positionNode->pos().y());
         return c;
     }
@@ -422,23 +520,23 @@ class EllipseNode: public FG_TailleNonUniforme{
             "/>\n";
     }
 };
+
 class LigneNode: public FormeGeometrique{
     private:
-        std::shared_ptr<PositionNode> _p1, _p2;
+        std::shared_ptr<PositionNode> _p2;
 
     public:
         LigneNode(ExpressionPtr x1,  ExpressionPtr y1,ExpressionPtr x2,  ExpressionPtr y2):
-            FormeGeometrique(), 
-            _p1(std::make_shared<PositionNode>(x1, y1)),
+            FormeGeometrique(std::make_shared<PositionNode>(x1,y1)), 
             _p2(std::make_shared<PositionNode>(x2, y2))
         {}
 
 
-    Position center(Contexte & contexte) const {
+    Position center(Contexte & contexte) const override {
         ExpressionPtr const_2 = std::make_shared<Constante>(2);
 
-        ExpressionPtr cX = std::make_shared<ExpressionBinaire>(_p1->pos().x(), _p2->pos().x(), OperateurBinaire::plus);
-        ExpressionPtr cY = std::make_shared<ExpressionBinaire>(_p1->pos().y(), _p2->pos().y(), OperateurBinaire::plus);
+        ExpressionPtr cX = std::make_shared<ExpressionBinaire>(_positionNode->pos().x(), _p2->pos().x(), OperateurBinaire::plus);
+        ExpressionPtr cY = std::make_shared<ExpressionBinaire>(_positionNode->pos().y(), _p2->pos().y(), OperateurBinaire::plus);
         cX = std::make_shared<ExpressionBinaire>(cX,const_2,OperateurBinaire::divise);
         cY = std::make_shared<ExpressionBinaire>(cY,const_2,OperateurBinaire::divise);
         Position c = Position(cX, cY);
@@ -446,8 +544,8 @@ class LigneNode: public FormeGeometrique{
     }
 
     std::string analyseCode(Contexte & contexte) override{
-        double x1 = _p1->pos().x()->calculer(contexte);
-        double y1 = _p1->pos().y()->calculer(contexte);
+        double x1 = _positionNode->pos().x()->calculer(contexte);
+        double y1 = _positionNode->pos().y()->calculer(contexte);
         double x2 = _p2->pos().x()->calculer(contexte);
         double y2 = _p2->pos().y()->calculer(contexte);
 
@@ -460,22 +558,59 @@ class LigneNode: public FormeGeometrique{
             FormeGeometrique::analyseCode(contexte) +
             "/>\n";
     }
+
+    void setPositionX(std::shared_ptr<PositionXNode> positionX) override {
+        if(positionX->attribut().length()==10) {
+            int numero = positionX->attribut()[9] - 48;
+            if(numero == 1) {
+                setPosition(std::make_shared<PositionNode>(positionX->getValue(),_positionNode->pos().y())); }
+            else if (numero == 2) {
+                _p2 = std::make_shared<PositionNode>(positionX->getValue(),_p2->pos().y()); }
+        }
+    }
+
+    void setPositionY(std::shared_ptr<PositionYNode> positionY) override {
+        if(positionY->attribut().length()==10) {
+            int numero = positionY->attribut()[9] - 48;
+            if(numero == 1) {
+                setPosition(std::make_shared<PositionNode>(_positionNode->pos().x(),positionY->getValue())); }
+            else if (numero == 2) {
+                _p2 = std::make_shared<PositionNode>(_p2->pos().x(),positionY->getValue()); }
+        }
+    }
+
+    ExpressionPtr getPositionX(int position) override {
+        if(position == 1) {
+            return _positionNode->pos().x();
+        }
+        return _p2->pos().x();
+    }
+
+    ExpressionPtr getPositionY(int position) override {
+        if(position == 1) {
+            return _positionNode->pos().y();
+        }
+        return _p2->pos().y();
+    }
 };
 class CheminNode: public FormeGeometrique{
     private:
-        std::vector<Position> _vectPos;
+        std::vector<std::shared_ptr<PositionNode>> _vectPos;
 
     public:
-        CheminNode(std::vector<Position> v):
-            FormeGeometrique(), 
-            _vectPos(v)
-        {}
+        CheminNode(std::vector<std::shared_ptr<PositionNode>> v):
+            FormeGeometrique(v[0])
+        {
+            for(auto p : v) {
+                _vectPos.push_back(p);
+            }
+        }
 
 
-    Position center(Contexte & contexte) const {
+    Position center(Contexte & contexte) const override {
         ExpressionPtr const_2 = std::make_shared<Constante>(2);
-        ExpressionPtr cX = std::make_shared<ExpressionBinaire>(_vectPos.front().x(), _vectPos.back().x(),OperateurBinaire::plus);
-        ExpressionPtr cY = std::make_shared<ExpressionBinaire>(_vectPos.front().y(), _vectPos.back().y(),OperateurBinaire::plus);
+        ExpressionPtr cX = std::make_shared<ExpressionBinaire>(_vectPos.front()->pos().x(), _vectPos.back()->pos().x(),OperateurBinaire::plus);
+        ExpressionPtr cY = std::make_shared<ExpressionBinaire>(_vectPos.front()->pos().y(), _vectPos.back()->pos().y(),OperateurBinaire::plus);
         cX = std::make_shared<ExpressionBinaire>(cX,const_2,OperateurBinaire::divise);
         cY = std::make_shared<ExpressionBinaire>(cY,const_2,OperateurBinaire::divise);
         Position c = Position(cX, cY);
@@ -484,11 +619,11 @@ class CheminNode: public FormeGeometrique{
 
     std::string analyseCode(Contexte & contexte) override{
         std::string toutes_les_lignes = "";
-        double cX1 = _vectPos.front().x()->calculer(contexte);
-        double cY1 = _vectPos.front().y()->calculer(contexte);
+        double cX1 = _vectPos.front()->pos().x()->calculer(contexte);
+        double cY1 = _vectPos.front()->pos().y()->calculer(contexte);
         for(auto i : _vectPos) {
-            double cX2 = i.x()->calculer(contexte);
-            double cY2 = i.y()->calculer(contexte);
+            double cX2 = i->pos().x()->calculer(contexte);
+            double cY2 = i->pos().y()->calculer(contexte);
             toutes_les_lignes +=  "<line x1=\"" +
             std::to_string(cX1) + "\" y1=\"" +
             std::to_string(cY1) + "\" x2=\"" +
@@ -500,6 +635,28 @@ class CheminNode: public FormeGeometrique{
             cY1 = cY2;
         }
         return toutes_les_lignes;
+    }
+
+    void setPositionX(std::shared_ptr<PositionXNode> positionX) override {
+        if(positionX->attribut().length()==10) {
+            unsigned int numero = positionX->attribut()[9] - 48;
+            _vectPos[numero-1] = std::make_shared<PositionNode>(positionX->getValue(),_vectPos[numero-1]->pos().y());
+        }
+    }
+
+    void setPositionY(std::shared_ptr<PositionYNode> positionY) override {
+        if(positionY->attribut().length()==10) {
+            unsigned int numero = positionY->attribut()[9] - 48;
+            _vectPos[numero-1] = std::make_shared<PositionNode>(_vectPos[numero-1]->pos().x(),positionY->getValue());
+        }
+    }
+
+    ExpressionPtr getPositionX(int position) override {
+        return _vectPos[position-1]->pos().x();    
+    }
+
+    ExpressionPtr getPositionY(int position) override {
+        return _vectPos[position-1]->pos().y();
     }
 };
 
@@ -521,7 +678,7 @@ class TexteNode: public FigureNode{
         }
 
 
-    Position center(Contexte & contexte) const {
+    Position center(Contexte & contexte) const override {
         ExpressionPtr taille_texte = std::make_shared<Constante>(_texte.length());
         ExpressionPtr const_2 = std::make_shared<Constante>(2);
         taille_texte = std::make_shared<ExpressionBinaire>(taille_texte, const_2,OperateurBinaire::divise);
@@ -531,26 +688,33 @@ class TexteNode: public FigureNode{
     }
 
     void setAttributs(std::vector<std::shared_ptr<AttributNode>> attributs) override{
-            for(const auto& attribut : attributs)
-            {
-                setAttribut(attribut);
-            }
+        for(const auto& attribut : attributs)
+        {
+            setAttribut(attribut);
+        }
+    }
+
+    void setAttribut(std::shared_ptr<AttributNode> attribut) override{
+        if(std::shared_ptr<ColorNode> colorNode = std::dynamic_pointer_cast<ColorNode>(attribut)){
+            setCouleur(colorNode);
         }
 
-        void setAttribut(std::shared_ptr<AttributNode> attribut) override{
-            if(std::shared_ptr<ColorNode> colorNode = std::dynamic_pointer_cast<ColorNode>(attribut)){
-                setCouleur(colorNode);
-            }
-
-            else if(std::shared_ptr<OpaciteNode> opaciteNode = std::dynamic_pointer_cast<OpaciteNode>(attribut)){
-                setOpacite(opaciteNode);
-            }
-
-            else if(std::shared_ptr<RotationNode> rotationNode = std::dynamic_pointer_cast<RotationNode>(attribut)){
-                setRotation(rotationNode);
-            }
+        else if(std::shared_ptr<OpaciteNode> opaciteNode = std::dynamic_pointer_cast<OpaciteNode>(attribut)){
+            setOpacite(opaciteNode);
         }
 
+        else if(std::shared_ptr<RotationNode> rotationNode = std::dynamic_pointer_cast<RotationNode>(attribut)){
+            setRotation(rotationNode);
+        }
+        else if(std::shared_ptr<PositionXNode> positionX = std::dynamic_pointer_cast<PositionXNode>(attribut)){
+            if(positionX->attribut().length()==9)
+                _positionNode =  std::make_shared<PositionNode>(positionX->getValue(),_positionNode->pos().y());
+        }
+        else if(std::shared_ptr<PositionYNode> positionY = std::dynamic_pointer_cast<PositionYNode>(attribut)){
+            if(positionY->attribut().length()==9)
+                _positionNode = std::make_shared<PositionNode>(_positionNode->pos().x(),positionY->getValue());
+        }
+    }
 
     std::string analyseCode(Contexte & contexte) override{
         return "<text " +
@@ -563,6 +727,14 @@ class TexteNode: public FigureNode{
             "," + center(contexte).toString(contexte) + ")\" >" +
             _texte + "</text> \n";
 
+    }
+
+    ExpressionPtr getPositionX(int position) override {
+        return _positionNode->pos().x();
+    }
+
+    ExpressionPtr getPositionY(int position) override {
+        return _positionNode->pos().y();
     }
 };
 
@@ -577,10 +749,6 @@ class ModificationFigureNode: public Noeud {
 
 
         virtual void modificate(Contexte & contexte) = 0;
-
-        std::string analyseCode(Contexte & contexte) override {
-            return "";
-        }
 
         void setFigure(std::shared_ptr<FigureNode> figure) {
             _figure = figure;
@@ -639,16 +807,13 @@ class ModificationTailleFigureNode: public ModificationFigureNode {
         }
 };
 
-
-
-class DeclarationVariable: public Noeud {
+class DeclarationVariable: public NoeudInterpretable {
     private: 
         std::string _nomVariable;
         std::shared_ptr<FigureNode> _valueNode;
 
     public:
         DeclarationVariable(std::string const & nomVariable, std::shared_ptr<FigureNode> valueNode):
-            Noeud(),
             _nomVariable(nomVariable),
             _valueNode(valueNode)
         {}
@@ -662,8 +827,8 @@ class DeclarationVariable: public Noeud {
         }
 
         std::string analyseCode(Contexte & contexte) override{
-            if(std::shared_ptr<CarreNode> c = std::dynamic_pointer_cast<CarreNode>(_valueNode)){
-                return c->analyseCode(contexte);
+            if(_valueNode != nullptr){
+                return _valueNode->analyseCode(contexte);
             }
 
             return "";

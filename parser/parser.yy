@@ -53,6 +53,9 @@
 %token <std::string>    VARIABLE
 %token <std::string>    STRING
 
+%token <std::string>    POSITIONX
+%token <std::string>    POSITIONY
+
 %token                  ATTRIBUT
 %token                  INLINE_AFFECTATION
 %token <std::string>    HEXA_VALUE
@@ -85,8 +88,8 @@
 %token                  STRINGNOTEQUAL
 
 %token <std::string>    TAILLE
-%token <std::string>    HAUTEUR
-%token <std::string>    LARGEUR
+%token                  HAUTEUR
+%token                  LARGEUR
 
 %token                  RECTANGLE
 %token                  CARRE
@@ -107,7 +110,7 @@
 %type <ExpressionPtr>   operation
 %type <CouleurPtr> couleurValue
 
-%type <std::vector<Position>> vectPos
+%type <std::vector<std::shared_ptr<PositionNode>>> vectPos
 %type <std::vector<std::shared_ptr<AttributNode>>> attributs
 %type <std::vector<std::shared_ptr<AttributNode>>> attributsInline
 %type <std::vector<std::shared_ptr<AttributNode>>> attributsCSS
@@ -115,6 +118,7 @@
 
 %type <std::shared_ptr<AttributNode>> attributAffectation
 
+%type <std::string> positionValue
 %type <std::shared_ptr<AttributNode>> setAttribut
 %type <TailleType> setTaille
 
@@ -173,6 +177,7 @@
 programme:
     subProgramme {
         driver.analyseCode($1);
+        YYACCEPT;
     }
 
 
@@ -225,8 +230,8 @@ attributsCSS:
 
     |
 
-    attributsCSS ';' NL attributAffectation {
-        $1.push_back($4);
+    attributsCSS NL attributAffectation ';' {
+        $1.push_back($3);
         $$ = $1;
     }
     
@@ -265,7 +270,7 @@ attributAffectation:
 
     |
 
-    OPACITE ':' operation {
+    OPACITE ':' operation '%' {
         $$ = std::make_shared<OpaciteNode>($3);
     }
     
@@ -273,6 +278,18 @@ attributAffectation:
     
     EPAISSEUR ':' operation {
         $$ = std::make_shared<EpaisseurNode>($3);
+    }
+
+    |
+
+    POSITIONX ':'  operation {
+        $$ = std::make_shared<PositionXNode>($1,$3);
+    }
+
+    | 
+    
+    POSITIONY ':'  operation {
+        $$ = std::make_shared<PositionYNode>($1,$3);
     }
 
 couleurValue:
@@ -290,14 +307,14 @@ couleurValue:
 expression:
     declarationCanva ';' { $$ = $1; } | 
     declarationFigure { $$ = $1; } | 
-    modificationFigure { $$ = $1; } | 
-    declarationVariableSimple { $$ = $1; } |
+    modificationFigure ';' { $$ = $1; } | 
+    declarationVariableSimple ';' { $$ = $1; } |
     declarationVariable { $$ = $1; } | 
     if { $$ = $1; } |
     accesFigure { $$ = $1; } | 
     boucleFor { $$ = $1; } |
     boucleWhile { $$ = $1; } |
-    affectation { $$ = $1; } |
+    affectation ';' { $$ = $1; } |
     fonction { $$ = $1; } |
     appelFonction ';' { $$ = $1; }
 
@@ -324,6 +341,12 @@ declarationVariableSimple:
 
     |
 
+    FLOAT_TYPE variable '=' operation {
+        $$ = std::make_shared<DeclarationVariableInt>($2, $4);
+    }
+
+    |
+
     BOOL_TYPE variable '=' boolValue {
         $$ = std::make_shared<DeclarationVariableBool>($2, $4);
     }
@@ -344,30 +367,37 @@ declarationFigure:
  carre {
  $$ = $1;
  }
- | rectangle {
+ | 
+ rectangle {
  $$ = $1;
  }
- | triangle {
- $$ = $1;
- }
-
- | cercle {
- $$ = $1;
- }
-
- | ellipse {
+ | 
+ triangle {
  $$ = $1;
  }
 
- | chemin {
+ | 
+ cercle {
  $$ = $1;
  }
 
- | ligne {
+ | 
+ ellipse {
  $$ = $1;
  }
 
- | texte {
+ | 
+ chemin {
+ $$ = $1;
+ }
+
+ | 
+ ligne {
+ $$ = $1;
+ }
+
+ | 
+ texte {
  $$ = $1;
  }
 
@@ -442,9 +472,38 @@ accesFigure:
     }
 
     |
-    
+    RECTANGLE '[' NUMBER ']' '.' {
+        $$ = std::make_shared<AccesIndexNode>(FigureTypes::rectangle, $3);
+    }
+
+    |
     TRIANGLE '[' NUMBER ']' '.' {
         $$ = std::make_shared<AccesIndexNode>(FigureTypes::triangle, $3);
+    }
+
+    |
+    CERCLE '[' NUMBER ']' '.' {
+        $$ = std::make_shared<AccesIndexNode>(FigureTypes::cercle, $3);
+    }
+
+    |
+    ELLIPSE '[' NUMBER ']' '.' {
+        $$ = std::make_shared<AccesIndexNode>(FigureTypes::ellipse, $3);
+    }
+
+    |
+    LIGNE '[' NUMBER ']' '.' {
+        $$ = std::make_shared<AccesIndexNode>(FigureTypes::ligne, $3);
+    }
+
+    |
+    CHEMIN '[' NUMBER ']' '.' {
+        $$ = std::make_shared<AccesIndexNode>(FigureTypes::chemin, $3);
+    }
+
+    |
+    TEXTE '[' NUMBER ']' '.' {
+        $$ = std::make_shared<AccesIndexNode>(FigureTypes::texte, $3);
     }
 
     |
@@ -480,6 +539,18 @@ setAttribut:
     
     EPAISSEUR '=' operation {
         $$ = std::make_shared<EpaisseurNode>($3);
+    }
+
+    |
+
+    POSITIONX '='  operation {
+        $$ = std::make_shared<PositionXNode>($1,$3);
+    }
+
+    | 
+    
+    POSITIONY '='  operation {
+        $$ = std::make_shared<PositionYNode>($1,$3);
     }
 
 
@@ -526,10 +597,32 @@ stringComparator:
     STRINGEQUAL { $$ = string_operators::equal; } |
     STRINGNOTEQUAL { $$ = string_operators::not_equal; }
 
+positionValue:
+    POSITIONX {
+        $$ = $1;
+    }
+
+    |
+
+    POSITIONY {
+        $$ = $1;
+    }
 
 condition:
     accesFigure setTaille numberComparator operation {
         $$ = std::make_shared<TailleConditionNode>($1, $3, $4, $2);
+    }
+
+    |
+
+    accesFigure positionValue numberComparator operation {
+        $$ = std::make_shared<PositionConditionNode>($1,$2, $3, $4);
+    }
+
+    |
+
+    operation numberComparator operation {
+        $$ = std::make_shared<NumberConditionNode>($1, $2, $3);
     }
 
     |
@@ -563,7 +656,8 @@ if:
     }
 
 else:
-    {   
+    {
+
     }
 
     |
@@ -664,10 +758,10 @@ operation:
 
 vectPos:
     operation operation {
-        $$.push_back(Position($1,$2));
+        $$.push_back(std::make_shared<PositionNode>($1,$2));
     }
-    | vectPos operation operation {
-        $1.push_back(Position($2,$3));
+    | vectPos ',' operation operation {
+        $1.push_back(std::make_shared<PositionNode>($3,$4));
         for(auto i : $1) {
             $$.push_back(i);
         }
