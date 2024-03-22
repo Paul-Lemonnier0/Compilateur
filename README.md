@@ -27,29 +27,28 @@ Il est aussi possible de créer des variables booléennes, flottantes, entières
 fonction ...
 
 ```
-
 fonction dessiner () {
-
     Instructions 1 ( voir après) 
     (...)
-    Instructions n
-    
-    
+    Instructions n  
 }
 
 ```
 
 Puis 2 retour à la ligne consécutif (lancera la fonction dessiner qui peut appeler des fonctions extérieurs)
 
-si l'instruction : " taille x y; " n'est pas défini dans dessiner alors rien ne s'affiche car le caneva n'est pas considéré comme défini
+Si l'instruction : " taille x y; " n'est pas défini dans dessiner alors rien ne s'affiche car le caneva n'est pas considéré comme défini
 
 Pour une utilisation plus simple il est possible de passer outre la fonction dessiner, pour cela il faut, dans le fichier arbre.cc, décommenter la partie sans le point d'entré dessiner ( ligne 252-264) et mettre en commentaire la partie avec le point d'entré dessiner ( ligne 233-249 )
 
 En faisant cela l'utilisation devient :
 
+```
 Instructions 1
 (...)
 Instructions n
+```
+
 Puis 2 retours à la ligne consécutif (l'utilisation des fonctions reste possible, simplement si on veut les éxécuter il faut les appeler)
 
 ## Utilisation détaillée
@@ -221,7 +220,7 @@ texte x1 y1 "texte" "police d'écriture"
 ```
     
 ### Gestion des attributs :   
-```
+
 couleur :   
     -rgb(x,y,z)   
     -#XXXXXX   
@@ -238,29 +237,29 @@ opacité :
 
 rotation :   
     -entier / opération / réel '°'
-```
+
 
 ### Attribution des attributs lors de la création d'une figure :
 Inline :
 ```
-    déclarationFigure -> att1 : val1 & att2 : val2 & (...);
+déclarationFigure -> att1 : val1 & att2 : val2 & (...);
 ```
 
 CSS : 
 ```
-    déclarationFigure {
-        att1 : val1;   
-        att2 : val2;  
-        (...)   
-    } 
+déclarationFigure {
+    att1 : val1;   
+    att2 : val2;  
+    (...)   
+} 
 ```
 
 ### Création de variables :
--figures   
--entier  
--réel   
--booléen       
--couleur   
+-Figures   
+-Entier  
+-Réel   
+-Booléen       
+-Couleur   
 
 ### Accès figure :   
 -Index : carré[0], triangle[0], ...   
@@ -343,21 +342,24 @@ carré 20 20 20;
     -x une variable   
 
 -Tant que condition :
-    -même condition que pour les structures conditionnelles    
+    -Même condition que pour les structures conditionnelles    
 
 ### Fonctions :
 -Création de fonctions :   
-    -avec arguments ou non    
-    -définitions des instructions    
+    -Avec arguments ou non    
+    -Définitions des instructions    
 
 -Appels de fonctions :
-    maison 100 100 100;    
-    dessin;    
+
+```
+maison 100 100 100;    
+dessin;
+```   
 
 -Dessiner en point d'entrée :
-    -la fonction dessiner fonctionne comme un main, elle n'a pas besoin d'être appelée    
-    -la taille du caneva ne peut être définie que dans la fonction dessiner (si on veut pouvoir la définir ailleurs on a simplement à regarder les noeuds internes de dessiner)    
-    -cette fonctionnaolité peut être décommentée pour que ça soit plus simple à tester (sans point d'entrée donc le code peut être écris sans fonction ou avec auquel cas il faut appeler dessiner et définir            la taille du caneva hors fonction)
+    -La fonction dessiner fonctionne comme un main, elle n'a pas besoin d'être appelée    
+    -La taille du caneva ne peut être définie que dans la fonction dessiner (si on veut pouvoir la définir ailleurs on a simplement à regarder les noeuds internes de dessiner)    
+    -Cette fonctionnaolité peut être décommentée pour que ça soit plus simple à tester (sans point d'entrée donc le code peut être écris sans fonction ou avec auquel cas il faut appeler dessiner et définir            la taille du caneva hors fonction)
 
 ### Insensible à la casse :
 
@@ -366,9 +368,9 @@ CaRrÉ 0 0 100 -> CouLeur : ROuge;
 ```
 
 ### Conversion en svg :
--caneva    
--figures    
--attributs   
+Caneva    
+Figures    
+Attributs   
 
 ## Auteur
 
