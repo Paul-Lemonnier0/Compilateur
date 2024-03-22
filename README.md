@@ -268,8 +268,8 @@ Variable
 ### Accès position / taille d'une figure :
 
 - carré :   
-   * taille / hauteur / largeur   
-   * positionX / positionY   
+   - taille / hauteur / largeur   
+   - positionX / positionY   
    
 - rectangle :    
    * hauteur / largeur   
