@@ -61,7 +61,7 @@ taille 1000 1000;
 
 ### Exemples d'utilisations
 
-#1
+#### #1
 
 ```
 taille 1000 1000;
@@ -74,7 +74,7 @@ chemin 10 10, 490 10, 490 490, 10 490, 10 10;
 texte 100 100 "Bonjour" "Liberation Serif";
 ```
 
-#2
+#### #2
 
 ```
 taille 1000 1000;
@@ -86,7 +86,7 @@ rotation : 45°;
 cercle 400 400 50 -> couleur : vert & remplissage : bleu & épaisseur : 3;
 ```
 
-#3
+#### #3
 
 ```
 taille 1000 1000;
@@ -110,7 +110,7 @@ rectangle[0].positionX4 = 150;
 rectangle[0].positionY4 = 100;
 ```
 
-#4
+#### #4
 
 ```
 C1 = carré 250 250 100;
@@ -141,7 +141,7 @@ C1.taille = 200;
 taille 1000 1000;
 ```
 
-#5
+#### #5
 
 ```
 entier i = 0;
@@ -157,7 +157,7 @@ j = j + 1;
 taille 1000 1000;
 ```
 
-#6.1
+#### #6.1
 
 ```
 fonction maison (x y taille) {
@@ -171,7 +171,7 @@ taille 1000 1000;
 dessiner;
 ```
 
-#6.2 (avec le point d'entrée)
+#### #6.2 (avec le point d'entrée)
 
 ```
 fonction maison (x y taille) {
@@ -184,7 +184,7 @@ maison 100 500 200;
 }
 ```
 
-#7
+#### #7
 
 ```
 carré 0 0 100 -> couleur : rouge;
@@ -193,7 +193,7 @@ carré 200 200 100 -> couleur : #ff0000;
 taille 500 500;
 ```
 
-#8
+#### #8
 
 ```
 CaRrÉ 0 0 100 -> CouLeur : ROuge;
