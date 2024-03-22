@@ -16,7 +16,7 @@ Il est aussi possible de créer des variables booléennes, flottantes, entières
 ## Fichiers disponibles
 
 -Un scanner (scanner.ll) qui se charge de récupérer les mots-clés et les valeurs rentrées (token)   
- -Un parser (parser.yy) qui se charge d'interpréter la grammaire   
+       -Un parser (parser.yy) qui se charge d'interpréter la grammaire   
 -Un driver (driver.hh, driver.cpp) qui se charge de faire l'interface entre la structure de données et le parser   
 -Un contexte (contexte.hh, contexte.cpp) qui implémente un conteneur de variables   
 
