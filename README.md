@@ -15,12 +15,12 @@ Il est aussi possible de créer des variables booléennes, flottantes, entières
 
 ## Fichiers disponibles
 
--Un scanner (scanner.ll) qui se charge de récupérer les mots-clés et les valeurs rentrées (token) :    
-       -Un parser (parser.yy) qui se charge d'interpréter la grammaire   
--Un driver (driver.hh, driver.cpp) qui se charge de faire l'interface entre la structure de données et le parser   
--Un contexte (contexte.hh, contexte.cpp) qui implémente un conteneur de variables   
+Un scanner (scanner.ll) qui se charge de récupérer les mots-clés et les valeurs rentrées (token)  
+Un parser (parser.yy) qui se charge d'interpréter la grammaire   
+Un driver (driver.hh, driver.cpp) qui se charge de faire l'interface entre la structure de données et le parser   
+Un contexte (contexte.hh, contexte.cpp) qui implémente un conteneur de variables   
 
--Une structure de données en forme d'arbre (AST). Celle-ci est disponible en plusieurs fichiers dans le dossier "expression"   
+Une structure de données en forme d'arbre (AST). Celle-ci est disponible en plusieurs fichiers dans le dossier "expression"   
 
 ## Utilisation
 
@@ -221,22 +221,22 @@ texte x1 y1 "texte" "police d'écriture"
     
 ### Gestion des attributs :   
 
-couleur :   
-    -rgb(x,y,z)   
-    -#XXXXXX   
-    -rouge/vert/bleu/jaune/...   
+- couleur :   
+  * rgb(x,y,z)   
+  *  #XXXXXX   
+  *  rouge/vert/bleu/jaune/...   
   
-remplissage :    
-    -idem que couleur    
+- remplissage :    
+  * idem que couleur    
    
-épaisseur :   
-    -entier / opération / réel   
+- épaisseur :   
+  * entier / opération / réel   
 
-opacité :    
-    -entier / opération / réel '%'   
+- opacité :    
+  *  entier / opération / réel '%'   
 
-rotation :   
-    -entier / opération / réel '°'
+- rotation :   
+  *  entier / opération / réel '°'
 
 
 ### Attribution des attributs lors de la création d'une figure :
@@ -255,51 +255,52 @@ déclarationFigure {
 ```
 
 ### Création de variables :
--Figures   
--Entier  
--Réel   
--Booléen       
--Couleur   
+Figures   
+Entier  
+Réel   
+Booléen       
+Couleur   
 
 ### Accès figure :   
--Index : carré[0], triangle[0], ...   
--Variable   
+Index : carré[0], triangle[0], ...   
+Variable   
    
 ### Accès position / taille d'une figure :
 
--carré :   
-    -taille / hauteur / largeur   
-    -positionX / positionY   
+- carré :   
+   * taille / hauteur / largeur   
+   * positionX / positionY   
    
--rectangle :    
-    -hauteur / largeur   
-    -positionX1 / positionY1 / positionX2 / positionY2 / positionX3 / positionY3 / positionX4 / positionY4   
+- rectangle :    
+   * hauteur / largeur   
+   * positionX1 / positionY1 / positionX2 / positionY2 / positionX3 / positionY3 / positionX4 / positionY4   
 
--triangle :  
-    -hauteur / largeur   
-    -positionX / positionY   
+- triangle :  
+   * hauteur / largeur   
+   * positionX / positionY   
 
--cercle :   
-    -taille / hauteur / largeur   
-    -positionX / positionY   
+- cercle :   
+   * taille / hauteur / largeur   
+   * positionX / positionY   
 
--ellipse :   
-    -hauteur / largeur    
-    -positionX / positionY     
+- ellipse :   
+   * hauteur / largeur    
+   * positionX / positionY     
    
--ligne :    
-    -positionX1 / positionY2   
+- ligne :    
+   * positionX1 / positionY2   
 
--chemin :   
-    -positionXY (Y un entier)   
+- chemin :   
+   * positionXY (Y un entier)   
  
      
-### Assignation variable :   
--i = i + 1;   
--b = true;   
--c = rouge;   
--f = 0.5;   
-
+### Assignation variable :  
+```
+i = i + 1;   
+b = true;   
+c = rouge;   
+f = 0.5;   
+```
 ### Modification figure :   
 ```
 C1.couleur = rouge;    
@@ -307,13 +308,13 @@ carré[0].couleur = rouge (triangle[0].couleur = rouge, ...)
 ```
 
 ### Structure conditionnelle (si / sinon) :   
--Position d'une figure (<, >, ==, >=, <=, !=)   
--Taille d'une figure (<, >, ==, >=, <=, !=)   
--Couleur d'une figure (est / n'est pas)   
+Position d'une figure (<, >, ==, >=, <=, !=)   
+Taille d'une figure (<, >, ==, >=, <=, !=)   
+Couleur d'une figure (est / n'est pas)   
 
--Comparaisons avec des constantes ou des variables   
+Comparaisons avec des constantes ou des variables   
 
--Combinaisons de plusieurs conditions ((condition1) && (condition2))    
+Combinaisons de plusieurs conditions ((condition1) && (condition2))    
 
 Pour déclarer un "si" sans "sinon" il faut sauter une ligne (por omettre le "sinon") exemple :   
 
@@ -337,17 +338,17 @@ sinon {
 carré 20 20 20;   
 ```
 ### Boucles :
--Répète x fois :   
-    -x une constante   
-    -x une variable   
+- Répète x fois :   
+   * x une constante   
+   * x une variable   
 
--Tant que condition :
-    -Même condition que pour les structures conditionnelles    
+- Tant que condition :
+   * Même condition que pour les structures conditionnelles    
 
 ### Fonctions :
--Création de fonctions :   
-    -Avec arguments ou non    
-    -Définitions des instructions    
+- Création de fonctions :   
+   * Avec arguments ou non    
+   * Définitions des instructions    
 
 -Appels de fonctions :
 
@@ -356,10 +357,10 @@ maison 100 100 100;
 dessin;
 ```   
 
--Dessiner en point d'entrée :
-    -La fonction dessiner fonctionne comme un main, elle n'a pas besoin d'être appelée    
-    -La taille du caneva ne peut être définie que dans la fonction dessiner (si on veut pouvoir la définir ailleurs on a simplement à regarder les noeuds internes de dessiner)    
-    -Cette fonctionnaolité peut être décommentée pour que ça soit plus simple à tester (sans point d'entrée donc le code peut être écris sans fonction ou avec auquel cas il faut appeler dessiner et définir            la taille du caneva hors fonction)
+- Dessiner en point d'entrée :
+   * La fonction dessiner fonctionne comme un main, elle n'a pas besoin d'être appelée    
+   * La taille du caneva ne peut être définie que dans la fonction dessiner (si on veut pouvoir la définir ailleurs on a simplement à regarder les noeuds internes de dessiner)    
+   * Cette fonctionnaolité peut être décommentée pour que ça soit plus simple à tester (sans point d'entrée donc le code peut être écris sans fonction ou avec auquel cas il faut appeler dessiner et définir            la taille du caneva hors fonction)
 
 ### Insensible à la casse :
 
