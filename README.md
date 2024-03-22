@@ -1,6 +1,6 @@
 # COMPILATEUR
 
-Implémentation d'un compilateur de création de formes en svg en utilisant flex, bison, c++.   
+Implémentation d'un compilateur de création de formes en svg avec boucles, fonctions, conditions en utilisant flex, bison, c++.   
 
 ## Description
 
