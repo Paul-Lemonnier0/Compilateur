@@ -1,6 +1,15 @@
-# COMPILATEUR
+# Compilateur SVG
 
 Implémentation d'un compilateur de création de formes en svg avec boucles, fonctions, conditions en utilisant flex, bison, c++.   
+
+## Table des matières
+
+- [Description](#description)
+- [Fichiers disponibles](#fichiers-disponibles)
+- [Utilisation](#utilisation)
+- [Utilisation détaillée](#utilisation-détaillée)
+- [Détails](#détails)
+- [Auteur](#auteur)
 
 ## Description
 
